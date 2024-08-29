@@ -18,11 +18,14 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: <%= ENV["TASKTHING_DATABASE_USERNAME"] %>
+  password: <%= ENV["TASKTHING_DATABASE_PASSWORD"] %>
 
 
 development:
   <<: *default
   database: taskthing_development
+  port: 5434
 
   # The specified database role being used to connect to PostgreSQL.
   # To create additional roles in PostgreSQL see `$ createuser --help`.
@@ -81,5 +84,3 @@ test:
 production:
   <<: *default
   database: taskthing_production
-  username: taskthing
-  password: <%= ENV["TASKTHING_DATABASE_PASSWORD"] %>
