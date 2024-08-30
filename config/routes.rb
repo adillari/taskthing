@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  resource "session"
+  resource "session", only: %i[new create destroy]
+  resources "users", only: %i[new create destroy]
   resources "passwords", param: :token
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -13,4 +14,5 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "home#index"
+  resources "boards", only: :index
 end
