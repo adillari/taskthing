@@ -20,7 +20,10 @@
   </head>
 
   <body class="bg-zinc-950 text-white">
-    <main class="container mx-auto mt-28 px-5 flex">
+    <header class="flex w-full items-center p-4">
+      <%= yield :header %>
+    </header>
+    <main class="container mx-auto px-2 flex">
       <%= yield %>
     </main>
   </body>
