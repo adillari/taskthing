@@ -1,6 +1,9 @@
-<% content_for :header do %>
-  <span class="text-xl font-bold">TaskThing.io</span>
-  <%= link_to "account_circle", session_path, class: "material-symbols-outlined ml-auto", data: {turbo_method: :delete } %>
+<% if @boards.any? %>
+  <%= render partial: :board, collection: @boards %>
+<% else %>
+  <div class="flex flex-col items-center justify-center m-auto opacity-30 h-full">
+    Add a board to start
+  </div>
 <% end %>
-
-<%= Current.user.email_address %>
+<%= render LinkToModalComponent.new(path: new_board_path, class: "rounded-xl py-3 px-5 bg-violet-700 font-medium cursor-pointer absolute bottom-0 right-0 m-4").with_content("+") %>
+<%= link_to "+", new_board_path, classes: "rounded-xl py-3 px-5 bg-violet-700 font-medium cursor-pointer absolute bottom-0 right-0 m-4", data: { turbo_frame: :modal, action: "application#showSpinner" } %>

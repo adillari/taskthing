@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources "boards"
   resource "session", only: %i[new create destroy]
   resources "users", only: %i[new create destroy]
   resources "passwords", param: :token
@@ -14,5 +15,4 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "home#index"
-  resources "boards", only: :index
 end
