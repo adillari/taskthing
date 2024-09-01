@@ -1,1 +1,1 @@
-<%= link_to content, path, class: @class, data: { turbo_frame: :modal } %>
+<%= link_to content, @path, class: @class, data: { turbo_frame: :modal, action: "application#showSpinner" } %>

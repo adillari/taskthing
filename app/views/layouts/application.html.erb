@@ -22,16 +22,14 @@
 
   <body class="container mx-auto bg-zinc-950 text-white flex flex-col" data-controller="application">
     <header class="flex w-full items-center p-4">
-      <span class="text-xl font-bold">
-        TaskThing.io
-      </span>
+      <%= link_to "TaskThing.io", root_path, class: "text-xl font-bold", data: { action: "application#showSpinner" } %>
 
       <div class="ml-auto flex items-center gap-2">
         <% if authenticated? %>
           <%= turbo_frame_tag :modal %>
           <%= link_to "account_circle", session_path, class: "material-symbols-outlined", data: { turbo_method: :delete } %>
         <% else %>
-          <%= link_to "Login", new_session_path, class: "rounded-full py-2 px-5 border border-violet-700 text-white inline-block font-medium cursor-pointer" %>
+          <%= link_to "Login", new_session_path, class: "button-outlined" %>
         <% end %>
       </div>
     </header>
@@ -39,5 +37,9 @@
     <main class="px-2 relative flex-1">
       <%= yield %>
     </main>
+
+    <footer class="flex items-center">
+      <%= yield :footer %>
+    </footer>
   </body>
 </html>
