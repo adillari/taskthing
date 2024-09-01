@@ -1,1 +1,6 @@
+<% content_for :header do %>
+  <span class="text-xl font-bold">TaskThing.io</span>
+  <%= link_to "account_circle", session_path, class: "material-symbols-outlined ml-auto", data: {turbo_method: :delete } %>
+<% end %>
+
 <%= Current.user.email_address %>

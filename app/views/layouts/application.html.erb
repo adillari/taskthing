@@ -17,12 +17,21 @@
 
     <%= stylesheet_link_tag :all, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
   </head>
 
   <body class="bg-zinc-950 text-white">
     <header class="flex w-full items-center p-4">
-      <%= yield :header %>
+      <span class="text-xl font-bold">
+        TaskThing.io
+      </span>
+      <% if authenticated? %>
+        <%= link_to "account_circle", session_path, class: "material-symbols-outlined ml-auto", data: { turbo_method: :delete } %>
+      <% else %>
+        <%= link_to "Login", new_session_path, class: "rounded-full py-2 px-5 border border-violet-700 ml-auto text-white inline-block font-medium cursor-pointer" %>
+      <% end %>
     </header>
+
     <main class="container mx-auto px-2 flex">
       <%= yield %>
     </main>
