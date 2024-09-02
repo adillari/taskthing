@@ -1,8 +1,10 @@
 <% if @boards.any? %>
-  <%= render partial: :board, collection: @boards %>
+  <ul class="flex flex-col gap-2 mb-20">
+    <%= render(BoardListItemComponent.with_collection(@boards)) %>
+  </ul>
 <% else %>
   <div class="content-center-full opacity-30">
     Add a board to start
   </div>
 <% end %>
-<%= render LinkToModalComponent.new(path: new_board_path, classes: "button-filled absolute bottom-0 right-0 m-4").with_content("+") %>
+<%= render LinkToModalComponent.new(path: new_board_path, classes: "button-filled fixed bottom-0 right-0 m-4 shadow").with_content("+") %>
