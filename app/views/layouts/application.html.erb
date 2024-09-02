@@ -21,12 +21,16 @@
   </head>
 
   <body class="container mx-auto bg-zinc-950 text-white flex flex-col" data-controller="application">
+    <%= turbo_frame_tag :modal %>
+
     <header class="flex w-full items-center p-4">
-      <%= link_to "TaskThing.io", root_path, class: "text-xl font-bold", data: { action: "application#showSpinner" } %>
+      <%= link_to "TaskThing.io", root_path, class: "text-xl font-bold" %>
 
       <div class="ml-auto flex items-center gap-2">
         <% if authenticated? %>
-          <%= turbo_frame_tag :modal %>
+          <div data-controller="loading" data-loading-target="indicator" hidden>
+            <div class="lds-ring flex items-center"><div></div><div></div><div></div><div></div></div>
+          </div>
           <%= link_to "account_circle", session_path, class: "material-symbols-outlined", data: { turbo_method: :delete } %>
         <% else %>
           <%= link_to "Login", new_session_path, class: "button-outlined" %>
