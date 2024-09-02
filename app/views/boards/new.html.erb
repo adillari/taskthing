@@ -4,7 +4,7 @@
       <%= form.text_field :title, required: true, autofocus: true, placeholder: "e.g. Movies To Watch", class: "input-field" %>
     </div>
     <div class="inline">
-      <%= form.submit "Create", class: "button-filled" %>
+      <%= form.submit "Create", class: "button-filled", data: { turbo_frame: :_top } %>
     </div>
   <% end %>
 <% end %>
