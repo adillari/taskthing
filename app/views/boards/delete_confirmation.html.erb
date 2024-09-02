@@ -1,0 +1,3 @@
+<%= render ModalComponent.new(title: "Delete \"#{@board.title}\"?") do %>
+  <%= button_to "Delete", @board, class: "button-filled", autofocus: true, method: :delete, data: { turbo_frame: :_top } %>
+<% end %>
