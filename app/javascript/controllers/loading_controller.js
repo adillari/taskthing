@@ -6,13 +6,11 @@ export default class extends Controller {
   connect() {
     document.addEventListener('turbo:before-fetch-request', this.#showSpinner.bind(this))
     document.addEventListener('turbo:before-fetch-response', this.#hideSpinner.bind(this))
-    document.addEventListener("turbo:before-cache", this.#hideSpinner.bind(this))
   }
 
   disconnect() {
     document.removeEventListener('turbo:before-fetch-request', this.#showSpinner.bind(this))
     document.removeEventListener('turbo:before-fetch-response', this.#hideSpinner.bind(this))
-    document.removeEventListener("turbo:before-cache", this.#hideSpinner.bind(this))
   }
 
   #showSpinner(event) {

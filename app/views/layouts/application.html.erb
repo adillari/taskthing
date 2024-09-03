@@ -4,6 +4,7 @@
     <title><%= content_for(:title) || "Taskthing" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="turbo-refresh-method" content="morph">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -28,7 +29,7 @@
 
       <div class="ml-auto flex items-center gap-2">
         <% if authenticated? %>
-          <div data-controller="loading" data-loading-target="indicator" hidden>
+          <div data-controller="loading" data-loading-target="indicator" data-turbo-temporary hidden>
             <div class="lds-ring flex items-center"><div></div><div></div><div></div><div></div></div>
           </div>
           <%= link_to "account_circle", session_path, class: "material-symbols-outlined", data: { turbo_method: :delete } %>
