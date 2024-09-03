@@ -4,7 +4,8 @@ class BoardsController < ApplicationController
   end
 
   def show
-    @board = find_board
+    @board = Current.user.boards.includes(:lanes).find(params[:id])
+    # @board = find_board.includes(:lanes)
   end
 
   def new
