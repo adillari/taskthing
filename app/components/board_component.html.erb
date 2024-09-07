@@ -1,8 +1,3 @@
 <section id="lanes-container" class="flex gap-2">
-  <% @board.lanes.each do |lane| %>
-    <ul class="bg-zinc-900 rounded-lg p-2 w-screen">
-      <%= tag.div(lane.position) %>
-      <%= tag.div(lane.name) %>
-    </ul>
-  <% end %>
+  <%= render(LaneComponent.with_collection(@lanes)) %>
 </section>
