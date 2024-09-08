@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_09_03_045150) do
+ActiveRecord::Schema[8.0].define(version: 2024_09_08_010046) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -40,6 +40,13 @@ ActiveRecord::Schema[8.0].define(version: 2024_09_03_045150) do
     t.index ["user_id"], name: "index_sessions_on_user_id"
   end
 
+  create_table "tasks", force: :cascade do |t|
+    t.bigint "lane_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lane_id"], name: "index_tasks_on_lane_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email_address", null: false
     t.string "password_digest", null: false
@@ -51,4 +58,5 @@ ActiveRecord::Schema[8.0].define(version: 2024_09_03_045150) do
   add_foreign_key "boards", "users"
   add_foreign_key "lanes", "boards"
   add_foreign_key "sessions", "users"
+  add_foreign_key "tasks", "lanes"
 end
