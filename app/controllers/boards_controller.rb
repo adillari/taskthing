@@ -1,22 +1,20 @@
 class BoardsController < ApplicationController
   def index
-    @boards = Current.user.boards
+    @boards = boards
   end
 
   def show
-    @board = Current.user.boards.includes(:lanes).find(params[:id])
-    # @board = find_board.includes(:lanes)
+    @board = boards.includes(lanes: [ :tasks ]).find(params[:id])
   end
 
   def new
-    @board = Board.new
+    @board = boards.new
   end
 
   def create
-    board = Current.user.boards.new(board_params)
+    board = boards.new(board_params)
 
     if board.save
-      # TODO: turbo stream shiz
       redirect_to boards_path
     else
       @errors = board.errors
@@ -28,20 +26,19 @@ class BoardsController < ApplicationController
   end
 
   def delete_confirmation
-    @board = find_board
+    @board = boards.find(params[:id])
   end
 
   def destroy
-    board = find_board
+    board = boards.find(params[:id])
     board.destroy!
-    # TODO: turbo stream shiz
     redirect_to boards_path
   end
 
 private
 
-  def find_board
-    Current.user.boards.find(params[:id])
+  def boards
+    Current.user.boards
   end
 
   def board_params
