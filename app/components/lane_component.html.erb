@@ -1,3 +1,17 @@
-<ul class="bg-zinc-900 rounded-lg p-2 w-screen">
-  <%= tag.div(@lane.name) %>
+<ul class="bg-zinc-900 rounded-lg p-2 min-w-64 grow flex flex-col gap-2">
+  <li class="lane-header flex">
+    <span class="font-semibold">
+      <%= @lane.name %>
+    </span>
+    <button span class="material-symbols-outlined ml-auto">
+      add
+    </button>
+  </li>
+  <li class="bg-zinc-950 p-4 rounded-lg border-">
+    <%= form_with model: @task do |form| %>
+      <%= form.text_field :title, required: true, autofocus: true, placeholder: "Title", class: 'w-full border-none bg-transparent focus:ring-0 outline-none text-white placeholder-gray-500 text-base p-2' %>
+      <%= form.text_field :description, placeholder: "Description (optional)", class: 'flex border-none bg-transparent focus:ring-0 outline-none text-white placeholder-gray-500 text-base p-2' %>
+      <%= form.submit "Save", class: "button-filled" %>
+    <% end %>
+  </li>
 </ul>
