@@ -1,6 +1,6 @@
 <% if @boards.any? %>
   <ul class="flex flex-col gap-2 mb-20">
-    <%= render(BoardListItemComponent.with_collection(@boards)) %>
+    <%= render(BoardPreviewComponent.with_collection(@boards)) %>
   </ul>
 <% else %>
   <div class="content-center-full opacity-30">

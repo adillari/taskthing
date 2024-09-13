@@ -1,4 +1,4 @@
-class BoardListItemComponent < ApplicationComponent
+class BoardPreviewComponent < ApplicationComponent
   with_collection_parameter :board
 
   def initialize(board:)
