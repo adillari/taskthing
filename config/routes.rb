@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources "tasks", only: %i[create]
+  resources "tasks", only: %i[create destroy] do
+    get "delete_confirmation", on: :member
+  end
   resources "boards" do
     get "delete_confirmation", on: :member
   end
