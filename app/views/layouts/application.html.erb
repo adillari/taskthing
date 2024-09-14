@@ -29,7 +29,7 @@
 
       <div class="ml-auto flex items-center gap-2">
         <% if authenticated? %>
-          <div data-controller="loading" data-loading-target="indicator" data-turbo-temporary hidden>
+          <div data-application-target="indicator" data-turbo-temporary hidden>
             <div class="lds-ring flex items-center"><div></div><div></div><div></div><div></div></div>
           </div>
           <%= link_to "account_circle", session_path, class: "material-symbols-outlined", data: { turbo_method: :delete } %>
