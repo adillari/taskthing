@@ -16,6 +16,6 @@
     @apply block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full bg-slate-900;
   }
   .task-input-field {
-    @apply p-0 w-full border-none bg-transparent focus:ring-0 focus:brightness-150 text-white p-2;
+    @apply p-0 w-full border-none bg-transparent focus:ring-0 focus:brightness-150 text-white;
   }
 }
