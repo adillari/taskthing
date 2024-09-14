@@ -1,16 +1,29 @@
 class TasksController < ApplicationController
-  def create
-    @lane = lane
+  before_action :set_lane
+  before_action :set_task, except: :create
 
-    unless @lane.tasks.create(task_params)
-      render status: :unprocessable_entity
-    end
+  def create
+    @lane.tasks.create!(task_params)
+  rescue
+    render status: :unprocessable_entity
+  end
+
+  def delete_confirmation
+  end
+
+  def destroy
+    @task.destroy!
+    redirect_to board_path
   end
 
 private
 
+  def task
+    @task = lane.tasks.find(params[:id])
+  end
+
   def lane
-    Current.user.lanes.find_by(
+    @lane = Current.user.lanes.find_by(
       id: params.dig(:task, :lane_id),
       board_id: params.dig(:task, :board_id)
     )
