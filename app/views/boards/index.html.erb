@@ -7,4 +7,4 @@
     Add a board to start
   </div>
 <% end %>
-<%= render LinkToModalComponent.new(path: new_board_path, classes: "button-filled fixed sm:absolute bottom-0 right-0 m-4 shadow").with_content("+") %>
+<%= link_to "+", new_board_path, class: "button-filled fixed sm:absolute bottom-0 right-0 m-4 shadow", data: { turbo_frame: :modal } %>
