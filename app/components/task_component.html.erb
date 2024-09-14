@@ -1,8 +1,16 @@
-<li class="bg-zinc-950 border border-violet-700 rounded-lg p-2 shadow-lg">
-  <div>
-    <%= @task.title %>
-  </div>
-  <div>
-    <%= @task.description %>
-  </div>
+<li class="bg-zinc-950 border border-violet-700 rounded-lg overflow-hidden shadow-lg flex" draggable="true">
+  <aside class="self-stretch bg-violet-700 place-content-center material-symbols-outlined cursor-grab w-6">
+    drag_indicator
+  </aside>
+  <article class="m-2 w-full">
+    <header class="font-semibold text-center">
+      <%= @task.title.titleize %>
+    </header>
+    <% if @task.description.present? %>
+      <p class="mt-2">
+        <%= @task.description %>
+      </p>
+    <% end %>
+  </article>
+  <%= link_to "delete", delete_confirmation_task_path(@task), class: "self-stretch place-content-center material-symbols-outlined text-red-500", data: { turbo_frame: :modal } %>
 </li>

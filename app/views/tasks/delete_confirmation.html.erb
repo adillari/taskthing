@@ -1,0 +1,12 @@
+<%=
+render ModalComponent.new(title: "Delete \"#{@task.title.titleize}\"?") do
+  button_to(
+    "Delete",
+    task_path(@task, board_id: @task.board.id),
+    class: "button-filled",
+    autofocus: true,
+    method: :delete,
+    data: { turbo_frame: dom_id(@task.lane) }
+  )
+end
+%>

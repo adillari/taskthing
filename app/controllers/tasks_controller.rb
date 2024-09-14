@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
-  before_action :set_lane
   before_action :set_task, except: :create
+  before_action :set_lane, except: :delete_confirmation
 
   def create
     @lane.tasks.create!(task_params)
@@ -13,16 +13,18 @@ class TasksController < ApplicationController
 
   def destroy
     @task.destroy!
-    redirect_to board_path
+    render :create
   end
 
 private
 
-  def task
-    @task = lane.tasks.find(params[:id])
+  def set_task
+    @task = Current.user.tasks.find(params[:id])
   end
 
-  def lane
+  def set_lane
+    return @lane = @task.lane if @task
+
     @lane = Current.user.lanes.find_by(
       id: params.dig(:task, :lane_id),
       board_id: params.dig(:task, :board_id)
