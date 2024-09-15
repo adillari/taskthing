@@ -1,4 +1,7 @@
-/* Application styles */
+/*
+ *= require_self
+ *= require material_symbols
+*/
 html, body {
   height: 100%; /* Ensure the body and html take full height */
   margin: 0; /* Remove default margins */
