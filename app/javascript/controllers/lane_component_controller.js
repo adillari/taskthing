@@ -6,7 +6,7 @@ export default class extends Controller {
   toggleNewTaskForm({ target }) {
     if (this.newTaskFormTarget.hidden) {
       this.newTaskFormTarget.hidden = false
-      this.newTaskFormTarget.querySelector("input").focus()
+      this.newTaskFormTarget.querySelector("input[required]").focus()
       target.innerText = "close"
     } else {
       this.newTaskFormTarget.hidden = true
