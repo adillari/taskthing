@@ -27,11 +27,11 @@ export default class extends Controller {
 
   #showSpinner(event) {
     if (this.#isPrefetchRequest(event)) return
-    this.indicatorTarget.hidden = false
+    this.hasIndicatorTarget && (this.indicatorTarget.hidden = false)
   }
 
   #hideSpinner() {
-    this.indicatorTarget.hidden = true
+    this.hasIndicatorTarget && (this.indicatorTarget.hidden = true)
   }
 
   #isPrefetchRequest(event) {

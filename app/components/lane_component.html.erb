@@ -1,18 +1,18 @@
-<turbo-frame id="<%= dom_id(@lane) %>">
-  <ul class="bg-zinc-900 rounded-lg p-2 min-w-64 grow flex flex-col gap-2">
+<turbo-frame id="<%= dom_id(@lane) %>" data-controller="lane-component" class="flex-1">
+  <ul class="bg-zinc-900 rounded-lg p-2 min-w-64 flex flex-col gap-2">
     <li class="lane-header flex">
       <span class="font-medium">
         <%= @lane.name %>
       </span>
-      <button span class="material-symbols-outlined ml-auto bg-violet-700 rounded-lg">
+      <button class="material-symbols-outlined ml-auto bg-violet-700 rounded-lg" data-action="lane-component#toggleNewTaskForm">
         add
       </button>
     </li>
-    <li class="bg-zinc-950 border border-violet-700 rounded-lg p-2 shadow-lg">
+    <li class="bg-zinc-950 border border-violet-700 rounded-lg p-2 shadow-lg" data-lane-component-target="newTaskForm" hidden>
       <%= form_with model: @task do |form| %>
         <%= form.hidden_field :board_id, value: @lane.board.id %>
         <%= form.hidden_field :lane_id, value: @lane.id %>
-        <%= form.text_field :title, id: dom_id(@lane, :task_title), required: true, autofocus: true, placeholder: "Title", autocomplete: :off, class: "mb-1 task-input-field" %>
+        <%= form.text_field :title, id: dom_id(@lane, :task_title), required: true, placeholder: "Title", autocomplete: :off, class: "mb-1 task-input-field" %>
         <%= form.text_area :description, id: dom_id(@lane, :task_description), rows: 2, placeholder: "Description (optional)", autocomplete: :off, class: "resize-none task-input-field" %>
         <%= form.submit "save", class: "material-symbols-outlined text-violet-700 float-right" %>
       <% end %>
