@@ -8,13 +8,15 @@
         add
       </button>
     </li>
-    <li class="bg-zinc-950 border border-violet-700 rounded-lg p-2 shadow-lg" data-lane-component-target="newTaskForm" hidden>
+    <li class="bg-zinc-950 border border-violet-700 rounded-lg p-2 shadow-lg h-24" data-lane-component-target="newTaskForm" data-turbo-temporary hidden>
       <%= form_with model: @task do |form| %>
         <%= form.hidden_field :board_id, value: @lane.board.id %>
         <%= form.hidden_field :lane_id, value: @lane.id %>
         <%= form.text_field :title, id: dom_id(@lane, :task_title), required: true, placeholder: "Title", autocomplete: :off, class: "mb-1 task-input-field" %>
-        <%= form.text_area :description, id: dom_id(@lane, :task_description), rows: 2, placeholder: "Description (optional)", autocomplete: :off, class: "resize-none task-input-field" %>
-        <%= form.submit "save", class: "material-symbols-outlined text-violet-700 float-right" %>
+        <div class="flex">
+          <%= form.text_area :description, id: dom_id(@lane, :task_description), rows: 2, placeholder: "Description (optional)", autocomplete: :off, class: "resize-none task-input-field" %>
+          <%= form.submit "save", class: "material-symbols-outlined text-violet-700 mt-auto" %>
+        </div>
       <% end %>
     </li>
     <%= render TaskComponent.with_collection(@tasks) %>
