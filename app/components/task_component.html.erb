@@ -2,15 +2,19 @@
   <aside class="self-stretch bg-violet-700 place-content-center material-symbols-outlined cursor-grab w-6">
     drag_indicator
   </aside>
-  <article class="m-2 w-full">
-    <header class="font-semibold text-center">
+  <article class="m-2 flex flex-col w-full">
+    <header class="font-medium text-center place-content-center grow">
       <%= @task.title.titleize %>
     </header>
     <% if @task.description.present? %>
-      <p class="mt-2">
+      <p class="h-full mt-1.5 grow">
         <%= @task.description %>
       </p>
     <% end %>
   </article>
-  <%= link_to "delete", delete_confirmation_task_path(@task), class: "self-stretch place-content-center material-symbols-outlined text-red-500", data: { turbo_frame: :modal } %>
+  <aside class="flex flex-col gap-1 my-2 mr-1">
+    <%= link_to "arrow_forward", delete_confirmation_task_path(@task), class: "material-symbols-outlined text-yellow-500", data: { turbo_frame: :modal } %>
+    <%= link_to "done_all", delete_confirmation_task_path(@task), class: "material-symbols-outlined text-green-500", data: { turbo_frame: :modal } %>
+    <%= link_to "delete", delete_confirmation_task_path(@task), class: "material-symbols-outlined text-red-500", data: { turbo_frame: :modal } %>
+  </aside>
 </li>
