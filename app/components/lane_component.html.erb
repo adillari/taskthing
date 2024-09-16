@@ -1,5 +1,5 @@
-<turbo-frame id="<%= dom_id(@lane) %>" data-controller="lane-component" class="flex-1">
-  <ul class="bg-zinc-900 rounded-lg p-2 min-w-64 flex flex-col gap-2">
+<turbo-frame id="<%= dom_id(@lane) %>" class="flex-1">
+  <ul class="bg-zinc-900 rounded-lg p-2 min-w-64 flex flex-col gap-2" data-controller="lane-component">
     <li class="lane-header flex">
       <span class="font-medium">
         <%= @lane.name %>
