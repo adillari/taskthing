@@ -6,10 +6,13 @@ export default class extends Controller {
 
   connect() {
     this.sortable = Sortable.create(this.element, {
+      group: "board",
       animation: 150,
       onEnd: this.handleEnd.bind(this),
+      ghostClass: "opacity-0",
+      chosenClass: "rotate-2",
+      dragClass: "rotate-2",
     });
-    console.log(this.sortable)
   }
 
   disconnect() {
