@@ -3,6 +3,14 @@
 @tailwind utilities;
 
 @layer components {
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for WebKit */
+  }
+
+  .scrollbar-hide {
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+  }
+
   .content-center-full {
     @apply content-center text-center h-full;
   }

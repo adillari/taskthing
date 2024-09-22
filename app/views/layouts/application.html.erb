@@ -20,10 +20,10 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="container mx-auto bg-zinc-950 text-white flex flex-col" data-controller="application">
+  <body class="container mx-auto bg-zinc-950 text-white h-screen" data-controller="application">
     <%= turbo_frame_tag :modal %>
 
-    <header class="flex w-full items-center p-4">
+    <header class="flex w-full items-center p-4 h-16">
       <%= link_to "TaskThing.io", root_path, class: "text-xl font-bold" %>
 
       <div class="ml-auto flex items-center gap-2">
@@ -38,11 +38,11 @@
       </div>
     </header>
 
-    <main class="px-2 relative flex-1">
+    <main class="px-2 h-[calc(100%-4rem)]">
       <%= yield %>
     </main>
 
-    <footer class="flex items-center">
+    <footer class="absolute bottom-0 p-3">
       <%= yield :footer %>
     </footer>
   </body>

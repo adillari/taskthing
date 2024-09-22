@@ -1,24 +1,22 @@
-<turbo-frame id="<%= dom_id(@lane) %>" class="flex-1">
-  <ul class="bg-zinc-900 rounded-lg p-2 min-w-64 flex flex-col gap-2 h-full overflow-auto" data-controller="lane-component">
-    <header class="lane-header flex">
-      <span class="font-medium">
-        <%= @lane.name %>
-      </span>
-      <button class="material-symbols-outlined ml-auto bg-violet-700 rounded-lg" data-action="lane-component#toggleNewTaskForm">
-        add
-      </button>
-    </header>
-    <div class="bg-zinc-950 border border-violet-700 rounded-lg p-2 shadow-lg h-24" data-lane-component-target="newTaskForm" hidden>
-      <%= form_with model: @task do |form| %>
-        <%= form.hidden_field :board_id, value: @lane.board.id %>
-        <%= form.hidden_field :lane_id, value: @lane.id %>
-        <%= form.text_field :title, id: dom_id(@lane, :task_title), required: true, placeholder: "Title", autocomplete: :off, class: "mb-1 task-input-field" %>
-        <div class="flex">
-          <%= form.text_area :description, id: dom_id(@lane, :task_description), rows: 2, placeholder: "Description (optional)", autocomplete: :off, class: "resize-none task-input-field" %>
-          <%= form.submit "save", class: "material-symbols-outlined text-violet-700 mt-auto" %>
-        </div>
-      <% end %>
-    </div>
-    <%= render TaskComponent.with_collection(@tasks) %>
-  </ul>
+<turbo-frame id="<%= dom_id(@lane) %>" class="bg-zinc-900 flex-1 overflow-y-auto overflow-x-hidden scrollbar-hide rounded-lg px-2 pb-2 min-w-64 sm:h-full space-y-2" data-controller="lane-component">
+  <header class="lane-header flex sticky top-0 bg-zinc-900 py-2 -mx-2 px-2">
+    <span class="font-medium">
+      <%= @lane.name %>
+    </span>
+    <button class="material-symbols-outlined ml-auto bg-violet-700 rounded-lg" data-action="lane-component#toggleNewTaskForm">
+      add
+    </button>
+  </header>
+  <div class="bg-zinc-950 border border-violet-700 rounded-lg p-2 shadow-lg h-24" data-lane-component-target="newTaskForm" hidden>
+    <%= form_with model: @task do |form| %>
+      <%= form.hidden_field :board_id, value: @lane.board.id %>
+      <%= form.hidden_field :lane_id, value: @lane.id %>
+      <%= form.text_field :title, id: dom_id(@lane, :task_title), required: true, placeholder: "Title", autocomplete: :off, class: "mb-1 task-input-field" %>
+      <div class="flex">
+        <%= form.text_area :description, id: dom_id(@lane, :task_description), rows: 2, placeholder: "Description (optional)", autocomplete: :off, class: "resize-none task-input-field" %>
+        <%= form.submit "save", class: "material-symbols-outlined text-violet-700 mt-auto" %>
+      </div>
+    <% end %>
+  </div>
+  <%= render TaskComponent.with_collection(@tasks) %>
 </turbo-frame>
