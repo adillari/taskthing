@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_09_23_045145) do
+ActiveRecord::Schema[8.0].define(version: 2024_09_23_045416) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
   create_table "boards", force: :cascade do |t|
-    t.string "title"
+    t.string "title", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -26,8 +26,8 @@ ActiveRecord::Schema[8.0].define(version: 2024_09_23_045145) do
     t.bigint "board_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name"
-    t.integer "position"
+    t.string "name", null: false
+    t.integer "position", null: false
     t.index ["board_id"], name: "index_lanes_on_board_id"
   end
 
@@ -44,9 +44,9 @@ ActiveRecord::Schema[8.0].define(version: 2024_09_23_045145) do
     t.bigint "lane_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "title"
+    t.string "title", null: false
     t.text "description"
-    t.integer "position"
+    t.integer "position", null: false
     t.index ["lane_id"], name: "index_tasks_on_lane_id"
   end
 
