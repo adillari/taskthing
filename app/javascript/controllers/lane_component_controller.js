@@ -10,6 +10,7 @@ export default class extends Controller {
       animation: 225,
       onEnd: this.handleEnd.bind(this),
       draggable: ".task",
+      handle: ".handle",
       ghostClass: "opacity-0",
       chosenClass: "rotate-2",
       // dragClass: "rotate-2", doesn't seem to work
