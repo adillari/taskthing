@@ -7,7 +7,7 @@
       add
     </button>
   </header>
-  <div class="bg-zinc-950 border border-violet-700 rounded-lg p-2 shadow-lg h-24" data-lane-component-target="newTaskForm" hidden>
+  <div class="!mt-0 !mb-2 bg-zinc-950 border border-violet-700 rounded-lg p-2 shadow-lg h-24" data-lane-component-target="newTaskForm" hidden>
     <%= form_with model: @task do |form| %>
       <%= form.hidden_field :board_id, value: @lane.board.id %>
       <%= form.hidden_field :lane_id, value: @lane.id %>
