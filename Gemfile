@@ -28,7 +28,6 @@ end
 
 group :development do
   gem "web-console" # Use console on exceptions pages [https://github.com/rails/web-console]
-  gem "rack-mini-profiler", "~> 3.3"
 end
 
 group :test do
