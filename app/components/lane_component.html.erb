@@ -1,4 +1,4 @@
-<turbo-frame id="<%= dom_id(@lane) %>" class="bg-zinc-900 flex-1 overflow-y-auto overflow-x-hidden scrollbar-hide rounded-lg px-2 pb-2 min-w-64 sm:h-full space-y-2" data-controller="lane-component">
+<turbo-frame id="<%= dom_id(@lane) %>" data-lane-id="<%= @lane.id %>" class="bg-zinc-900 flex-1 overflow-y-auto overflow-x-hidden scrollbar-hide rounded-lg px-2 pb-2 min-w-64 sm:h-full space-y-2" data-controller="lane-component">
   <header class="lane-header flex sticky top-0 bg-zinc-900 py-2 -mx-2 px-2">
     <span class="font-medium">
       <%= @lane.name %>
