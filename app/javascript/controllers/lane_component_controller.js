@@ -8,7 +8,7 @@ export default class extends Controller {
     this.sortable = Sortable.create(this.element, {
       group: "board",
       animation: 225,
-      onEnd: this.handleEnd.bind(this),
+      onEnd: this.updateTask,
       draggable: ".task",
       handle: ".handle",
       ghostClass: "opacity-0",
@@ -21,7 +21,7 @@ export default class extends Controller {
     this.sortable.destroy();
   }
 
-  handleEnd(event) {
+  updateTask(event) {
     const form = event.item.querySelector("form")
     const laneIdInput = form.querySelector('input[name="task[lane_id]"]')
     const positionInput = form.querySelector('input[name="task[position]"]')
