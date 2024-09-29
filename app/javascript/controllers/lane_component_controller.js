@@ -13,7 +13,7 @@ export default class extends Controller {
       handle: ".handle",
       ghostClass: "opacity-0",
       chosenClass: "rotate-2",
-      // dragClass: "rotate-2", doesn't seem to work
+      dragClass: "rotate-2", // doesn't seem to work
     });
   }
 
@@ -22,8 +22,17 @@ export default class extends Controller {
   }
 
   handleEnd(event) {
-    console.log("Dragged item", event.item);
-    console.log("New position", event.newIndex);
+    const form = event.item.querySelector("form")
+    const laneIdInput = form.querySelector('input[name="task[lane_id]"]')
+    const positionInput = form.querySelector('input[name="task[position]"]')
+
+    const newLaneId = event.item.parentElement.dataset.laneId
+    const newPosition = event.newIndex - 2
+
+    laneIdInput.value = newLaneId
+    positionInput.value = newPosition
+
+    form.requestSubmit()
   }
 
   toggleNewTaskForm({ target }) {
