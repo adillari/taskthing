@@ -31,7 +31,7 @@
           <div data-application-target="indicator" data-turbo-temporary hidden>
             <div class="lds-ring flex items-center"><div></div><div></div><div></div><div></div></div>
           </div>
-          <%= link_to "account_circle", session_path, class: "material-symbols-outlined", data: { turbo_method: :delete } %>
+          <%= link_to "logout", session_path, class: "material-symbols-outlined", data: { turbo_method: :delete } %>
         <% else %>
           <%= link_to "Login", new_session_path, class: "button-outlined" %>
         <% end %>
