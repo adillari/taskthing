@@ -9,7 +9,7 @@ private
     lanes.create!([
       { name: "Not Started", position: 1 },
       { name: "In Progress", position: 2 },
-      { name: "Done", position: 3 }
+      { name: "Done 🎉", position: 3 }
     ])
   end
 end
