@@ -1,11 +1,17 @@
 class TasksController < ApplicationController
   before_action :set_task, except: :create
-  before_action :set_lane, except: :delete_confirmation
+  before_action :set_lane, only: [ :create, :destroy ]
 
   def create
     @lane.tasks.create!(task_params)
   rescue
-    render status: :unprocessable_entity
+    head :unprocessable_entity
+  end
+
+  def update
+    @task.update!(task_params)
+  rescue
+    head :unprocessable_entity
   end
 
   def delete_confirmation
@@ -32,6 +38,6 @@ private
   end
 
   def task_params
-    params.require(:task).permit(:lane_id, :title, :description)
+    params.require(:task).permit(:lane_id, :title, :description, :position)
   end
 end
