@@ -338,7 +338,7 @@ GEM
     unicode-display_width (2.5.0)
     uri (0.13.1)
     useragent (0.16.10)
-    view_component (3.14.0)
+    view_component (3.15.0)
       activesupport (>= 5.2.0, < 8.0)
       concurrent-ruby (~> 1.0)
       method_source (~> 1.0)
@@ -385,7 +385,7 @@ DEPENDENCIES
   thruster
   turbo-rails
   tzinfo-data
-  view_component (~> 3.14)
+  view_component (~> 3.15)
   web-console
 
 BUNDLED WITH
