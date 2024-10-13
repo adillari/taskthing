@@ -22,7 +22,14 @@ class BoardsController < ApplicationController
     end
   end
 
+  def edit
+    @board = Current.user.boards.find(params[:id])
+  end
+
   def update
+    @board = Current.user.boards.find(params[:id])
+    @board.update(board_params)
+    redirect_to boards_path
   end
 
   def delete_confirmation
