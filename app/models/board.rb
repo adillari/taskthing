@@ -1,11 +1,13 @@
 class Board < ApplicationRecord
   belongs_to :user
   has_many :lanes, dependent: :destroy
-  after_save_commit :create_default_lanes
+  after_create_commit :create_default_lanes
 
 private
 
   def create_default_lanes
+    return if lanes.any?
+
     lanes.create!([
       { name: "Not Started", position: 1 },
       { name: "In Progress", position: 2 },
