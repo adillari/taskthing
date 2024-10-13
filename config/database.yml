@@ -5,7 +5,6 @@ default: &default
   adapter: postgresql
   encoding: unicode
   host: localhost
-  port: 5434
   username: <%= ENV["TASKTHING_DATABASE_USERNAME"] %>
   password: <%= ENV["TASKTHING_DATABASE_PASSWORD"] %>
 
@@ -20,4 +19,3 @@ test:
 production:
   <<: *default
   database: taskthing_production
-  port: 5432
