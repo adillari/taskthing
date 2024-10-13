@@ -8,8 +8,15 @@ class TasksController < ApplicationController
     head :unprocessable_entity
   end
 
+  def edit
+  end
+
   def update
     @task.update!(task_params)
+    if task_params[:title] || task_params[:description]
+      set_lane
+      render :create
+    end
   rescue
     head :unprocessable_entity
   end
