@@ -7,6 +7,19 @@ export default class extends Controller {
     document.addEventListener('turbo:submit-start', this.removeModal.bind(this))
     document.addEventListener('turbo:before-fetch-request', this.#showSpinner.bind(this))
     document.addEventListener('turbo:before-fetch-response', this.#hideSpinner.bind(this))
+    window.addEventListener('focus', () => {
+      console.log('Window is focused');
+    })
+    window.addEventListener('blur', () => {
+      console.log('Window is blurred');
+    })
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible') {
+        console.log('Page is visible');
+      } else {
+        console.log('Page is hidden');
+      }
+    })
   }
 
   disconnect() {
