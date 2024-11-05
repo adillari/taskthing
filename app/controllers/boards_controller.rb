@@ -1,4 +1,6 @@
 class BoardsController < ApplicationController
+  layout -> { false if turbo_frame_request? }, only: :show
+
   def index
     @boards = boards
   end
