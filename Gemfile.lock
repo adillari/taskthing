@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/rails/rails.git
-  revision: bfc45da689aa0587e29ebd2ee875b3aea8665664
+  revision: a6dee8c5b1baffa0ac9e57016b90d8c88a8db1f6
   branch: main
   specs:
     actioncable (8.1.0.alpha)
@@ -204,9 +204,8 @@ GEM
       rack (>= 3.0.0)
     rack-test (2.1.0)
       rack (>= 1.3)
-    rackup (2.1.0)
+    rackup (2.2.0)
       rack (>= 3)
-      webrick (~> 1.8)
     rails-dom-testing (2.2.0)
       activesupport (>= 5.0.0)
       minitest
@@ -307,7 +306,6 @@ GEM
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
-    webrick (1.8.2)
     websocket (1.2.11)
     websocket-driver (0.7.6)
       websocket-extensions (>= 0.1.0)
