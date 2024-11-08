@@ -23,7 +23,7 @@
   <body class="lg:container mx-auto bg-zinc-950 text-white h-dvh" data-controller="application">
     <%= turbo_frame_tag :modal %>
 
-    <header class="flex w-full items-center px-4 h-12 sm:h-16">
+    <header class="flex w-full items-center px-4 h-12">
       <% if @board %>
         <%= link_to "Boards", boards_path, class: "text-xl font-bold" %>
         <span class="material-symbols-outlined cursor-default pl-0.5">
@@ -48,7 +48,7 @@
       </div>
     </header>
 
-    <main class="relative px-2 h-[calc(100dvh-3rem)] sm:h-[calc(100dvh-4rem)]">
+    <main class="relative px-2 h-[calc(100dvh-3rem)]">
       <%= yield %>
     </main>
 
