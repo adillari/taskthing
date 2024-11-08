@@ -2,7 +2,7 @@ source "https://rubygems.org"
 
 ruby "3.3.4"
 
-gem "rails", github: "rails/rails", branch: "main" # Use main development branch of Rails
+gem "rails", "~> 8.0"
 gem "propshaft" # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "pg", "~> 1.5" # Use postgresql as the database for Active Record
 gem "puma", ">= 5.0" # Use the Puma web server [https://github.com/puma/puma]
