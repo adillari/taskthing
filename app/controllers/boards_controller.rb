@@ -1,5 +1,5 @@
 class BoardsController < ApplicationController
-  layout -> { false if turbo_frame_request? }, only: :show
+  layout -> { false if turbo_frame_request? } # only comes into play for Turbo.visit to update board on window refocus
 
   def index
     @boards = boards
