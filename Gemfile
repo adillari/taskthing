@@ -24,7 +24,7 @@ group :development, :test do
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude" # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "brakeman", require: false # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem "rubocop-rails-omakase", require: false # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
-  gem "rspec-rails", "~> 7.0"
+  gem "rspec-rails", "~> 7.1"
 end
 
 group :development do
