@@ -1,25 +1,28 @@
 # Taskthing
 
 Taskthing is an open-source kanban web application aiming for the following qualities:
-- light on gems/javascript dependencies
 - self-hostable
 - performant
 - readable and clean code
+- light on gems/javascript dependencies
 - a majestic monolith that would make DHH proud(https://signalvnoise.com/svn3/the-majestic-monolith/)
 
-# Technical information
+### Technical information
 
-* Ruby version
+#### Ruby version:
 - see .ruby-version
-
-* System dependencies
+#### System dependencies
 - Postgres 16
 
-To run in development:
+#### To run in development:
+
 `bundle install`
+
 `rails db:migrate`
+
 `bin/dev`
 
-To run in production:
+#### To run in production:
+
 coming soon
 
