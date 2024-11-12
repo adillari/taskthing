@@ -1,11 +1,11 @@
-import { Controller } from "@hotwired/stimulus"
-import Sortable from "sortablejs"
+import { Controller } from "@hotwired/stimulus";
+import Sortable from "sortablejs";
 
 export default class extends Controller {
-  static targets = ["newTaskForm"]
+  static targets = ["newTaskForm"];
 
   connect() {
-    const handle = window.innerWidth > 640 ? ".handle" : ".mobile-handle"
+    const handle = window.innerWidth > 640 ? ".handle" : ".mobile-handle";
 
     this.sortable = Sortable.create(this.element, {
       group: "board",
@@ -24,27 +24,27 @@ export default class extends Controller {
   }
 
   updateTask(event) {
-    const form = event.item.querySelector("form")
-    const laneIdInput = form.querySelector('input[name="task[lane_id]"]')
-    const positionInput = form.querySelector('input[name="task[position]"]')
+    const form = event.item.querySelector("form");
+    const laneIdInput = form.querySelector('input[name="task[lane_id]"]');
+    const positionInput = form.querySelector('input[name="task[position]"]');
 
-    const newLaneId = event.item.parentElement.dataset.laneId
-    const newPosition = event.newIndex - 2
+    const newLaneId = event.item.parentElement.dataset.laneId;
+    const newPosition = event.newIndex - 2;
 
-    laneIdInput.value = newLaneId
-    positionInput.value = newPosition
+    laneIdInput.value = newLaneId;
+    positionInput.value = newPosition;
 
-    form.requestSubmit()
+    form.requestSubmit();
   }
 
   toggleNewTaskForm({ target }) {
     if (this.newTaskFormTarget.hidden) {
-      this.newTaskFormTarget.hidden = false
-      this.newTaskFormTarget.querySelector("input[required]").focus()
-      target.innerText = "close"
+      this.newTaskFormTarget.hidden = false;
+      this.newTaskFormTarget.querySelector("input[required]").focus();
+      target.innerText = "close";
     } else {
-      this.newTaskFormTarget.hidden = true
-      target.innerText = "add"
+      this.newTaskFormTarget.hidden = true;
+      target.innerText = "add";
     }
   }
 }

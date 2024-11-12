@@ -70,6 +70,6 @@ export default class extends Controller {
   }
 
   #isPrefetchRequest(event) {
-    return (event.detail.fetchOptions.headers["X-Sec-Purpose"] === "prefetch");
+    return event.detail.fetchOptions.headers["X-Sec-Purpose"] === "prefetch";
   }
 }
