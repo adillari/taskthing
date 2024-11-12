@@ -1,24 +1,25 @@
-# README
+# Taskthing
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Taskthing is an open-source kanban web application aiming for the following qualities:
+- light on gems/javascript dependencies
+- self-hostable
+- performant
+- readable and clean code
+- a majestic monolith that would make DHH proud(https://signalvnoise.com/svn3/the-majestic-monolith/)
 
-Things you may want to cover:
+# Technical information
 
 * Ruby version
+- see .ruby-version
 
 * System dependencies
+- Postgres 16
 
-* Configuration
+To run in development:
+`bundle install`
+`rails db:migrate`
+`bin/dev`
 
-* Database creation
+To run in production:
+coming soon
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
