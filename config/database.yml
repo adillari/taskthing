@@ -4,12 +4,12 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   adapter: postgresql
   encoding: unicode
-  host: localhost
-  username: <%= ENV["TASKTHING_DATABASE_USERNAME"] %>
-  password: <%= ENV["TASKTHING_DATABASE_PASSWORD"] %>
+  username: <%= Rails.application.credentials.dig(:database, :username)) %>
+  password: <%= Rails.application.credentials.dig(:database, :password)) %>
 
 development:
   <<: *default
+  host: localhost
   database: taskthing_development
 
 test:
