@@ -1,3 +1,4 @@
+<%= helpers.turbo_stream_from @board %>
 <turbo-frame id="board" class="flex flex-col sm:flex-row gap-2 h-full overflow-x-auto pb-2 sm:pb-4" data-controller="board-component">
   <%= render(LaneComponent.with_collection(@lanes)) %>
 </turbo-frame>
