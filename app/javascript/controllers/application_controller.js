@@ -5,16 +5,19 @@ export default class extends Controller {
 
   connect() {
     // For stupid bug in Firefox on Linux/X11 where dragging blurs the window.
-    this.firefoxOnLinux = /Firefox/.test(navigator.userAgent) && /Linux/.test(navigator.userAgent) && !/Mobile/.test(navigator.userAgent);
+    this.firefoxOnLinux =
+      /Firefox/.test(navigator.userAgent) &&
+      /Linux/.test(navigator.userAgent) &&
+      !/Mobile/.test(navigator.userAgent);
 
-    this.onDragStart = () => this.dragging = true;
+    this.onDragStart = () => (this.dragging = true);
     this.bindedFocusWindow = this.#focusWindow.bind(this);
     this.bindedBlurWindow = this.#blurWindow.bind(this);
     this.bindedRemoveModal = this.removeModal.bind(this);
     this.bindedShowSpinner = this.#showSpinner.bind(this);
     this.bindedHideSpinner = this.#hideSpinner.bind(this);
 
-    document.addEventListener('dragstart', this.onDragStart);
+    document.addEventListener("dragstart", this.onDragStart);
     addEventListener("focus", this.bindedFocusWindow);
     addEventListener("blur", this.bindedBlurWindow);
     document.addEventListener("turbo:submit-start", this.bindedRemoveModal);
@@ -23,7 +26,7 @@ export default class extends Controller {
   }
 
   disconnect() {
-    document.removeEventListener('dragstart', this.onDragStart);
+    document.removeEventListener("dragstart", this.onDragStart);
     removeEventListener("focus", this.bindedFocusWindow);
     removeEventListener("blur", this.bindedBlurWindow);
     document.removeEventListener("turbo:submit-start", this.bindedRemoveModal);
