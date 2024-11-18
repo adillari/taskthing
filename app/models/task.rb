@@ -1,4 +1,6 @@
 class Task < ApplicationRecord
+  include Broadcasts::Board
+
   belongs_to :lane
   has_one :board, through: :lane
   before_save :adjust_positions
