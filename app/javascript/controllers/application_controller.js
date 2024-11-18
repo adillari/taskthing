@@ -4,37 +4,31 @@ export default class extends Controller {
   static targets = ["modal", "indicator"];
 
   connect() {
-    addEventListener("focus", this.#focusWindow);
-    addEventListener("blur", this.#blurWindow);
-    document.addEventListener(
-      "turbo:submit-start",
-      this.removeModal.bind(this),
-    );
-    document.addEventListener(
-      "turbo:before-fetch-request",
-      this.#showSpinner.bind(this),
-    );
-    document.addEventListener(
-      "turbo:before-fetch-response",
-      this.#hideSpinner.bind(this),
-    );
+    // For stupid bug in Firefox on Linux/X11 where dragging blurs the window.
+    this.firefoxOnLinux = /Firefox/.test(navigator.userAgent) && /Linux/.test(navigator.userAgent) && !/Mobile/.test(navigator.userAgent);
+
+    this.onDragStart = () => this.dragging = true;
+    this.bindedFocusWindow = this.#focusWindow.bind(this);
+    this.bindedBlurWindow = this.#blurWindow.bind(this);
+    this.bindedRemoveModal = this.removeModal.bind(this);
+    this.bindedShowSpinner = this.#showSpinner.bind(this);
+    this.bindedHideSpinner = this.#hideSpinner.bind(this);
+
+    document.addEventListener('dragstart', this.onDragStart);
+    addEventListener("focus", this.bindedFocusWindow);
+    addEventListener("blur", this.bindedBlurWindow);
+    document.addEventListener("turbo:submit-start", this.bindedRemoveModal);
+    document.addEventListener("turbo:before-fetch-request", this.bindedShowSpinner);
+    document.addEventListener("turbo:before-fetch-response", this.bindedHideSpinner);
   }
 
   disconnect() {
-    removeEventListener("focus", this.#focusWindow);
-    removeEventListener("blur", this.#blurWindow);
-    document.removeEventListener(
-      "turbo:submit-start",
-      this.removeModal.bind(this),
-    );
-    document.removeEventListener(
-      "turbo:before-fetch-request",
-      this.#showSpinner.bind(this),
-    );
-    document.removeEventListener(
-      "turbo:before-fetch-response",
-      this.#hideSpinner.bind(this),
-    );
+    document.removeEventListener('dragstart', this.onDragStart);
+    removeEventListener("focus", this.bindedFocusWindow);
+    removeEventListener("blur", this.bindedBlurWindow);
+    document.removeEventListener("turbo:submit-start", this.bindedRemoveModal);
+    document.removeEventListener("turbo:before-fetch-request", this.bindedShowSpinner);
+    document.removeEventListener("turbo:before-fetch-response", this.bindedHideSpinner);
   }
 
   removeModal() {
@@ -48,12 +42,18 @@ export default class extends Controller {
   // private
 
   #blurWindow() {
+    // For stupid bug in Firefox on Linux/X11 where dragging blurs the window.
+    if (this.firefoxOnLinux && this.dragging) return;
+
     if (document.getElementById("board")) {
       document.body.classList.add("opacity-50");
     }
   }
 
   #focusWindow() {
+    // For stupid bug in Firefox on Linux/X11 where dragging blurs the window.
+    if (this.firefoxOnLinux && this.dragging) return (this.dragging = false);
+
     if (document.getElementById("board")) {
       Turbo.visit(location.pathname, { frame: "board" });
       document.body.classList.remove("opacity-50");
