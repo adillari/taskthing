@@ -4,19 +4,17 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   adapter: postgresql
   encoding: unicode
+  username: postgres
+  password: password
 
 development:
   <<: *default
   host: localhost
-  username: <%= ENV["TASKTHING_DATABASE_USERNAME"] %>
-  password: <%= ENV["TASKTHING_DATABASE_PASSWORD"] %>
   database: taskthing_development
 
 test:
   <<: *default
   host: localhost
-  username: <%= ENV["TASKTHING_DATABASE_USERNAME"] %>
-  password: <%= ENV["TASKTHING_DATABASE_PASSWORD"] %>
   database: taskthing_test
 
 production:
