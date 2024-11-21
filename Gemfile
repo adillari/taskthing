@@ -18,6 +18,7 @@ gem "bootsnap", require: false # Reduces boot times through caching; required in
 # gem "kamal", require: false # Deploy this application anywhere as a Docker container [https://kamal-deploy.org]
 # gem "thruster", require: false # Add HTTP asset caching/compression and X-Sendfile acceleration to Puma [https://github.com/basecamp/thruster/]
 # gem "image_processing", "~> 1.2" # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
+gem "sidekiq", "~> 7.3"
 gem "view_component", "~> 3.20"
 
 group :development, :test do
