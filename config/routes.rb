@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  mount Sidekiq::Web => "/sidekiq"
+
   resources "tasks", only: %i[create edit update destroy] do
     get "delete_confirmation", on: :member
   end
