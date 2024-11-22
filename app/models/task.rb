@@ -7,17 +7,17 @@ class Task < ApplicationRecord
   before_destroy :slash_elders
   default_scope { order(:position) }
 
-private
+  private
 
   def adjust_positions
     return bump_elders if new_record? # new task created
     return bump_elders && slash_previous_elders if lane_id_changed? # task moved to different lane
     return unless position_changed? # nothing happened (picked and dropped in same place)
 
-    case # task moved inside same lane
-    when position > position_was
+    # task moved inside same lane
+    if position > position_was
       slash_hopped
-    when position < position_was
+    elsif position < position_was
       bump_hopped
     end
   end

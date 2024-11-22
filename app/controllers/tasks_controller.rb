@@ -1,11 +1,11 @@
 class TasksController < ApplicationController
   before_action :set_task, except: :create
-  before_action :set_lane, only: [ :create, :destroy ]
+  before_action :set_lane, only: [:create, :destroy]
 
   def create
     @lane.tasks.create!(task_params)
   rescue
-    head :unprocessable_entity
+    head(:unprocessable_entity)
   end
 
   def edit
@@ -15,10 +15,10 @@ class TasksController < ApplicationController
     @task.update!(task_params)
     if task_params[:title] || task_params[:description]
       set_lane
-      render :create
+      render(:create)
     end
   rescue
-    head :unprocessable_entity
+    head(:unprocessable_entity)
   end
 
   def delete_confirmation
@@ -26,10 +26,10 @@ class TasksController < ApplicationController
 
   def destroy
     @task.destroy!
-    render :create
+    render(:create)
   end
 
-private
+  private
 
   def set_task
     @task = Current.user.tasks.find(params[:id])
@@ -40,7 +40,7 @@ private
 
     @lane = Current.user.lanes.find_by(
       id: params.dig(:task, :lane_id),
-      board_id: params.dig(:task, :board_id)
+      board_id: params.dig(:task, :board_id),
     )
   end
 

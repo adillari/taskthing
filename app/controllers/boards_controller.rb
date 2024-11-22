@@ -6,7 +6,7 @@ class BoardsController < ApplicationController
   end
 
   def show
-    @board = boards.includes(lanes: [ :tasks ]).find(params[:id])
+    @board = boards.includes(lanes: [:tasks]).find(params[:id])
   end
 
   def new
@@ -17,10 +17,10 @@ class BoardsController < ApplicationController
     board = boards.new(board_params)
 
     if board.save
-      redirect_to boards_path
+      redirect_to(boards_path)
     else
       @errors = board.errors
-      render :new
+      render(:new)
     end
   end
 
@@ -31,7 +31,7 @@ class BoardsController < ApplicationController
   def update
     @board = Current.user.boards.find(params[:id])
     @board.update(board_params)
-    redirect_to boards_path
+    redirect_to(boards_path)
   end
 
   def delete_confirmation
@@ -41,10 +41,10 @@ class BoardsController < ApplicationController
   def destroy
     board = boards.find(params[:id])
     board.destroy!
-    redirect_to boards_path
+    redirect_to(boards_path)
   end
 
-private
+  private
 
   def boards
     Current.user.boards

@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
   mount Sidekiq::Web => "/sidekiq"
 
-  resources "tasks", only: %i[create edit update destroy] do
+  resources "tasks", only: [:create, :edit, :update, :destroy] do
     get "delete_confirmation", on: :member
   end
   resources "boards" do
     get "delete_confirmation", on: :member
   end
-  resource "session", only: %i[show new create destroy]
-  resources "users", only: %i[new create destroy]
+  resource "session", only: [:show, :new, :create, :destroy]
+  resources "users", only: [:new, :create, :destroy]
   resources "passwords", param: :token
   root "home#index"
 
