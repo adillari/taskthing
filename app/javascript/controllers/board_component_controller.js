@@ -12,11 +12,9 @@ export default class extends Controller {
 
     this.onDragStart = () => (this.dragging = true);
     this.bindedFocusWindow = this.#focusWindow.bind(this);
-    this.bindedBlurWindow = this.#blurWindow.bind(this);
 
     document.addEventListener("dragstart", this.onDragStart);
     addEventListener("focus", this.bindedFocusWindow);
-    addEventListener("blur", this.bindedBlurWindow);
   }
 
   disconnect() {
@@ -45,18 +43,10 @@ export default class extends Controller {
 
   // private
 
-  #blurWindow() {
-    // For stupid bug in Firefox on Linux/X11 where dragging blurs the window.
-    if (this.firefoxOnLinux && this.dragging) return;
-
-    document.body.classList.add("opacity-50");
-  }
-
   #focusWindow() {
     // For stupid bug in Firefox on Linux/X11 where dragging blurs the window.
     if (this.firefoxOnLinux && this.dragging) return (this.dragging = false);
 
     Turbo.visit(location.pathname, { frame: "board" });
-    document.body.classList.remove("opacity-50");
   }
 }
