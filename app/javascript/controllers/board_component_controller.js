@@ -12,13 +12,13 @@ export default class extends Controller {
     this.bindedSaveScrollState = this.#saveScrollState.bind(this);
 
     addEventListener("visibilitychange", this.bindedRefreshBoard);
-    document.addEventListener("turbo:frame-render", this.#applyScrollState)
+    document.addEventListener("turbo:frame-render", this.#applyScrollState);
     document.addEventListener("turbo:before-stream-render", this.bindedSaveScrollState);
   }
 
   disconnect() {
     removeEventListener("visibilitychange", this.bindedRefreshBoard);
-    document.removeEventListener("turbo:frame-render", this.#applyScrollState)
+    document.removeEventListener("turbo:frame-render", this.#applyScrollState);
     document.removeEventListener("turbo:before-stream-render", this.bindedSaveScrollState);
   }
 
@@ -50,15 +50,15 @@ export default class extends Controller {
   }
 
   #saveScrollState() {
-    this.laneTargets.forEach(lane => {
-      scrollState[lane.id] = lane.scrollTop
-    });;
+    this.laneTargets.forEach((lane) => {
+      scrollState[lane.id] = lane.scrollTop;
+    });
   }
 
   #applyScrollState(event) {
     if (event && event.target.id !== "board") return;
-    this.laneTargets.forEach(lane => {
-      lane.scrollTop = scrollState[lane.id]
-    });;
+    this.laneTargets.forEach((lane) => {
+      lane.scrollTop = scrollState[lane.id];
+    });
   }
 }
