@@ -3,13 +3,13 @@ module Broadcasts
     extend ActiveSupport::Concern
 
     included do
-      after_commit :broadcast_board_update
+      after_commit :update_board
     end
 
     private
 
-    def broadcast_board_update
-      broadcast_replace_to(board, target: :board, html: "this is a stub")
+    def update_board
+      broadcast_replace_to(board, target: :board, renderable: BoardComponent.new(board:))
     end
   end
 end
