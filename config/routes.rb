@@ -1,3 +1,10 @@
+require "sidekiq/web"
+
+Sidekiq::Web.use(Rack::Auth::Basic, "Sidekiq Dashboard") do |username, password|
+  username == Rails.application.credentials.dig(:sidekiq, :username) &&
+    password == Rails.application.credentials.dig(:sidekiq, :password)
+end
+
 Rails.application.routes.draw do
   mount Sidekiq::Web => "/sidekiq"
 
