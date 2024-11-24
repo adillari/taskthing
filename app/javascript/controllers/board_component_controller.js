@@ -1,26 +1,25 @@
 import { Controller } from "@hotwired/stimulus";
 
+var scrollState = {}; // Of all the ways to store this information, this is the most performant.
+
 export default class extends Controller {
   static targets = ["lane"];
 
   connect() {
-    // For stupid bug in Firefox on Linux/X11 where dragging blurs the window.
-    this.firefoxOnLinux =
-      /Firefox/.test(navigator.userAgent) &&
-      /Linux/.test(navigator.userAgent) &&
-      !/Mobile/.test(navigator.userAgent);
+    this.#applyScrollState();
 
-    this.onDragStart = () => (this.dragging = true);
-    this.bindedFocusWindow = this.#focusWindow.bind(this);
+    this.bindedRefreshBoard = this.#refreshBoard.bind(this);
+    this.bindedSaveScrollState = this.#saveScrollState.bind(this);
 
-    document.addEventListener("dragstart", this.onDragStart);
-    addEventListener("focus", this.bindedFocusWindow);
+    addEventListener("visibilitychange", this.bindedRefreshBoard);
+    document.addEventListener("turbo:frame-render", this.#applyScrollState)
+    document.addEventListener("turbo:before-stream-render", this.bindedSaveScrollState);
   }
 
   disconnect() {
-    document.removeEventListener("dragstart", this.onDragStart);
-    removeEventListener("focus", this.bindedFocusWindow);
-    removeEventListener("blur", this.bindedBlurWindow);
+    removeEventListener("visibilitychange", this.bindedRefreshBoard);
+    document.removeEventListener("turbo:frame-render", this.#applyScrollState)
+    document.removeEventListener("turbo:before-stream-render", this.bindedSaveScrollState);
   }
 
   toggleLane({ target }) {
@@ -43,10 +42,23 @@ export default class extends Controller {
 
   // private
 
-  #focusWindow() {
-    // For stupid bug in Firefox on Linux/X11 where dragging blurs the window.
-    if (this.firefoxOnLinux && this.dragging) return (this.dragging = false);
+  #refreshBoard() {
+    if (document.visibilityState === "visible") {
+      this.#saveScrollState();
+      Turbo.visit(location.pathname, { frame: "board" });
+    }
+  }
 
-    Turbo.visit(location.pathname, { frame: "board" });
+  #saveScrollState() {
+    this.laneTargets.forEach(lane => {
+      scrollState[lane.id] = lane.scrollTop
+    });;
+  }
+
+  #applyScrollState(event) {
+    if (event && event.target.id !== "board") return;
+    this.laneTargets.forEach(lane => {
+      lane.scrollTop = scrollState[lane.id]
+    });;
   }
 }
