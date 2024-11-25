@@ -1,11 +1,11 @@
 <%= render ModalComponent.new(title: "Edit \"#{@board.title.strip}\"") do %>
   <%= form_with model: @board do |form| %>
     <div class="my-5">
-      <%= form.label :title %>
-      <%= form.text_field :title, required: true, autofocus: true, class: "input-field" %>
+      <%= form.label(:title) %>
+      <%= form.text_field(:title, required: true, autofocus: true, class: "input-field") %>
     </div>
     <div class="inline">
-      <%= form.submit "Update", class: "button-filled", data: { turbo_frame: :_top } %>
+      <%= form.submit("Update", class: "button-filled", data: { turbo_frame: :_top }) %>
     </div>
   <% end %>
 <% end %>
