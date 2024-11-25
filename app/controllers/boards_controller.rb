@@ -10,11 +10,12 @@ class BoardsController < ApplicationController
   end
 
   def new
-    @board = boards.new
+    @board = Board.new
   end
 
   def create
-    board = boards.new(board_params)
+    board = Board.new(board_params)
+    board.users << Current.user
 
     if board.save
       redirect_to(boards_path)
@@ -25,11 +26,11 @@ class BoardsController < ApplicationController
   end
 
   def edit
-    @board = Current.user.boards.find(params[:id])
+    @board = boards.find(params[:id])
   end
 
   def update
-    @board = Current.user.boards.find(params[:id])
+    @board = boards.find(params[:id])
     @board.update(board_params)
     redirect_to(boards_path)
   end
