@@ -29,6 +29,7 @@ Currently this project is meant to run entirely on one box.
 That may change if the project actually gets more than 10 users.
 
 Ensure Postgres(default unix socket) and Redis(default network port) are running
+Ensure `RAILS_MASTER_KEY` environment variable is configured
 
 `bundle install`
 
