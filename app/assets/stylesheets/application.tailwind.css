@@ -18,7 +18,7 @@
     @apply py-3 px-5 font-medium cursor-pointer float-right rounded-xl bg-violet-700;
   }
   .button-outlined {
-    @apply py-2 px-5 font-medium cursor-pointer float-right rounded-full border border-violet-700;
+    @apply py-1 px-3 font-medium cursor-pointer float-right rounded-lg border border-violet-700;
   }
   .input-field {
     @apply block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full bg-slate-900;
