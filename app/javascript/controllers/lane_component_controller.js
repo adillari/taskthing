@@ -47,4 +47,12 @@ export default class extends Controller {
       target.innerText = "add";
     }
   }
+
+  removeTurboPermanent() {
+    if (this.newTaskFormTarget.querySelector("form").checkValidity()) {
+      this.element.querySelectorAll("[data-turbo-permanent]").forEach((el) => {
+        el.removeAttribute("data-turbo-permanent");
+      })
+    }
+  }
 }
