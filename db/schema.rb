@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_11_25_042330) do
+ActiveRecord::Schema[8.0].define(version: 2024_11_29_094528) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -27,6 +27,16 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_25_042330) do
     t.string("title", null: false)
     t.datetime("created_at", null: false)
     t.datetime("updated_at", null: false)
+  end
+
+  create_table "invites", force: :cascade do |t|
+    t.bigint("user_id", null: false)
+    t.bigint("board_id", null: false)
+    t.datetime("created_at", null: false)
+    t.datetime("updated_at", null: false)
+    t.string("email_address")
+    t.index(["board_id"], name: "index_invites_on_board_id")
+    t.index(["user_id"], name: "index_invites_on_user_id")
   end
 
   create_table "lanes", force: :cascade do |t|
@@ -67,6 +77,8 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_25_042330) do
 
   add_foreign_key "board_users", "boards"
   add_foreign_key "board_users", "users"
+  add_foreign_key "invites", "boards"
+  add_foreign_key "invites", "users"
   add_foreign_key "lanes", "boards"
   add_foreign_key "sessions", "users"
   add_foreign_key "tasks", "lanes"

@@ -8,6 +8,7 @@ end
 Rails.application.routes.draw do
   mount Sidekiq::Web => "/sidekiq"
 
+  resources "invites", only: [:new, :create]
   resources "tasks", only: [:create, :edit, :update, :destroy] do
     get "delete_confirmation", on: :member
   end

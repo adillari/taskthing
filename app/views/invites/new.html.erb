@@ -1,0 +1,7 @@
+<%= render ModalComponent.new(title: "Invite a friend via Email") do %>
+  <% form_with model: @invite do |form| %>
+    <%= form.label(:email_address) %>
+    <%= form.text_field(:email_address, class: "input-field !m-0") %>
+    <%= form.submit("Invite!", class: "button-filled mt-2") %>
+  <% end %>
+<% end %>
