@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_many :boards, through: :board_users
   has_many :lanes, through: :boards
   has_many :tasks, through: :lanes
+  has_many :invites
 
   normalizes :email_address, with: -> { _1.strip.downcase }
 end
