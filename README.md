@@ -1,10 +1,13 @@
+Taskthing - Open Source Kanban
+Copyright (C) 2024 Adil Lari
+
 # Taskthing
 
-Taskthing is an open-source kanban web application aiming for the following qualities:
+Taskthing is an open source kanban web application aiming for the following qualities:
+- readable/clean code
 - self-hostable
 - performant
-- readable and clean code
-- light on gems/javascript dependencies
+- light on gems/javascript dependencies beyond standard Rails/Hotwire
 - a majestic monolith that would make DHH proud(https://signalvnoise.com/svn3/the-majestic-monolith/)
 
 ### Technical information
@@ -32,6 +35,8 @@ Ensure Postgres(default unix socket) and Redis(default network port) are running
 
 Ensure `RAILS_MASTER_KEY` environment variable is configured
 
+Ensure `RAILS_ENV` environment variable is configured to "production"
+
 `bundle install`
 
 `rails db:migrate`
@@ -41,5 +46,8 @@ Ensure `RAILS_MASTER_KEY` environment variable is configured
 `rails assets:precompile`
 
 `rails s -b localhost`
+
+(in a different terminal)
+`bundle exec sidekiq`
 
 Use a reverse proxy of your choosing to expose port 443/80 and route the traffic to port 3000
