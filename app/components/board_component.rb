@@ -4,4 +4,8 @@ class BoardComponent < ApplicationComponent
     @board = board
     @lanes = board.lanes
   end
+
+  def lanes
+    render(LaneComponent.with_collection(@lanes))
+  end
 end
