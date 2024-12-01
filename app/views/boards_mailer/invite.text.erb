@@ -2,4 +2,5 @@ Ahoy!
 
 You've been invited to collaberate on "<%= @invite.board.title %>" by <%= @invite.user.email_address %>!
 
-<%= link_to @invite.board.title, invite_url(@invite) %>.
+Click below to accept.
+<%= invite_url(@invite) %>
