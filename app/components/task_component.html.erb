@@ -1,7 +1,7 @@
 <li class="task first-of-type:!mt-0 bg-zinc-950 border border-violet-700 rounded-lg overflow-hidden shadow-lg flex cursor-grab select-none">
   <%= form_with model: @task do |form| %>
-    <%= form.hidden_field :lane_id, id: nil %>
-    <%= form.hidden_field :position, id: nil %>
+    <%= form.hidden_field(:lane_id, id: nil) %>
+    <%= form.hidden_field(:position, id: nil) %>
   <% end %>
   <aside class="self-stretch bg-violet-700 place-content-center material-symbols-outlined w-6 handle mobile-handle">
     drag_indicator

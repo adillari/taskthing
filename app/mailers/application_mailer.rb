@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "noreply@taskthing.io"
+  default from: "Taskthing <noreply@taskthing.io>"
   layout "mailer"
 end

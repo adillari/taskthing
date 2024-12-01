@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby "3.3.4"
+ruby "3.3.6"
 
 gem "rails", "~> 8.0"
 gem "propshaft" # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
@@ -20,6 +20,7 @@ group :development, :test do
   gem "debug", platforms: [:mri, :windows], require: "debug/prelude" # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "brakeman", require: false # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem "rubocop-shopify", "~> 2.15", require: false
+  gem "erb_lint", "~> 0.7.0", require: false
   gem "rspec-rails", "~> 7.1"
 end
 

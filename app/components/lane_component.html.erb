@@ -6,18 +6,18 @@
     <button class="material-symbols-outlined ml-auto sm:hidden" data-action="board-component#toggleLane">
       unfold_more
     </button>
-    <button class="material-symbols-outlined bg-violet-700 rounded-lg" data-action="lane-component#toggleNewTaskForm">
+    <button id="<%= dom_id(@lane, :new_task_button) %>" class="material-symbols-outlined bg-violet-700 rounded-lg sm:ml-auto" data-action="lane-component#toggleNewTaskForm" data-turbo-permanent>
       add
     </button>
   </header>
-  <div class="!mt-0 !mb-2 bg-zinc-950 border border-violet-700 rounded-lg p-2 shadow-lg h-24" data-lane-component-target="newTaskForm" hidden>
+  <div id="<%= dom_id(@lane, :new_task_form) %>" class="!mt-0 !mb-2 bg-zinc-950 border border-violet-700 rounded-lg p-2 shadow-lg h-24" data-lane-component-target="newTaskForm" hidden data-turbo-permanent>
     <%= form_with model: @task do |form| %>
-      <%= form.hidden_field :board_id, value: @lane.board.id %>
-      <%= form.hidden_field :lane_id, value: @lane.id %>
-      <%= form.text_field :title, id: dom_id(@lane, :task_title), required: true, placeholder: "Title", autocomplete: :off, class: "mb-1 task-input-field" %>
+      <%= form.hidden_field(:board_id, value: @lane.board.id) %>
+      <%= form.hidden_field(:lane_id, value: @lane.id) %>
+      <%= form.text_field(:title, id: dom_id(@lane, :task_title), required: true, placeholder: "Title", autocomplete: :off, class: "mb-1 task-input-field") %>
       <div class="flex">
-        <%= form.text_area :description, id: dom_id(@lane, :task_description), rows: 2, placeholder: "Description (optional)", autocomplete: :off, class: "resize-none task-input-field" %>
-        <%= form.submit "save", class: "material-symbols-outlined text-violet-700 mt-auto" %>
+        <%= form.text_area(:description, id: dom_id(@lane, :task_description), rows: 2, placeholder: "Description (optional)", autocomplete: :off, class: "resize-none task-input-field") %>
+        <%= form.submit("save", class: "material-symbols-outlined cursor-pointer text-violet-700 mt-auto", data: { action: "lane-component#removeTurboPermanent" }) %>
       </div>
     <% end %>
   </div>

@@ -1,5 +1,6 @@
 class Board < ApplicationRecord
-  belongs_to :user
+  has_many :board_users
+  has_many :users, through: :board_users
   has_many :lanes, dependent: :destroy
   after_create_commit :create_default_lanes
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title><%= content_for(:title) || "Taskthing" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -26,10 +26,13 @@
     <header class="flex w-full items-center px-4 h-12">
       <% if @board %>
         <%= link_to "Boards", boards_path, class: "text-xl font-bold" %>
-        <span class="material-symbols-outlined cursor-default pl-0.5">
+        <span class="material-symbols-outlined pl-0.5">
           chevron_right
         </span>
         <%= link_to @board.title, board_path, class: "text-xl font-bold" %>
+        <% if Current.user&.id == 1 %>
+          <%= link_to "group_add", new_invite_path(board_id: @board.id), class: "material-symbols-outlined text-green-500 pl-2", data: { turbo_frame: :modal } %>
+        <% end %>
       <% elsif @boards %>
         <%= link_to "Boards", boards_path, class: "text-xl font-bold" %>
       <% else %>
