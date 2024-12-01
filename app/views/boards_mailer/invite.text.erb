@@ -2,5 +2,5 @@ Ahoy!
 
 You've been invited to collaberate on "<%= @invite.board.title %>" by <%= @invite.user.email_address %>!
 
-Click below to accept.
-<%= invite_url(@invite) %>
+Click below to accept/reject.
+<%= invite_url(@invite.signed_id) %>
