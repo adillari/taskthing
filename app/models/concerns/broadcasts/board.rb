@@ -9,7 +9,11 @@ module Broadcasts
     private
 
     def update_board
-      broadcast_replace_to(board, target: :board, renderable: BoardComponent.new(board:))
+      broadcast_replace_to(
+        board,
+        target: :board,
+        renderable: BoardComponent.new(board: ::Board.includes(lanes: [:tasks]).find(board.id)),
+      )
     end
   end
 end
