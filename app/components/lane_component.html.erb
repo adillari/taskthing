@@ -1,25 +1,17 @@
 <turbo-frame id="<%= dom_id(@lane) %>" data-lane-id="<%= @lane.id %>" class="bg-zinc-900 flex-1 overflow-y-auto overflow-x-hidden scrollbar-hide rounded-lg px-2 pb-2 min-w-64 sm:h-full space-y-2" data-controller="lane-component" data-board-component-target="lane">
   <header class="lane-header flex sticky top-0 bg-zinc-900 py-2 -mx-2 px-2 gap-1">
     <span class="font-medium">
-      <%= @lane.name %>
+      <%= name %>
     </span>
     <button class="material-symbols-outlined ml-auto sm:hidden" data-action="board-component#toggleLane">
       unfold_more
     </button>
-    <button id="<%= dom_id(@lane, :new_task_button) %>" class="material-symbols-outlined bg-violet-700 rounded-lg sm:ml-auto" data-action="lane-component#toggleNewTaskForm" data-turbo-permanent>
+    <button id="<%= new_task_button_id %>" class="material-symbols-outlined bg-violet-700 rounded-lg sm:ml-auto" data-action="lane-component#toggleNewTaskForm" data-turbo-permanent>
       add
     </button>
   </header>
-  <div id="<%= dom_id(@lane, :new_task_form) %>" class="!mt-0 !mb-2 bg-zinc-950 border border-violet-700 rounded-lg p-2 shadow-lg h-24" data-lane-component-target="newTaskForm" hidden data-turbo-permanent>
-    <%= form_with model: @task do |form| %>
-      <%= form.hidden_field(:board_id, value: @lane.board.id) %>
-      <%= form.hidden_field(:lane_id, value: @lane.id) %>
-      <%= form.text_field(:title, id: dom_id(@lane, :task_title), required: true, placeholder: "Title", autocomplete: :off, class: "mb-1 task-input-field") %>
-      <div class="flex">
-        <%= form.text_area(:description, id: dom_id(@lane, :task_description), rows: 2, placeholder: "Description (optional)", autocomplete: :off, class: "resize-none task-input-field") %>
-        <%= form.submit("save", class: "material-symbols-outlined cursor-pointer text-violet-700 mt-auto", data: { action: "lane-component#removeTurboPermanent" }) %>
-      </div>
-    <% end %>
+  <div id="<%= new_task_form_id %>" class="!mt-0 !mb-2 bg-zinc-950 border border-violet-700 rounded-lg p-2 shadow-lg h-24" data-lane-component-target="newTaskForm" hidden data-turbo-permanent>
+    <%= new_task_form %>
   </div>
-  <%= render TaskComponent.with_collection(@tasks) %>
+  <%= tasks %>
 </turbo-frame>
