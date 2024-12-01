@@ -1,4 +1,4 @@
-<%= render ModalComponent.new(title: "Invite a friend via Email") do %>
+<%= render Modal::Component.new(title: "Invite a friend via Email") do %>
   <% form_with model: @invite do |form| %>
     <%= form.hidden_field(:board_id) %>
     <%= form.label(:email_address) %>

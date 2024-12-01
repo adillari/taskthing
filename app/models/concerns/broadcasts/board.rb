@@ -12,7 +12,7 @@ module Broadcasts
       broadcast_replace_to(
         board,
         target: :board,
-        renderable: BoardComponent.new(board: ::Board.includes(lanes: [:tasks]).find(board.id)),
+        renderable: ::Board::Component.new(board: ::Board.includes(lanes: [:tasks]).find(board.id)),
       )
     end
   end

@@ -4,8 +4,6 @@ class TasksController < ApplicationController
 
   def create
     @lane.tasks.create!(task_params)
-  rescue
-    head(:unprocessable_entity)
   end
 
   def edit
@@ -17,8 +15,6 @@ class TasksController < ApplicationController
       set_lane
       render(:create)
     end
-  rescue
-    head(:unprocessable_entity)
   end
 
   def delete_confirmation

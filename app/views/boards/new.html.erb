@@ -1,4 +1,4 @@
-<%= render ModalComponent.new(title: "New Board") do %>
+<%= render Modal::Component.new(title: "New Board") do %>
   <%= form_with model: @board do |form| %>
     <div class="my-5">
       <%= form.text_field(:title, required: true, autofocus: true, placeholder: "e.g. Movies To Watch", class: "input-field") %>
