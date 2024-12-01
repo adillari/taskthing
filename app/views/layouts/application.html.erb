@@ -30,9 +30,7 @@
           chevron_right
         </span>
         <%= link_to @board.title, board_path, class: "text-xl font-bold" %>
-        <% if Current.user&.id == 1 %>
-          <%= link_to "group_add", new_invite_path(board_id: @board.id), class: "material-symbols-outlined text-green-500 pl-2", data: { turbo_frame: :modal } %>
-        <% end %>
+        <%= link_to "group_add", new_invite_path(board_id: @board.id), class: "material-symbols-outlined text-green-500 pl-2", data: { turbo_frame: :modal } %>
       <% elsif @boards %>
         <%= link_to "Boards", boards_path, class: "text-xl font-bold" %>
       <% else %>
