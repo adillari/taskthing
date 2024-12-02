@@ -5,9 +5,9 @@
   </h1>
   <%= link_to "Sign up", new_user_path, class: "button-filled absolute right-4 -bottom-6 animate-bounce" %>
 </div>
-
-<% content_for :footer do %>
-  <span class="text-sm opacity-50">
-    made with ☕ by maz
-  </span>
-<% end %>
+<span class="absolute bottom-0 text-sm p-3 left-0">
+  Made with ☕ by <%= link_to("maz", "https://maz.dev", class: "underline") %>
+</span>
+<span class="absolute bottom-0 text-sm p-3 right-0 underline text-cyan-400">
+  <%= link_to("Read my code!", "https://github.com/adillari/taskthing") %>
+</span>
