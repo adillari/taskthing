@@ -6,8 +6,10 @@ class TaskComponent < ApplicationComponent
 
   def form # submitted every time task is dropped
     form_with(model: @task) do |form|
-      form.hidden_field(:lane_id, id: nil) # id attribute is nil because rails created duplicate dom id's otherwise
-      form.hidden_field(:position, id: nil) # and that botthers me because its not considered valid html
+      safe_join([
+        form.hidden_field(:lane_id, id: nil), # id attribute is nil because rails created duplicate dom id's otherwise
+        form.hidden_field(:position, id: nil), # and that botthers me because its not considered valid html
+      ])
     end
   end
 
