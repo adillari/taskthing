@@ -1,3 +1,7 @@
+This project is licensed under the GNU Affero General Public License v3.0
+
+Please understand [what that means](https://choosealicense.com/licenses/agpl-3.0/) if you intend to run your own instance.
+
 Taskthing - Open Source Kanban
 Copyright (C) 2024 Adil Lari
 
