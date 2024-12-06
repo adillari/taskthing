@@ -24,11 +24,11 @@ class BoardPreviewComponent < ApplicationComponent
   end
 
   def delete_button
-    # link_to(
-    #   "delete",
-    #   delete_confirmation_board_path(@board),
-    #   class: "material-symbols-outlined ml-auto text-red-500",
-    #   data: { turbo_frame: :modal },
-    # )
+    link_to(
+      "delete",
+      delete_confirmation_board_path(@board),
+      class: "material-symbols-outlined ml-auto text-red-500",
+      data: { turbo_frame: :modal },
+    )
   end
 end
