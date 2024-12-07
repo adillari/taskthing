@@ -13,7 +13,7 @@ gem "tailwindcss-rails" # Use Tailwind CSS [https://github.com/rails/tailwindcss
 gem "redis", ">= 4.0.1" # Use Redis adapter to run Action Cable in production
 gem "bcrypt", "~> 3.1.7" # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 gem "bootsnap", require: false # Reduces boot times through caching; required in config/boot.rb
-# gem "kamal", require: false # Deploy this application anywhere as a Docker container [https://kamal-deploy.org]
+gem "kamal", require: false # Deploy this application anywhere as a Docker container [https://kamal-deploy.org]
 gem "sidekiq", "~> 7.3"
 gem "view_component", "~> 3.20"
 
