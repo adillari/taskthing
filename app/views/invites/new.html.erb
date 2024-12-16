@@ -1,8 +1,22 @@
-<%= render ModalComponent.new(title: "Invite a friend via Email") do %>
-  <% form_with model: @invite do |form| %>
-    <%= form.hidden_field(:board_id) %>
-    <%= form.label(:email_address) %>
-    <%= form.text_field(:email_address, class: "input-field !m-0") %>
-    <%= form.submit("Invite!", class: "button-filled mt-2") %>
-  <% end %>
+<%= render ModalComponent.new(title: "Invite a Friend") do %>
+  <div class="flex flex-col gap-2">
+    <%= form_with(model: @invite) do |form| %>
+      <%= form.hidden_field(:id) %>
+      <%= form.hidden_field(:board_id) %>
+      <%= form.label(:email_address) %>
+      <div class="flex gap-2">
+        <%= form.text_field(:email_address, class: "input-field !m-0") %>
+        <%= form.submit("Invite!", class: "button-filled") %>
+      </div>
+    <% end %>
+    or...
+    <button class="button-filled flex items-center justify-center gap-1">
+      <span>
+        Copy Link
+      </span>
+      <span class="material-symbols-outlined">
+        content_copy
+      </span>
+    </button>
+  </div>
 <% end %>
