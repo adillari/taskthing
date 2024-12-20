@@ -18,6 +18,7 @@ test:
 
 production:
   <<: *default
+  host: 172.17.0.1
   username: <%= Rails.application.credentials.dig(:database, :username) %>
   password: <%= Rails.application.credentials.dig(:database, :password) %>
   database: taskthing_production
