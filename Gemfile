@@ -16,7 +16,7 @@ gem "bootsnap", require: false # Reduces boot times through caching; required in
 gem "kamal", require: false # Deploy this application anywhere as a Docker container [https://kamal-deploy.org]
 gem "thruster", require: false # Add HTTP asset caching/compression and X-Sendfile acceleration to Puma [https://github.com/basecamp/thruster/]
 gem "sidekiq", "~> 7.3"
-gem "view_component", "~> 3.20"
+gem "view_component", "~> 3.21"
 
 group :development, :test do
   gem "debug", platforms: [:mri, :windows], require: "debug/prelude" # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
