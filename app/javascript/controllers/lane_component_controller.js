@@ -17,6 +17,7 @@ export default class extends Controller {
       animation: 225,
       delay: 225,
 	    delayOnTouchOnly: true,
+      touchStartThreshold: 5,
       handle,
     });
   }
