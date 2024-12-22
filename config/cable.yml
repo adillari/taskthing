@@ -6,5 +6,5 @@ test:
 
 production:
   adapter: redis
-  url: <%= ENV.fetch("REDIS_URL") { "redis://host.docker.internal:6379/0" } %>
+  url: <%= ENV.fetch("REDIS_URL") { "redis://localhost:6379/0" } %>
   channel_prefix: taskthing_production
