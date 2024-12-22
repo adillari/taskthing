@@ -5,7 +5,7 @@ export default class extends Controller {
   static targets = ["newTaskForm"];
 
   connect() {
-    const handle = window.innerWidth > 640 ? ".handle" : ".mobile-handle";
+    const handle = ".handle" // window.innerWidth > 640 ? ".handle" : ".mobile-handle";
 
     this.sortable = Sortable.create(this.element, {
       group: "board",
@@ -15,6 +15,8 @@ export default class extends Controller {
       draggable: ".task",
       onEnd: this.updateTask,
       animation: 225,
+      delay: 750,
+	    delayOnTouchOnly: true,
       handle,
     });
   }
