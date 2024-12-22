@@ -19,7 +19,7 @@ class TaskComponent < ApplicationComponent
 
   def description
     if @task.description.present?
-      tag.p(@task.description, class: "h-full mt-1.5 grow")
+      tag.p(@task.description, class: "h-full border-t border-zinc-700 mt-1.5 pt-1.5 grow")
     end
   end
 
