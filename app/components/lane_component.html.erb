@@ -10,7 +10,7 @@
       add
     </button>
   </header>
-  <div id="<%= new_task_form_id %>" class="!mt-0 !mb-2 bg-zinc-950 border border-violet-700 rounded-lg p-2 shadow-lg h-24" data-lane-component-target="newTaskForm" hidden data-turbo-permanent>
+  <div id="<%= new_task_form_id %>" class="<%= helpers.task_classes %> !mt-0 !mb-2 p-2" data-lane-component-target="newTaskForm" hidden data-turbo-permanent>
     <%= new_task_form %>
   </div>
   <%= tasks %>
