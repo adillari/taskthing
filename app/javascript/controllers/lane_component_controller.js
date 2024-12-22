@@ -15,7 +15,7 @@ export default class extends Controller {
       draggable: ".task",
       onEnd: this.updateTask,
       animation: 225,
-      delay: 750,
+      delay: 225,
 	    delayOnTouchOnly: true,
       handle,
     });
