@@ -18,6 +18,7 @@ test:
 
 production:
   <<: *default
+  host: host.docker.internal
   username: <%= Rails.application.credentials.dig(:database, :username) %>
   password: <%= Rails.application.credentials.dig(:database, :password) %>
   database: taskthing_production

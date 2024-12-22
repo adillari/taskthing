@@ -2,11 +2,16 @@ service: taskthing
 image: adillari/taskthing
 servers:
   web:
-    - <%= ENV["TASKTHING_HOST"] %>
+    hosts:
+      - <%= ENV["TASKTHING_HOST"] %>
+    options:
+      add-host: host.docker.internal:host-gateway
   job:
     hosts:
       - <%= ENV["TASKTHING_HOST"] %>
     cmd: bundle exec sidekiq
+    options:
+      add-host: host.docker.internal:host-gateway
 registry:
   username: adillari
   password:
