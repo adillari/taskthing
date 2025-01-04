@@ -117,12 +117,12 @@ GEM
       rainbow
       rubocop (>= 1)
       smart_properties
-    erubi (1.13.0)
+    erubi (1.13.1)
     globalid (1.2.1)
       activesupport (>= 6.1)
     i18n (1.14.6)
       concurrent-ruby (~> 1.0)
-    importmap-rails (2.0.3)
+    importmap-rails (2.1.0)
       actionpack (>= 6.0.0)
       activesupport (>= 6.0.0)
       railties (>= 6.0.0)
