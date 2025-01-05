@@ -1,0 +1,8 @@
+<%= link_to(new_invite_path(board_id: @board.id), class: "button-outlined text-green-500 border-green-500 flex items-center justify-center gap-1", data: { turbo_frame: :modal }) do %>
+  <span>
+    Invite Friend
+  </span>
+  <span class="material-symbols-outlined">
+    group_add
+  </span>
+<% end %>

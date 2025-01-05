@@ -24,29 +24,7 @@
     <%= turbo_frame_tag :modal %>
 
     <header class="flex w-full items-center px-4 h-12">
-      <% if @board %>
-        <%= link_to "Boards", boards_path, class: "text-xl font-bold" %>
-        <span class="material-symbols-outlined pl-0.5">
-          chevron_right
-        </span>
-        <%= link_to @board.title, board_path, class: "text-xl font-bold" %>
-        <%= link_to "group_add", new_invite_path(board_id: @board.id), class: "material-symbols-outlined text-green-500 pl-2", data: { turbo_frame: :modal } %>
-      <% elsif @boards %>
-        <%= link_to "Boards", boards_path, class: "text-xl font-bold" %>
-      <% else %>
-        <%= link_to "Taskthing.io", root_path, class: "text-xl font-bold" %>
-      <% end %>
-
-      <div class="ml-auto flex items-center gap-2">
-        <% if authenticated? %>
-          <div data-application-target="indicator" data-turbo-temporary hidden>
-            <div class="lds-ring flex items-center"><div></div><div></div><div></div><div></div></div>
-          </div>
-          <%= link_to "logout", session_path, class: "material-symbols-outlined", data: { turbo_method: :delete } %>
-        <% else %>
-          <%= link_to "Login", new_session_path, class: "button-outlined" %>
-        <% end %>
-      </div>
+      <%= header %>
     </header>
 
     <main class="relative px-2 h-[calc(100dvh-3rem)]">
