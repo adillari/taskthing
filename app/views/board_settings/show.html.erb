@@ -1,8 +1,30 @@
-<%= link_to(new_invite_path(board_id: @board.id), class: "button-outlined text-green-500 border-green-500 flex items-center justify-center gap-1", data: { turbo_frame: :modal }) do %>
-  <span>
-    Invite Friend
-  </span>
-  <span class="material-symbols-outlined">
-    group_add
-  </span>
-<% end %>
+<div class="flex flex-col gap-2">
+  <%= link_to(new_invite_path(board_id: @board.id), class: "button-outlined text-green-500 border-green-500 flex items-center justify-center gap-1", data: { turbo_frame: :modal }) do %>
+    <span>
+      Invite Friend
+    </span>
+    <span class="material-symbols-outlined">
+      group_add
+    </span>
+  <% end %>
+  <div class="bg-zinc-900 rounded-lg p-2 shadow-2xl list-none">
+    <header class="text-xl font-bold mb-2">
+      Board Members
+    </header>
+    <% @board.users.each do |user| %>
+      <li>
+        <%= user.email_address %>
+      </li>
+    <% end %>
+  </div>
+  <div class="bg-zinc-900 rounded-lg p-2 shadow-2xl list-none space-y-2" data-controller="sortable">
+    <header class="text-xl font-bold">
+      Board Lanes
+    </header>
+    <% @board.lanes.each do |lane| %>
+      <li class="select-none button-outlined w-64">
+        <%= lane.name %>
+      </li>
+    <% end %>
+  </div>
+</div>
