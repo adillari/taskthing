@@ -1,6 +1,6 @@
 class InvitesController < ApplicationController
   def new
-    @invite = Invite.new(board_id: params[:board_id])
+    @invite = Invite.create(board_id: params[:board_id])
   end
 
   def create
