@@ -12,7 +12,7 @@
     <span class="text-center">
       or...
     </span>
-    <button class="button-filled flex items-center justify-center gap-1">
+    <button class="button-filled flex items-center justify-center gap-1" data-controller="copyable" data-copyable-text-value="<%= invite_url(@invite.signed_id) %>" data-action="copyable#copy">
       <span>
         Copy Link
       </span>
