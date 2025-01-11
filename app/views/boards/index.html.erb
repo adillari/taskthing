@@ -1,5 +1,5 @@
 <% if @boards.any? %>
-  <ul class="flex flex-col gap-2 mb-20">
+  <ul class="flex flex-col gap-2 mb-20" data-controller="sortable">
     <%= render(BoardPreviewComponent.with_collection(@boards)) %>
   </ul>
 <% else %>
