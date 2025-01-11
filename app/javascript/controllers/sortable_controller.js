@@ -10,7 +10,7 @@ export default class extends Controller {
       draggable: "li",
       animation: 225,
       delay: 225,
-	    delayOnTouchOnly: true,
+      delayOnTouchOnly: true,
       touchStartThreshold: 5,
     });
   }
@@ -19,4 +19,3 @@ export default class extends Controller {
     this.sortable.destroy();
   }
 }
-

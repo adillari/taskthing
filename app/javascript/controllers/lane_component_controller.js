@@ -14,7 +14,7 @@ export default class extends Controller {
       onEnd: this.updateTask,
       animation: 225,
       delay: 225,
-	    delayOnTouchOnly: true,
+      delayOnTouchOnly: true,
       touchStartThreshold: 5,
       handle: ".handle",
     });
@@ -53,7 +53,7 @@ export default class extends Controller {
     if (this.newTaskFormTarget.querySelector("form").checkValidity()) {
       this.element.querySelectorAll("[data-turbo-permanent]").forEach((el) => {
         el.removeAttribute("data-turbo-permanent");
-      })
+      });
     }
   }
 }
