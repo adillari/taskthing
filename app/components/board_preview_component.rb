@@ -13,22 +13,4 @@ class BoardPreviewComponent < ApplicationComponent
       end
     end
   end
-
-  def edit_button
-    link_to(
-      "edit",
-      edit_board_path(@board),
-      class: "material-symbols-outlined ml-auto text-yellow-500 m-1",
-      data: { turbo_frame: :modal },
-    )
-  end
-
-  def delete_button
-    link_to(
-      "delete",
-      delete_confirmation_board_path(@board),
-      class: "material-symbols-outlined ml-auto text-red-500",
-      data: { turbo_frame: :modal },
-    )
-  end
 end
