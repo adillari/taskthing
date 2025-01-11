@@ -32,7 +32,7 @@ class BoardsController < ApplicationController
   def update
     @board = boards.find(params[:id])
     @board.update(board_params)
-    redirect_to(boards_path)
+    redirect_to(board_settings_path(@board))
   end
 
   def delete_confirmation
