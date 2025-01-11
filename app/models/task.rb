@@ -41,7 +41,10 @@ class Task < ApplicationRecord
   end
 
   def slash_elders
-    Current.user.lanes.find(lane_id).tasks
+    # Need to check lane still exists here incase we're here bc of the board's dependent destroy callbacks
+    return unless (lane = Current.user.lanes.find_by(id: lane_id))
+
+    lane.tasks
       .where("position > ?", position)
       .update_all("position = position - 1")
   end
