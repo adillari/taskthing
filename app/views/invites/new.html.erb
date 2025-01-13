@@ -6,13 +6,13 @@
       <%= form.label(:email_address) %>
       <div class="flex gap-2">
         <%= form.text_field(:email_address, placeholder: "myfriend@email.com", class: "input-field !m-0") %>
-        <%= form.submit("Invite!", class: "button-filled") %>
+        <%= form.submit("Invite!", class: "button-filled float-right bg-violet-700") %>
       </div>
     <% end %>
     <span class="text-center">
       or...
     </span>
-    <button class="button-filled flex items-center justify-center gap-1" data-controller="copyable" data-copyable-text-value="<%= invite_url(@invite.signed_id) %>" data-action="copyable#copy">
+    <button class="button-filled float-right bg-violet-700 flex items-center justify-center gap-1" data-controller="copyable" data-copyable-text-value="<%= invite_url(@invite.signed_id) %>" data-action="copyable#copy">
       <span>
         Copy Link
       </span>

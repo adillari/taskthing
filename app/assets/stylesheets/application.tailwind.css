@@ -15,7 +15,7 @@
     @apply content-center text-center h-full;
   }
   .button-filled {
-    @apply py-3 px-5 font-medium cursor-pointer float-right rounded-xl bg-violet-700;
+    @apply py-3 px-5 font-medium cursor-pointer rounded-xl;
   }
   .button-outlined {
     @apply py-1 px-3 font-medium cursor-pointer rounded-xl border;

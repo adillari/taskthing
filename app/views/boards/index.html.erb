@@ -1,10 +1,4 @@
-<% if @boards.any? %>
-  <ul class="flex flex-col gap-2 mb-20" data-controller="sortable">
+  <ul class="flex flex-col gap-2" data-controller="sortable">
     <%= render(BoardPreviewComponent.with_collection(@boards)) %>
+    <%= link_to "+ New Board", new_board_path, class: "text-violet-700 hover:underline shadow mr-auto ml-1", data: { turbo_frame: :modal } %>
   </ul>
-<% else %>
-  <div class="content-center-full opacity-30">
-    Add a board to start
-  </div>
-<% end %>
-<%= link_to "+", new_board_path, class: "button-filled fixed sm:absolute bottom-0 right-0 m-4 shadow", data: { turbo_frame: :modal } %>
