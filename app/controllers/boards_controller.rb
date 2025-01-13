@@ -48,7 +48,7 @@ class BoardsController < ApplicationController
   private
 
   def boards
-    Current.user.boards
+    Current.user.boards.order(:position)
   end
 
   def board_params
