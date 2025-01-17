@@ -5,7 +5,6 @@ export default class extends Controller {
   connect() {
     this.sortable = Sortable.create(this.element, {
       ghostClass: "opacity-0",
-      chosenClass: "rotate-1",
       // dragClass: "rotate-2", // doesn't seem to work
       draggable: "li",
       animation: 225,
