@@ -1,9 +1,11 @@
-<ul class="flex flex-col gap-2" data-controller="sortable">
-  <!-- If your're questioning these onclick attrs, I don't wanna talk about it -->
-  <% @boards.each do |board| %>
-    <li class="bg-zinc-900 rounded-lg shadow-xl w-full items-center select-none cursor-pointer p-4" onclick="Turbo.visit('<%= board_path(board) %>')">
-      <%= board.title %>
-    </li>
-  <% end %>
-  <%= link_to "+ New Board", new_board_path, class: "text-violet-700 hover:underline shadow mx-auto sm:mr-auto sm:ml-1", data: { turbo_frame: :modal } %>
-</ul>
+<%= form_with(url: board_users_path) do |form| %>
+  <ul class="flex flex-col gap-2" data-controller="sortable">
+    <!-- If your're questioning these onclick attrs, I don't wanna talk about it -->
+    <% @boards.each do |board| %>
+      <li class="bg-zinc-900 rounded-lg shadow-xl w-full items-center select-none cursor-pointer p-4" onclick="Turbo.visit('<%= board_path(board) %>')">
+        <%= board.title %>
+      </li>
+    <% end %>
+    <%= link_to "+ New Board", new_board_path, class: "text-violet-700 hover:underline shadow mx-auto sm:mr-auto sm:ml-1", data: { turbo_frame: :modal } %>
+  </ul>
+<% end %>
