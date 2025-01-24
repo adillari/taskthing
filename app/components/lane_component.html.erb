@@ -13,5 +13,19 @@
   <div id="<%= new_task_form_id %>" class="<%= helpers.task_classes %> !mt-0 !mb-2 p-2" data-lane-component-target="newTaskForm" hidden data-turbo-permanent>
     <%= new_task_form %>
   </div>
-  <%= tasks %>
+  <% @tasks.each do |task| %>
+    <li class="task flex cursor-grab <%= helpers.task_classes %> first-of-type:!mt-0 select-none">
+      <%= helpers.task_form(task) %>
+      <article class="p-2 flex flex-col w-full handle">
+        <header class="font-semibold grow">
+          <%= task.title %>
+        </header>
+        <%= helpers.task_description(task) %>
+      </article>
+      <aside class="flex flex-col gap-1 my-2 mr-1">
+        <%= helpers.task_edit_button(task) %>
+        <%= helpers.task_delete_button(task) %>
+      </aside>
+    </li>
+  <% end %>
 </turbo-frame>

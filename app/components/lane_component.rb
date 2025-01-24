@@ -51,8 +51,4 @@ class LaneComponent < ApplicationComponent
       ])
     end
   end
-
-  def tasks
-    render(TaskComponent.with_collection(@tasks))
-  end
 end
