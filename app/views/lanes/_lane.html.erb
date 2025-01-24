@@ -1,5 +1,4 @@
 <%# locals: (lane:) %>
-<% tasks = lane.tasks.select(&:persisted?) %>
 
 <turbo-frame id="<%= dom_id(lane) %>" data-lane-id="<%= lane.id %>" class="bg-zinc-900 flex-1 overflow-y-auto overflow-x-hidden scrollbar-hide rounded-lg px-2 pb-2 min-w-64 sm:h-full space-y-2" data-controller="lane" data-board-target="lane">
   <header class="lane-header flex sticky top-0 bg-zinc-900 py-2 -mx-2 px-2 gap-1">
@@ -16,5 +15,5 @@
   <div id="<%= dom_id(lane, :new_task_form) %>" class="<%= task_classes %> !mt-0 !mb-2 p-2" data-lane-target="newTaskForm" hidden data-turbo-permanent>
     <%= new_task_form(lane) %>
   </div>
-  <%= render(tasks) %>
+  <%= render(lane.tasks.select(&:persisted?)) %>
 </turbo-frame>
