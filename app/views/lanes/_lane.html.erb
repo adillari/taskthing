@@ -1,7 +1,7 @@
 <%# locals: (lane:) %>
 <% tasks = lane.tasks.select(&:persisted?) %>
 
-<turbo-frame id="<%= dom_id(lane) %>" data-lane-id="<%= lane.id %>" class="bg-zinc-900 flex-1 overflow-y-auto overflow-x-hidden scrollbar-hide rounded-lg px-2 pb-2 min-w-64 sm:h-full space-y-2" data-controller="lane-component" data-board-component-target="lane">
+<turbo-frame id="<%= dom_id(lane) %>" data-lane-id="<%= lane.id %>" class="bg-zinc-900 flex-1 overflow-y-auto overflow-x-hidden scrollbar-hide rounded-lg px-2 pb-2 min-w-64 sm:h-full space-y-2" data-controller="lane" data-board-component-target="lane">
   <header class="lane-header flex sticky top-0 bg-zinc-900 py-2 -mx-2 px-2 gap-1">
     <span class="font-medium">
       <%= lane.name %>
@@ -9,11 +9,11 @@
     <button class="material-symbols-outlined ml-auto sm:hidden" data-action="board-component#toggleLane">
       unfold_more
     </button>
-    <button id="<%= dom_id(lane, :new_task_button) %>" class="material-symbols-outlined bg-violet-700 rounded-lg sm:ml-auto" data-action="lane-component#toggleNewTaskForm" data-turbo-permanent>
+    <button id="<%= dom_id(lane, :new_task_button) %>" class="material-symbols-outlined bg-violet-700 rounded-lg sm:ml-auto" data-action="lane#toggleNewTaskForm" data-turbo-permanent>
       add
     </button>
   </header>
-  <div id="<%= dom_id(lane, :new_task_form) %>" class="<%= task_classes %> !mt-0 !mb-2 p-2" data-lane-component-target="newTaskForm" hidden data-turbo-permanent>
+  <div id="<%= dom_id(lane, :new_task_form) %>" class="<%= task_classes %> !mt-0 !mb-2 p-2" data-lane-target="newTaskForm" hidden data-turbo-permanent>
     <%= new_task_form(lane) %>
   </div>
   <%= render(tasks) %>
