@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus";
 import Sortable from "sortablejs";
 
 export default class extends Controller {
-  static values = { submit: { type: Boolean, default: false };
+  static values = { submit: { type: Boolean, default: false } };
 
   connect() {
     this.sortable = Sortable.create(this.element, {
