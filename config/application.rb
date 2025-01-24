@@ -24,7 +24,10 @@ module Taskthing
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
 
-    # Use a real queuing backend for Active Job.
-    config.active_job.queue_adapter = :sidekiq
+    # Replace the default in-process and non-durable queuing backend for Active Job.
+    config.active_job.queue_adapter = :solid_queue
+    config.solid_queue.connects_to = { database: { writing: :queue } }
+
+    config.cache_store = :solid_cache_store
   end
 end

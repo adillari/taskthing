@@ -10,16 +10,12 @@ gem "importmap-rails" # Use JavaScript with ESM import maps [https://github.com/
 gem "turbo-rails" # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "stimulus-rails" # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "tailwindcss-rails" # Use Tailwind CSS [https://github.com/rails/tailwindcss-rails]
-gem "redis", ">= 4.0.1" # Use Redis adapter to run Action Cable in production
 gem "bcrypt", "~> 3.1.7" # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 gem "bootsnap", require: false # Reduces boot times through caching; required in config/boot.rb
-gem "sidekiq", "~> 7.3"
+gem "solid_cache", "~> 1.0" # Use the database-backed adapter for Rails.cache
+gem "solid_queue", "~> 1.1" # Use the database-backed adapter for Active Job
+gem "solid_cable", "~> 3.0" # Use the database-backed adapter for Action Cable
 gem "view_component", "~> 3.21"
-
-# Use the database-backed adapters for Rails.cache, Active Job, and Action Cable
-gem "solid_cache", "~> 1.0"
-gem "solid_queue", "~> 1.1"
-gem "solid_cable", "~> 3.0"
 
 group :development, :test do
   gem "debug", platforms: [:mri, :windows], require: "debug/prelude" # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
