@@ -15,7 +15,6 @@ gem "bootsnap", require: false # Reduces boot times through caching; required in
 gem "solid_cache", "~> 1.0" # Use the database-backed adapter for Rails.cache
 gem "solid_queue", "~> 1.1" # Use the database-backed adapter for Active Job
 gem "solid_cable", "~> 3.0" # Use the database-backed adapter for Action Cable
-gem "view_component", "~> 3.21"
 
 group :development, :test do
   gem "debug", platforms: [:mri, :windows], require: "debug/prelude" # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

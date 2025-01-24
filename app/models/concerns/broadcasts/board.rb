@@ -15,7 +15,8 @@ module Broadcasts
       broadcast_replace_to(
         board,
         target: :board,
-        renderable: BoardComponent.new(board: preloaded_board),
+        partial: "boards/board",
+        locals: { board: preloaded_board },
       )
     end
   end
