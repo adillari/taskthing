@@ -6,7 +6,7 @@ Please understand [what that means](https://choosealicense.com/licenses/agpl-3.0
 
 Taskthing is an open source kanban web application aiming for the following qualities:
 - readable/clean code
-- self-hostable
+- self-hostable(easily!)
 - performant
 - light on gems/javascript dependencies beyond standard Rails/Hotwire
 - a majestic monolith that would make DHH proud(https://signalvnoise.com/svn3/the-majestic-monolith/)
@@ -16,8 +16,7 @@ Taskthing is an open source kanban web application aiming for the following qual
 #### Ruby version:
 - see .ruby-version
 #### System dependencies
-- Postgres 17
-- Redis
+- sqlite3
 
 #### To run in development:
 
@@ -25,14 +24,13 @@ Taskthing is an open source kanban web application aiming for the following qual
 
 `rails db:migrate`
 
-`bin/dev`
+`bin/dev` to start server process
+`bin/jobs` to start jobs process
 
 #### To run in production:
 
 Currently this project is meant to run entirely on one box.
 That may change if the project actually gets more than 10 users.
-
-Ensure Postgres(default unix socket) and Redis(default network port) are running
 
 Ensure `RAILS_MASTER_KEY` environment variable is configured
 
@@ -46,10 +44,8 @@ Ensure `RAILS_ENV` environment variable is configured to "production"
 
 `rails assets:precompile`
 
-`rails s -b localhost`
-
-(in a different terminal)
-`bundle exec sidekiq`
+`rails s -b localhost` to start server process
+`bin/jobs` to start jobs process
 
 Use a reverse proxy of your choosing to expose port 443/80 and route the traffic to port 3000
 
