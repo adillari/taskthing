@@ -16,6 +16,11 @@ gem "bootsnap", require: false # Reduces boot times through caching; required in
 gem "sidekiq", "~> 7.3"
 gem "view_component", "~> 3.21"
 
+# Use the database-backed adapters for Rails.cache, Active Job, and Action Cable
+gem "solid_cache", "~> 1.0"
+gem "solid_queue", "~> 1.1"
+gem "solid_cable", "~> 3.0"
+
 group :development, :test do
   gem "debug", platforms: [:mri, :windows], require: "debug/prelude" # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "brakeman", require: false # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
