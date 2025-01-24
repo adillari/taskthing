@@ -6,6 +6,6 @@ class BoardComponent < ApplicationComponent
   end
 
   def lanes
-    render(LaneComponent.with_collection(@lanes))
+    render(@lanes)
   end
 end

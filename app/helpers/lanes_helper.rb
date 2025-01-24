@@ -1,31 +1,12 @@
-class LaneComponent < ApplicationComponent
-  def initialize(lane:)
-    super
-    @lane = lane
-    @task = lane.tasks.new
-    @tasks = lane.tasks.select(&:persisted?)
-  end
-
-  def name
-    @lane.name
-  end
-
-  def new_task_button_id
-    dom_id(@lane, :new_task_button)
-  end
-
-  def new_task_form_id
-    dom_id(@lane, :new_task_form)
-  end
-
-  def new_task_form
-    form_with(model: @task) do |form|
+module LanesHelper
+  def new_task_form(lane)
+    form_with(model: lane.tasks.new) do |form|
       safe_join([
-        form.hidden_field(:board_id, value: @lane.board.id),
-        form.hidden_field(:lane_id, value: @lane.id),
+        form.hidden_field(:board_id, value: lane.board.id),
+        form.hidden_field(:lane_id, value: lane.id),
         form.text_field(
           :title,
-          id: dom_id(@lane, :task_title),
+          id: dom_id(lane, :task_title),
           required: true,
           placeholder: "Title",
           autocomplete: :off,
@@ -35,7 +16,7 @@ class LaneComponent < ApplicationComponent
           safe_join([
             form.text_area(
               :description,
-              id: dom_id(@lane, :task_description),
+              id: dom_id(lane, :task_description),
               rows: 2,
               placeholder: "Description (optional)",
               autocomplete: :off,

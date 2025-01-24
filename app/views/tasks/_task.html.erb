@@ -1,0 +1,15 @@
+<%# locals: (task:) %>
+
+<li class="task flex cursor-grab <%= task_classes %> first-of-type:!mt-0 select-none">
+  <%= task_form(task) %>
+  <article class="p-2 flex flex-col w-full handle">
+    <header class="font-semibold grow">
+      <%= task.title %>
+    </header>
+    <%= task_description(task) %>
+  </article>
+  <aside class="flex flex-col gap-1 my-2 mr-1">
+    <%= task_edit_button(task) %>
+    <%= task_delete_button(task) %>
+  </aside>
+</li>
