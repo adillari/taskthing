@@ -3,6 +3,34 @@ module ApplicationHelper
     safe_join([left_header, right_header])
   end
 
+  def modal(title:, &)
+    turbo_frame_tag(:modal) do
+      tag.div(
+        class: "bg-black bg-opacity-50 backdrop-blur fixed top-0 left-0 w-full h-full z-10",
+        data: { application_target: :modal, action: "click->application#removeModal" },
+      ) do
+        tag.div(
+          class: "mx-auto max-w-96 bg-zinc-900 rounded-lg p-4 shadow-xl shadow-sm fixed inset-x-2 top-1/3 z-20",
+          data: { action: "click->application#stopPropagation" },
+        ) do
+          safe_join([
+            tag.div(class: "flex font-semibold mb-4") do
+              safe_join([
+                tag.span(title, class: "overflow-hidden"),
+                tag.button(
+                  "close",
+                  class: "material-symbols-outlined ml-auto cursor-pointer",
+                  data: { action: "application#removeModal" },
+                ),
+              ])
+            end,
+            capture(&),
+          ])
+        end
+      end
+    end
+  end
+
   private
 
   def left_header
