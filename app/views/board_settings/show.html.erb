@@ -3,7 +3,7 @@
   <%= board_edit_button %>
   <div class="bg-zinc-900 rounded-lg p-2 shadow-2xl list-none space-y-2" data-controller="sortable">
     <header class="text-xl font-bold">
-      Lanes
+      <%= t("lanes") %>
     </header>
     <% @board.lanes.each do |lane| %>
       <li class="select-none button-outlined flex justify-center">
@@ -13,7 +13,7 @@
   </div>
   <div class="bg-zinc-900 rounded-lg p-2 shadow-2xl">
     <header class="text-xl font-bold mb-2">
-      Members
+      <%= t("members") %>
     </header>
     <% @board.users.each do |user| %>
       <li class="ml-4">

@@ -32,7 +32,7 @@ module BoardsHelper
       data: { turbo_frame: :modal },
     ) do
       safe_join([
-        tag.span("Invite Friend"),
+        tag.span(t("invite_friend")),
         tag.span("group_add", class: "material-symbols-outlined"),
       ])
     end
@@ -45,7 +45,7 @@ module BoardsHelper
       data: { turbo_frame: :modal },
     ) do
       safe_join([
-        tag.span("Edit Title"),
+        tag.span(t("edit_title")),
         tag.span("edit", class: "material-symbols-outlined"),
       ])
     end
@@ -58,7 +58,7 @@ module BoardsHelper
       data: { turbo_frame: :modal },
     ) do
       safe_join([
-        tag.span("Delete Board"),
+        tag.span(t("delete_board")),
         tag.span("delete", class: "material-symbols-outlined"),
       ])
     end

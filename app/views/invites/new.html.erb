@@ -1,4 +1,4 @@
-<%= modal(title: "Invite a Friend") do %>
+<%= modal(title: t("invite_a_friend")) do %>
   <div class="flex flex-col gap-2">
     <%= form_with(model: @invite) do |form| %>
       <%= form.hidden_field(:id) %>
@@ -6,15 +6,15 @@
       <%= form.label(:email_address) %>
       <div class="flex gap-2">
         <%= form.text_field(:email_address, placeholder: "myfriend@email.com", class: "input-field !m-0") %>
-        <%= form.submit("Invite!", class: "button-filled float-right bg-violet-700") %>
+        <%= form.submit(t("modals.confirms.invite!"), class: "button-filled float-right bg-violet-700") %>
       </div>
     <% end %>
     <span class="text-center">
-      or...
+      <%= t("or_ellipsis") %>
     </span>
     <button class="button-filled float-right bg-violet-700 flex items-center justify-center gap-1" data-controller="copyable" data-copyable-text-value="<%= invite_url(@invite.signed_id) %>" data-action="copyable#copy">
       <span>
-        Copy Link
+        <%= t("copy_link") %>
       </span>
       <span class="material-symbols-outlined">
         content_copy

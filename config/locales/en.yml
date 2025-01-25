@@ -1,14 +1,28 @@
 ---
 en:
-  "+_new_board": "+ New Board"
+  "+_new_board": + New Board
   boards: Boards
   forgot_password?: Forgot password?
   login: Login
   made_with_coffee_by_author_html: Made with ☕ by %{author}
+  invite_friend: Invite Friend
+  edit_title: Edit Title
+  invite_a_friend: Invite a Friend
+  or_ellipsis: or...
+  copy_link: Copy Link
+  lanes: Lanes
+  members: Members
+  delete_board: Delete Board
   modals:
-    new_board:
-      submit: Create
-      title: New Board
+    titles:
+      edit_resource: Edit "%{resource}"
+      delete_resource?: Delete "%{resource}"?
+      new_board: New Board
+    confirms:
+      update!: Update!
+      create!: Create!
+      delete!: Delete!
+      invite!: Invite!
   placeholders:
     board_title: e.g. Movies To Watch
     email_address: Enter your email address
