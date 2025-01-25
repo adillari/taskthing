@@ -22,6 +22,7 @@ group :development, :test do
   gem "rubocop-shopify", "~> 2.15", require: false
   gem "erb_lint", "~> 0.9.0", require: false
   gem "rspec-rails", "~> 7.1"
+  gem "i18n-tasks", "~> 1.0"
 end
 
 group :development do
