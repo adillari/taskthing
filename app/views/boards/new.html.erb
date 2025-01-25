@@ -1,10 +1,10 @@
-<%= modal(title: "New Board") do %>
+<%= modal(title: t("modals.new_board.title")) do %>
   <%= form_with model: @board do |form| %>
     <div class="my-5">
-      <%= form.text_field(:title, required: true, autofocus: true, placeholder: "e.g. Movies To Watch", class: "input-field") %>
+      <%= form.text_field(:title, required: true, autofocus: true, placeholder: t("placeholders.board_title"), class: "input-field") %>
     </div>
     <div class="inline">
-      <%= form.submit("Create", class: "button-filled float-right bg-violet-700", data: { turbo_frame: :_top }) %>
+      <%= form.submit(t("modals.new_board.submit"), class: "button-filled float-right bg-violet-700", data: { turbo_frame: :_top }) %>
     </div>
   <% end %>
 <% end %>

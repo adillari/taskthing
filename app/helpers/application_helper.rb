@@ -31,29 +31,39 @@ module ApplicationHelper
     end
   end
 
+  def source_code_link
+    "https://github.com/adillari/taskthing"
+  end
+
   private
 
+  # these header methods can be cleaned up a lot
   def left_header
     if controller_name == "board_settings"
-      safe_join([
-        link_to("Boards", boards_path, class: "text-xl font-bold"),
-        tag.span("chevron_right", class: "material-symbols-outlined pl-0.5"),
-        link_to(@board.title, board_path(@board), class: "text-xl font-bold"),
-        tag.span("chevron_right", class: "material-symbols-outlined pl-0.5"),
-        link_to("settings", board_settings_path(@board), class: "material-symbols-outlined"),
-      ])
+      safe_join([boards_link, right_chevron, board_link, right_chevron, board_settings_link])
     elsif @board
-      safe_join([
-        link_to("Boards", boards_path, class: "text-xl font-bold"),
-        tag.span("chevron_right", class: "material-symbols-outlined pl-0.5"),
-        link_to(@board.title, board_path(@board), class: "text-xl font-bold"),
-        link_to("settings", board_settings_path(board_id: @board.id), class: "material-symbols-outlined pl-2"),
-      ])
+      safe_join([boards_link, right_chevron, board_link, board_settings_link(class: "pl-2")])
     elsif @boards
-      link_to("Boards", boards_path, class: "text-xl font-bold")
+      boards_link
     else
       link_to("Taskthing.io", root_path, class: "text-xl font-bold")
     end
+  end
+
+  def boards_link
+    link_to(t("boards"), boards_path, class: "text-xl font-bold")
+  end
+
+  def right_chevron
+    tag.span("chevron_right", class: "material-symbols-outlined pl-0.5")
+  end
+
+  def board_link
+    link_to(@board.title, board_path(@board), class: "text-xl font-bold")
+  end
+
+  def board_settings_link(options = { class: "" })
+    link_to("settings", board_settings_path(@board), class: ["material-symbols-outlined", options[:class]].join(" "))
   end
 
   def right_header
@@ -68,7 +78,7 @@ module ApplicationHelper
           link_to("logout", session_path, class: "material-symbols-outlined", data: { turbo_method: :delete }),
         ])
       else
-        link_to("Login", new_session_path, class: "button-outlined float-right border-violet-700")
+        link_to(t("login"), new_session_path, class: "button-outlined float-right border-violet-700")
       end
     end
   end

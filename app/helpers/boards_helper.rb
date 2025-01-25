@@ -16,7 +16,7 @@ module BoardsHelper
           end,
         ),
         link_to(
-          "+ New Board",
+          t("+_new_board"),
           new_board_path,
           class: "text-violet-700 hover:underline shadow mx-auto sm:mr-auto sm:ml-1",
           data: { turbo_frame: :modal },

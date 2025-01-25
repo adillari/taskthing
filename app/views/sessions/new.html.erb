@@ -7,24 +7,23 @@
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
   <% end %>
 
-  <h1 class="font-bold text-4xl">Login</h1>
+  <h1 class="font-bold text-4xl">
+    <%= t("login") %>
+  </h1>
 
-  <%= form_with url: session_url, class: "contents" do |form| %>
+  <%= form_with(url: session_url, class: "contents") do |form| %>
     <div class="my-5">
-      <%= form.email_field(:email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address], class: "input-field") %>
+      <%= form.email_field(:email_address, required: true, autofocus: true, autocomplete: "username", placeholder: t("placeholder.email_address"), value: params[:email_address], class: "input-field") %>
     </div>
-
     <div class="my-5">
-      <%= form.password_field(:password, required: true, autocomplete: "current-password", placeholder: "Enter your password", maxlength: 72, class: "input-field") %>
+      <%= form.password_field(:password, required: true, autocomplete: "current-password", placeholder: t("placeholders.password"), maxlength: 72, class: "input-field") %>
     </div>
-
     <div class="col-span-6 sm:flex sm:items-center sm:gap-4">
       <div class="inline">
-        <%= form.submit("Login", class: "button-filled float-right bg-violet-700") %>
+        <%= form.submit(t("login"), class: "button-filled float-right bg-violet-700") %>
       </div>
-
       <div class="mt-4 text-sm text-gray-500 sm:mt-0">
-        <%= link_to "Forgot password?", new_password_path, class: "text-gray-700 underline" %>
+        <%= link_to t("forgot_password?"), new_password_path, class: "text-gray-700 underline" %>
       </div>
     </div>
   <% end %>

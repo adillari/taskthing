@@ -1,13 +1,13 @@
 <div class="h-28"></div>
 <div class="bg-zinc-900 rounded-lg max-w-96 p-4 mx-auto relative shadow-2xl z-10">
   <h1 class="text-4xl font-bold leading-normal">
-    Slick, Simple, Open-source Kanban.
+    <%= t("tagline") %>
   </h1>
-  <%= link_to "Sign up", new_user_path, class: "button-filled bg-violet-700 absolute right-4 -bottom-6 animate-bounce" %>
+  <%= link_to t("sign_up"), new_user_path, class: "button-filled bg-violet-700 absolute right-4 -bottom-6 animate-bounce" %>
 </div>
 <span class="absolute bottom-0 text-sm p-3 left-0">
-  Made with ☕ by <%= link_to("maz", "https://maz.dev", class: "underline") %>
+  <%= t("made_with_coffee_by_author_html", author: link_to("maz", "https://maz.dev", class: "underline")) %>
 </span>
 <span class="absolute bottom-0 text-sm p-3 right-0 underline text-cyan-400">
-  <%= link_to("Read my code!", "https://github.com/adillari/taskthing") %>
+  <%= link_to(t("read_my_code!"), source_code_link) %>
 </span>
