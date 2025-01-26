@@ -52,6 +52,13 @@ class BoardsController < ApplicationController
   end
 
   def board_params
-    params.require(:board).permit(:title, lanes_attributes: [:id, :name, :_destroy])
+    assign_lane_positions if params[:board][:lanes_attributes]
+    params.require(:board).permit(:title, lanes_attributes: [:id, :name, :position, :_destroy])
+  end
+
+  def assign_lane_positions
+    params[:board][:lanes_attributes].keys.each_with_index do |lane, position|
+      params[:board][:lanes_attributes][lane][:position] = position
+    end
   end
 end
