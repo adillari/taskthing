@@ -6,12 +6,16 @@
       <header class="text-xl font-bold">
         <%= t("lanes") %>
       </header>
-      <%= form_with(model: @board) do |form| %>
-        <% @board.lanes.each do |lane| %>
-          <li class="select-none button-outlined flex justify-center">
-            <%= lane.name %>
-          </li>
+      <%= form_with(model: @board, class: "flex flex-col") do |form| %>
+        <%= form.fields_for(:lanes) do |lane_form| %>
+          <div class="lane">
+            <%= lane_form.label :name %>
+            <%= lane_form.text_field :name, class: "input-field" %>
+            <%= lane_form.check_box :_destroy, class: "shadow rounded-md border border-gray-400 outline-none bg-slate-900" %>
+            <%= lane_form.label :_destroy, "Remove Lane (also deletes it's tasks!)" %>
+          </div>
         <% end %>
+        <%= form.submit("Update Lanes", class: "button-filled bg-violet-700 mt-3 mx-auto") %>
       <% end %>
     </div>
     <div class="bg-zinc-900 rounded-lg p-2 shadow-2xl">

@@ -52,6 +52,6 @@ class BoardsController < ApplicationController
   end
 
   def board_params
-    params.require(:board).permit(:title)
+    params.require(:board).permit(:title, lanes_attributes: [:id, :name, :_destroy])
   end
 end

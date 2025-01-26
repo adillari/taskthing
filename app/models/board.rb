@@ -5,6 +5,7 @@ class Board < ApplicationRecord
   has_many :lanes, dependent: :destroy
   has_many :tasks, through: :lanes
   after_create_commit :create_default_lanes
+  accepts_nested_attributes_for :lanes, allow_destroy: true
 
   private
 
