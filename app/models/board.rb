@@ -13,9 +13,9 @@ class Board < ApplicationRecord
     return if lanes.any?
 
     lanes.create!([
-      { name: "Not Started", position: 1 },
-      { name: "In Progress", position: 2 },
-      { name: "Done 🎉", position: 3 },
+      { name: "Not Started", position: 0 },
+      { name: "In Progress", position: 1 },
+      { name: "Done 🎉", position: 2 },
     ])
   end
 end
