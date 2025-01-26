@@ -14,9 +14,9 @@
             <span class="material-symbols-outlined cursor-pointer handle">
               drag_indicator
             </span>
-            <%= lane_form.text_field :name, class: "py-1 px-3 font-medium rounded-xl border bg-inherit m-0" %>
+            <%= lane_form.text_field :name, autocomplete: :off, class: "py-1 px-3 font-medium rounded-xl border bg-inherit m-0" %>
             <%= lane_form.label :_destroy, class: "flex items-center" do %>
-              <%= lane_form.check_box :_destroy, class: "hidden" %>
+              <%= lane_form.check_box :_destroy, autocomplete: :off, class: "hidden" %>
               <span class="material-symbols-outlined text-red-500 cursor-pointer">
                 delete
               </span>
