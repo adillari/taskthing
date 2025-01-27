@@ -8,13 +8,14 @@ module BoardsHelper
       safe_join([
         form.fields_for(:board_users, board_users) do |board_user_form|
           tag.li(
-            class: "bg-zinc-900 rounded-lg shadow-xl w-full items-center select-none cursor-pointer p-4",
+            class: "bg-zinc-900 rounded-lg shadow-xl flex items-center select-none cursor-pointer p-4",
             onclick: "Turbo.visit('#{board_path(board_user_form.object.board.id)}')",
           ) do
             safe_join([
               board_user_form.object.board.title,
               board_user_form.hidden_field(:id),
               board_user_form.hidden_field(:position),
+              shared(board_user_form.object.board),
             ])
           end
         end,
@@ -26,6 +27,11 @@ module BoardsHelper
         ),
       ])
     end
+  end
+
+  # N+1!
+  def shared(board)
+    tag.span("(shared)", class: "opacity-50 ml-auto") if board.board_users.many?
   end
 
   def board_invite_button
