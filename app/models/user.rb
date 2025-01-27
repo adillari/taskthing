@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :lanes, through: :boards
   has_many :tasks, through: :lanes
   has_many :invites
+  accepts_nested_attributes_for :board_users
 
   normalizes :email_address, with: -> { _1.strip.downcase }
 end

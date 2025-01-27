@@ -3,7 +3,7 @@ import Sortable from "sortablejs";
 
 export default class extends Controller {
   static values = {
-    onEnd: { type: String, default: null },
+    submit: { type: Boolean, default: false},
     draggable: { type: String, default: "li" },
     delayOnMobile: { type: Boolean, default: true },
     handle: { type: String, default: null },
@@ -17,7 +17,7 @@ export default class extends Controller {
       touchStartThreshold: 5,
     };
     if (this.handleValue) config.handle = this.handleValue;
-    if (this.onEndValue) config.onEnd = this.onEndValue;
+    if (this.submitValue) config.onEnd = this.#submit;
     if (this.delayOnMobileValue) {
       config.delay = 225;
       config.delayOnTouchOnly = true;
@@ -27,5 +27,9 @@ export default class extends Controller {
 
   disconnect() {
     this.sortable.destroy();
+  }
+
+  #submit({ target }) {
+    target.requestSubmit();
   }
 }

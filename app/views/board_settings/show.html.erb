@@ -17,9 +17,9 @@
             <%= lane_form.text_field :name, autocomplete: :off, class: "py-1 px-3 font-medium rounded-xl border bg-inherit m-0" %>
             <%= lane_form.label :_destroy, class: "flex items-center" do %>
               <%= lane_form.check_box :_destroy, autocomplete: :off, class: "hidden" %>
-              <span class="material-symbols-outlined text-red-500 cursor-pointer">
+              <!-- <span class="material-symbols-outlined text-red-500 cursor-pointer">
                 delete
-              </span>
+              </span> -->
             <% end %>
           </div>
         <% end %>
@@ -29,12 +29,12 @@
           </a>
           <%= form.submit("Save", class: "button-outlined ml-auto") %>
         </div>
-        <span class="flex items-center gap-1 opacity-50">
+        <!-- <span class="flex items-center gap-1 opacity-50">
           <span class="material-symbols-outlined">
             warning
           </span>
           Deleting a lane will delete it's tasks too!
-        </span>
+        </span> -->
       <% end %>
     </section>
     <section class="bg-zinc-900 rounded-lg p-2 shadow-2xl">

@@ -2,7 +2,7 @@ class BoardsController < ApplicationController
   layout -> { false if turbo_frame_request? } # only comes into play for Turbo.visit to update board on window refocus
 
   def index
-    @boards = boards
+    @board_users = board_users
   end
 
   def show
@@ -49,6 +49,10 @@ class BoardsController < ApplicationController
 
   def boards
     Current.user.boards.order(:position)
+  end
+
+  def board_users
+    Current.user.board_users.order(:position).includes(:board)
   end
 
   def board_params
