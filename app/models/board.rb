@@ -5,6 +5,7 @@ class Board < ApplicationRecord
   has_many :lanes, dependent: :destroy
   has_many :tasks, through: :lanes
   after_create_commit :create_default_lanes
+  accepts_nested_attributes_for :lanes, allow_destroy: true
 
   private
 
@@ -12,9 +13,9 @@ class Board < ApplicationRecord
     return if lanes.any?
 
     lanes.create!([
-      { name: "Not Started", position: 1 },
-      { name: "In Progress", position: 2 },
-      { name: "Done 🎉", position: 3 },
+      { name: "Not Started", position: 0 },
+      { name: "In Progress", position: 1 },
+      { name: "Done 🎉", position: 2 },
     ])
   end
 end

@@ -1,20 +1,43 @@
 <div class="flex">
-  <section class="flex flex-col gap-2 max-w-96 mx-auto grow">
+  <div class="flex flex-col gap-2 max-w-96 mx-auto grow">
     <%= board_invite_button %>
     <%= board_edit_button %>
-    <div class="bg-zinc-900 rounded-lg p-2 shadow-2xl list-none space-y-2" data-controller="sortable">
+    <section class="bg-zinc-900 rounded-lg p-2 shadow-2xl list-none space-y-2" data-controller="sortable">
       <header class="text-xl font-bold">
         <%= t("lanes") %>
       </header>
-      <%= form_with(model: @board) do |form| %>
-        <% @board.lanes.each do |lane| %>
-          <li class="select-none button-outlined flex justify-center">
-            <%= lane.name %>
-          </li>
+      <%= form_with(model: @board, data: { controller: :sortable, sortable_draggable_value: :div, sortable_delay_on_mobile_value: false, sortable_handle_value: ".handle" }) do |form| %>
+        <%= form.fields_for(:lanes) do |lane_form| %>
+          <div class="flex items-center justify-center gap-2 mb-2" data-controller="toggle-class" data-toggle-class-class-value="opacity-50">
+            <%= lane_form.hidden_field(:id) %>
+            <%= lane_form.hidden_field(:position) %>
+            <span class="material-symbols-outlined cursor-pointer handle">
+              drag_indicator
+            </span>
+            <%= lane_form.text_field(:name, autocomplete: :off, class: "py-1 px-3 font-medium rounded-xl border bg-inherit m-0") %>
+            <%= lane_form.label(:_destroy, class: "flex items-center select-none") do %>
+              <%= lane_form.check_box(:_destroy, autocomplete: :off, class: "hidden") %>
+              <span class="material-symbols-outlined text-red-500 cursor-pointer" data-action="click->toggle-class#toggle">
+                delete
+              </span>
+            <% end %>
+          </div>
         <% end %>
+        <div class="flex my-3">
+          <a class="button-outlined mr-auto">
+            <%= t("+_add_lane") %>
+          </a>
+          <%= form.submit("Save", class: "button-outlined ml-auto") %>
+        </div>
+        <span class="flex items-center gap-1 opacity-50">
+          <span class="material-symbols-outlined">
+            warning
+          </span>
+            <%= t("deleting_a_lane_will_delete_it's_tasks_too!") %>
+        </span>
       <% end %>
-    </div>
-    <div class="bg-zinc-900 rounded-lg p-2 shadow-2xl">
+    </section>
+    <section class="bg-zinc-900 rounded-lg p-2 shadow-2xl">
       <header class="text-xl font-bold mb-2">
         <%= t("members") %>
       </header>
@@ -23,7 +46,7 @@
           <%= user.email_address %>
         </li>
       <% end %>
-    </div>
+    </section>
     <%= board_delete_button %>
-  </section>
+  </div>
 </div>

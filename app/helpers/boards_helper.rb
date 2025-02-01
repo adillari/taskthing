@@ -1,20 +1,24 @@
 module BoardsHelper
-  def boards_list(boards)
+  def boards_list(board_users)
     form_with(
-      url: board_users_path,
+      model: Current.user,
       class: "flex flex-col gap-2",
-      data: { controller: :sortable, sortable_submit_value: :true },
-    ) do
+      data: { controller: :sortable, sortable_submit_value: true },
+    ) do |form|
       safe_join([
-        safe_join(
-          boards.map do |board|
-            tag.li(
-              board.title,
-              class: "bg-zinc-900 rounded-lg shadow-xl w-full items-center select-none cursor-pointer p-4",
-              onclick: "Turbo.visit('#{board_path(board)}')", # I don't wanna talk about this onclick
-            )
-          end,
-        ),
+        form.fields_for(:board_users, board_users) do |board_user_form|
+          tag.li(
+            class: "bg-zinc-900 rounded-lg shadow-xl flex items-center select-none cursor-pointer p-4",
+            onclick: "Turbo.visit('#{board_path(board_user_form.object.board.id)}')",
+          ) do
+            safe_join([
+              board_user_form.object.board.title,
+              board_user_form.hidden_field(:id),
+              board_user_form.hidden_field(:position),
+              shared(board_user_form.object.board),
+            ])
+          end
+        end,
         link_to(
           t("+_new_board"),
           new_board_path,
@@ -23,6 +27,11 @@ module BoardsHelper
         ),
       ])
     end
+  end
+
+  # N+1!
+  def shared(board)
+    tag.span("(shared)", class: "opacity-50 ml-auto") if board.board_users.many?
   end
 
   def board_invite_button

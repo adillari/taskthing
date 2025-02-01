@@ -20,9 +20,24 @@ class UsersController < ApplicationController
     end
   end
 
+  def update
+    Current.user.update(board_users_params)
+  end
+
   private
 
   def user_params
     params.require(:user).permit(:email_address, :password)
+  end
+
+  def board_users_params
+    assign_board_positions
+    params.require(:user).permit(board_users_attributes: [:id, :position])
+  end
+
+  def assign_board_positions
+    params[:user][:board_users_attributes].keys.each_with_index do |board, position|
+      params[:user][:board_users_attributes][board][:position] = position
+    end
   end
 end

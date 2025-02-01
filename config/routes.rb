@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   end
   patch "board_users", to: "board_users#update"
   resource "session", only: [:show, :new, :create, :destroy]
-  resources "users", only: [:new, :create, :destroy]
+  resources "users", only: [:new, :create, :update, :destroy]
   resources "passwords", param: :token
   root "home#index"
 
