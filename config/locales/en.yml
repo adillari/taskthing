@@ -1,9 +1,11 @@
 ---
 en:
+  "+_add_lane": "+ Add Lane"
   "+_new_board": "+ New Board"
   boards: Boards
   copy_link: Copy Link
   delete_board: Delete Board
+  deleting_a_lane_will_delete_it's_tasks_too!: Deleting a lane will delete it's tasks too!
   edit_title: Edit Title
   forgot_password?: Forgot password?
   invite_a_friend: Invite a Friend
