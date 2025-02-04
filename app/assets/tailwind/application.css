@@ -1,0 +1,28 @@
+@import 'tailwindcss';
+
+@utility scrollbar-hide {
+  &::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for WebKit */
+  }
+  scrollbar-width: none; /* Hide scrollbar for Firefox */
+}
+
+@utility content-center-full {
+  @apply content-center text-center h-full;
+}
+
+@utility button-filled {
+  @apply py-3 px-5 font-medium cursor-pointer rounded-xl;
+}
+
+@utility button-outlined {
+  @apply py-1 px-3 font-medium cursor-pointer rounded-xl border;
+}
+
+@utility input-field {
+  @apply block shadow-sm rounded-md border border-gray-400 outline-hidden px-3 py-2 mt-2 w-full bg-slate-900;
+}
+
+@utility task-input-field {
+  @apply p-0 w-full border-none bg-transparent focus:ring-0 focus:brightness-150 text-white;
+}

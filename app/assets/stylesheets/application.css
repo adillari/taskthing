@@ -3,10 +3,7 @@
  *= require material_symbols
 */
 html,
-body {
-  height: 100%; /* Ensure the body and html take full height */
-  margin: 0; /* Remove default margins */
-}
+body { height: 100%; /* Ensure the body and html take full height */ }
 
 .lds-ring,
 .lds-ring div {
