@@ -5,7 +5,7 @@
     <span class="font-medium">
       <%= lane.name %>
     </span>
-    <button class="material-symbols-outlined ml-auto sm:hidden" data-action="board#toggleLane">
+    <button class="material-symbols-outlined ml-auto sm:invisible" data-action="board#toggleLane">
       unfold_more
     </button>
     <button id="<%= dom_id(lane, :new_task_button) %>" class="material-symbols-outlined bg-violet-700 rounded-lg sm:ml-auto" data-action="lane#toggleNewTaskForm" data-turbo-permanent>
