@@ -6,7 +6,7 @@ module ApplicationHelper
   def modal(title:, &)
     turbo_frame_tag(:modal) do
       tag.div(
-        class: "bg-black bg-opacity-50 backdrop-blur fixed top-0 left-0 w-full h-full z-10",
+        class: "bg-black/50 backdrop-blur fixed top-0 left-0 w-full h-full z-10",
         data: { application_target: :modal, action: "click->application#removeModal" },
       ) do
         tag.div(
