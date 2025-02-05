@@ -2,6 +2,15 @@
 en:
   "+_add_lane": "+ Add Lane"
   "+_new_board": "+ New Board"
+  activerecord:
+    attributes:
+      board:
+        title: Title
+      invite:
+        email_address: Email Address
+      task:
+        description: Description
+        title: Title
   boards: Boards
   copy_link: Copy Link
   delete_board: Delete Board
