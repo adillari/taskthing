@@ -43,4 +43,5 @@ en:
   read_my_code!: Read my code!
   sign_up: Sign up
   tagline: Slick, Simple, Open-source Kanban.
-  type_here: type here...
+  type_here_ellipsis: type here...
+  user_invites_you_to_collaborate_on_board_html: "%{user} invites you to collaborate on <b>%{board}</b>."
