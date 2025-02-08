@@ -1,8 +1,9 @@
 module TasksHelper
+  # Form for existing Task that gets submitted when its picked up and dropped anywhere on the board
   def task_form(task)
     form_with(model: task) do |form|
       safe_join([
-        form.hidden_field(:lane_id, id: nil), # id attribute is nil because rails created duplicate dom id's otherwise
+        form.hidden_field(:lane_id, id: nil), # id attributes are nil because rails created duplicate dom id's otherwise
         form.hidden_field(:position, id: nil), # and that botthers me because its not considered valid html
       ])
     end
