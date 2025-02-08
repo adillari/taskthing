@@ -41,9 +41,11 @@ module ApplicationHelper
   def left_header
     if controller_name == "board_settings"
       safe_join([boards_link, right_chevron, board_link, right_chevron, board_settings_link])
+    elsif controller_name == "invites"
+      link_to("Taskthing.io", root_path, class: "text-xl font-bold")
     elsif @board
       safe_join([boards_link, right_chevron, board_link, board_settings_link(class: "pl-2")])
-    elsif @boards
+    elsif @boards || @board_users
       boards_link
     else
       link_to("Taskthing.io", root_path, class: "text-xl font-bold")
