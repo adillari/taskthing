@@ -1,0 +1,14 @@
+<%# locals: (lane_form:, fake: false) %>
+
+<%= tag.div(**lane_field_attrs(fake)) do %>
+  <%= lane_form.hidden_field(:id) %>
+  <%= lane_form.hidden_field(:position) %>
+  <span class="material-symbols-outlined cursor-pointer handle">
+    drag_indicator
+  </span>
+  <%= lane_form.text_field(:name, placeholder: t("type_here"), autocomplete: "off", class: "py-1 px-3 font-medium rounded-xl border bg-inherit m-0") %>
+  <%= lane_form.label(:_destroy, class: "flex items-center select-none") do %>
+    <%= lane_form.check_box(:_destroy, autocomplete: "off", class: "hidden") %>
+    <%= tag.span("delete", class: "material-symbols-outlined text-red-500 cursor-pointer", data: { action: delete_lane_action(fake) }) %>
+  <% end %>
+<% end %>

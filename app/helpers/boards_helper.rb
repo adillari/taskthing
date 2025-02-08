@@ -72,4 +72,20 @@ module BoardsHelper
       ])
     end
   end
+
+  def lane_field_attrs(fake)
+    if fake
+      { data: { add_field_target: "fake" }, hidden: true }
+    else
+      { data: { controller: "toggle-class", toggle_class_class_value: "opacity-50" } }
+    end.merge(class: "flex items-center justify-center gap-2 mb-2")
+  end
+
+  def delete_lane_action(fake)
+    if fake
+      "click->add-field#remove"
+    else
+      "click->toggle-class#toggle"
+    end
+  end
 end

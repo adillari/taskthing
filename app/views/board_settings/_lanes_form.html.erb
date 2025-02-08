@@ -1,0 +1,22 @@
+<%# locals: (board:) %>
+
+<%= form_with(model: board, data: { controller: "sortable add-field", sortable_draggable_value: "div", sortable_delay_on_mobile_value: false, sortable_handle_value: ".handle" }) do |form| %>
+  <%= form.fields_for(:lanes) do |lane_form| %>
+    <%= render("lane_field", lane_form:) %>
+  <% end %>
+  <%= form.fields_for(:lanes, board.lanes.new) do |lane_form| %>
+    <%= render("lane_field", lane_form:, fake: true) %>
+  <% end %>
+  <div class="flex my-3">
+    <a class="button-outlined mr-auto" data-action="add-field#reveal">
+      <%= t("+_add_lane") %>
+    </a>
+    <%= form.submit("Save", class: "button-outlined ml-auto") %>
+  </div>
+  <span class="flex items-center gap-1 opacity-50">
+    <span class="material-symbols-outlined">
+      warning
+    </span>
+    <%= t("deleting_a_lane_will_delete_it's_tasks_too!") %>
+  </span>
+<% end %>
