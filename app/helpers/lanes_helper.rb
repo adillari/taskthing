@@ -9,7 +9,7 @@ module LanesHelper
           id: dom_id(lane, :task_title),
           required: true,
           placeholder: t("placeholders.task_title"),
-          autocomplete: :off,
+          autocomplete: "off",
           class: "mb-1 task-input-field",
         ),
         tag.div(class: "flex") do
@@ -19,7 +19,7 @@ module LanesHelper
               id: dom_id(lane, :task_description),
               rows: 2,
               placeholder: t("placeholders.task_description"),
-              autocomplete: :off,
+              autocomplete: "off",
               class: "resize-none task-input-field",
             ),
             form.submit(
