@@ -23,7 +23,6 @@ RSpec.describe(TasksHelper, type: :helper) do
       expect(result).to(have_css(
         'a.material-symbols-outlined.text-yellow-500.my-auto[data-turbo-frame="modal"][href="/tasks/5/edit"]',
         text: "edit",
-        exact: true,
       ))
     end
   end
@@ -35,7 +34,6 @@ RSpec.describe(TasksHelper, type: :helper) do
       expect(result).to(have_css(
         'a.material-symbols-outlined.text-red-500.my-auto[data-turbo-frame="modal"][href="/tasks/5/delete_confirmation"]', # rubocop:disable Layout/LineLength
         text: "delete",
-        exact: true,
       ))
     end
   end
@@ -48,7 +46,6 @@ RSpec.describe(TasksHelper, type: :helper) do
         expect(result).to(have_css(
           "p.h-full.border-t.border-zinc-700.mt-1\\.5.pt-1\\.5.grow",
           text: "Task Description",
-          exact: true,
         ))
       end
     end
