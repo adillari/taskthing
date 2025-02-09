@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby "3.3.6"
+ruby "3.4.1"
 
 gem "rails", "~> 8.0"
 gem "propshaft" # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
