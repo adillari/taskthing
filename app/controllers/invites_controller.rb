@@ -22,7 +22,7 @@ class InvitesController < ApplicationController
     case params[:commit]
     when "accept"
       @board = @invite.board
-      @board.users << Current.user
+      @board.board_users.new(user: Current.user, role: "member")
       @board.save!
       @invite.destroy!
       redirect_to(board_path(@board))

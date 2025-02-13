@@ -12,9 +12,12 @@
       <header class="text-xl font-bold mb-2">
         <%= t("members") %>
       </header>
-      <% @board.users.each do |user| %>
+      <% @board.board_users.each do |board_user| %>
         <li class="ml-4">
-          <%= user.email_address %>
+          <%= board_user.user.email_address %>
+          <span class="opacity-50">
+            <%= "(#{board_user.role})" %>
+          </span>
         </li>
       <% end %>
     </section>

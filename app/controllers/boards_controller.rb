@@ -15,7 +15,7 @@ class BoardsController < ApplicationController
 
   def create
     board = Board.new(board_params)
-    board.users << Current.user
+    board.board_users.new(user: Current.user, role: "admin")
 
     if board.save
       redirect_to(boards_path)
