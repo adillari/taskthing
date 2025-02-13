@@ -11,6 +11,12 @@ en:
       task:
         description: Description
         title: Title
+    errors:
+      models:
+        board_user:
+          attributes:
+            role:
+              inclusion: Invalid role
   boards: Boards
   copy_link: Copy Link
   delete_board: Delete Board

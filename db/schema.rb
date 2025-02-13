@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_12_042823) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_13_030220) do
   create_table "board_users", force: :cascade do |t|
     t.bigint("user_id", null: false)
     t.bigint("board_id", null: false)
     t.datetime("created_at", null: false)
     t.datetime("updated_at", null: false)
     t.integer("position")
+    t.string("role", null: false)
     t.index(["board_id"], name: "index_board_users_on_board_id")
     t.index(["user_id"], name: "index_board_users_on_user_id")
   end
