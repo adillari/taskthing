@@ -34,7 +34,7 @@ class BoardsController < ApplicationController
     @board.update!(board_params)
     redirect_to(board_settings_path(@board))
   rescue
-    render_unauthorized
+    render_unprocessable
   end
 
   def delete_confirmation
@@ -46,7 +46,7 @@ class BoardsController < ApplicationController
     board.destroy!
     redirect_to(boards_path)
   rescue
-    render_unauthorized
+    render_unprocessable
   end
 
   private
