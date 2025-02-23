@@ -30,9 +30,11 @@ class BoardsController < ApplicationController
   end
 
   def update
-    @board = boards.find(params[:id])
-    @board.update(board_params)
+    @board = owned_boards.find(params[:id])
+    @board.update!(board_params)
     redirect_to(board_settings_path(@board))
+  rescue
+    render_unprocessable
   end
 
   def delete_confirmation
@@ -40,9 +42,11 @@ class BoardsController < ApplicationController
   end
 
   def destroy
-    board = boards.find(params[:id])
+    board = owned_boards.find(params[:id])
     board.destroy!
     redirect_to(boards_path)
+  rescue
+    render_unprocessable
   end
 
   private
@@ -51,8 +55,12 @@ class BoardsController < ApplicationController
     Current.user.boards.order(:position)
   end
 
+  def owned_boards
+    Current.user.owned_boards
+  end
+
   def board_users
-    Current.user.board_users.order(:position).includes(:board)
+    Current.user.board_users.order(:position).includes(board: :board_users)
   end
 
   def board_params
