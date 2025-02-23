@@ -24,5 +24,5 @@
 }
 
 @utility task-input-field {
-  @apply p-0 w-full border-none bg-transparent focus:ring-0 focus:brightness-150 text-white;
+  @apply p-0 w-full bg-transparent outline-hidden placeholder:text-zinc-700 focus:brightness-200 text-white;
 }
