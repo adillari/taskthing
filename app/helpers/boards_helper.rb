@@ -29,7 +29,6 @@ module BoardsHelper
     end
   end
 
-  # N+1!
   def shared(board)
     tag.span("(shared)", class: "opacity-50 ml-auto") if board.board_users.many?
   end

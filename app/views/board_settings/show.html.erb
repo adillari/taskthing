@@ -1,17 +1,17 @@
-<% admin = @board.board_users.find_by(user_id: Current.user.id).admin? %>
+<% admin = @board.in?(Current.user.owned_boards) %>
 
 <div class="flex">
   <div class="flex flex-col gap-2 max-w-96 mx-auto grow">
     <%= board_invite_button %>
     <% if admin %>
       <%= board_edit_button %>
+      <section class="bg-zinc-900 rounded-lg p-2 shadow-2xl list-none space-y-2" data-controller="sortable">
+        <header class="text-xl font-bold">
+          <%= t("lanes") %>
+        </header>
+        <%= render("lanes_form", board: @board) %>
+      </section>
     <% end %>
-    <section class="bg-zinc-900 rounded-lg p-2 shadow-2xl list-none space-y-2" data-controller="sortable">
-      <header class="text-xl font-bold">
-        <%= t("lanes") %>
-      </header>
-      <%= render("lanes_form", board: @board) %>
-    </section>
     <section class="bg-zinc-900 rounded-lg p-2 shadow-2xl">
       <header class="text-xl font-bold mb-2">
         <%= t("members") %>
