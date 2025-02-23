@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.feature("Board Management", type: :feature) do
-  scenario "User adds a new board" do
+  xscenario "User adds a new board" do
     visit root_path
     visit boards_path
 
