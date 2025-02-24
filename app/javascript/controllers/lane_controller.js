@@ -30,7 +30,7 @@ export default class extends Controller {
     const positionInput = form.querySelector('input[name="task[position]"]');
 
     const newLaneId = event.item.parentElement.dataset.laneId;
-    const newPosition = event.newIndex - 2; // -1 because of lane header -1 because sortable starts at 1 not 0
+    const newPosition = event.newIndex - 1; // -1 because sortable starts at 1 not 0
 
     laneIdInput.value = newLaneId;
     positionInput.value = newPosition;

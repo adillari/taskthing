@@ -1,11 +1,12 @@
 class Task < ApplicationRecord
-  include Broadcasts::Board
-
   belongs_to :lane
   has_one :board, through: :lane
   before_save :adjust_positions
   before_destroy :slash_elders
   default_scope { order(:position) }
+  after_create_commit :broadcast_create_to_board
+  after_update_commit :broadcast_update_to_board
+  after_destroy_commit :broadcast_destroy_to_board
 
   private
 
@@ -53,5 +54,40 @@ class Task < ApplicationRecord
     Current.user.lanes.find(lane_id_was).tasks
       .where("position > ?", position_was)
       .update_all("position = position - 1")
+  end
+
+  def broadcast_create_to_board
+    board.bump_version!
+
+    broadcast_prepend_later_to(
+      board,
+      target: "task_#{id}",
+      partial: "tasks/task",
+      locals: { task: self }
+    )
+
+    broadcast_update_board_version
+  end
+
+  def broadcast_update_to_board
+    board.bump_version!
+
+    broadcast_replace_later_to(
+      board,
+      target: "task_#{id}",
+      partial: "tasks/task",
+      locals: { task: self }
+    )
+
+    broadcast_update_board_version
+  end
+
+  def broadcast_update_board_version
+    broadcast_replace_later_to(
+      board,
+      target: "version",
+      partial: "boards/version",
+      locals: { version: board.version }
+    )
   end
 end
