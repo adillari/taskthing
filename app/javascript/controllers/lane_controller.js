@@ -36,6 +36,7 @@ export default class extends Controller {
     positionInput.value = newPosition;
 
     form.requestSubmit();
+    event.item.classList.add("pointer-events-none");
   }
 
   toggleNewTaskForm({ target }) {
