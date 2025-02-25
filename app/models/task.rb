@@ -63,7 +63,7 @@ class Task < ApplicationRecord
       board,
       target: "task_#{id}",
       partial: "tasks/task",
-      locals: { task: self }
+      locals: { task: self },
     )
 
     broadcast_update_board_version
@@ -76,7 +76,7 @@ class Task < ApplicationRecord
       board,
       target: "task_#{id}",
       partial: "tasks/task",
-      locals: { task: self }
+      locals: { task: self },
     )
 
     broadcast_update_board_version
@@ -87,7 +87,7 @@ class Task < ApplicationRecord
       board,
       target: "version",
       partial: "boards/version",
-      locals: { version: board.version }
+      locals: { version: board.version },
     )
   end
 end
