@@ -51,14 +51,14 @@ export default class extends Controller {
 
   #saveScrollState() {
     this.laneTargets.forEach((lane) => {
-      scrollState[lane.id] = lane.scrollTop;
+      scrollState[lane.id] = lane.lastElementChild.scrollTop;
     });
   }
 
   #applyScrollState(event) {
     if (event && event.target.id !== "board") return;
     this.laneTargets.forEach((lane) => {
-      lane.scrollTop = scrollState[lane.id];
+      lane.lastElementChild.scrollTop = scrollState[lane.id];
     });
   }
 }
