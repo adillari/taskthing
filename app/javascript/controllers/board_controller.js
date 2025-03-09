@@ -53,12 +53,9 @@ export default class extends Controller {
     this.laneTargets.forEach((lane) => {
       scrollState[lane.id] = lane.lastElementChild.scrollTop;
     });
-    console.log(scrollState)
   }
 
   #applyScrollState(event) {
-    console.log('apply')
-    console.log(scrollState)
     if (event && event.target.id !== "board") return;
     this.laneTargets.forEach((lane) => {
       lane.lastElementChild.scrollTop = scrollState[lane.id];
