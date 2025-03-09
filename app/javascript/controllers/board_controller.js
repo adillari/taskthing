@@ -12,11 +12,13 @@ export default class extends Controller {
     this.bindedSaveScrollState = this.#saveScrollState.bind(this);
 
     addEventListener("visibilitychange", this.bindedRefreshBoard);
+    document.addEventListener("turbo:frame-render", this.#applyScrollState);
     document.addEventListener("turbo:before-stream-render", this.bindedSaveScrollState);
   }
 
   disconnect() {
     removeEventListener("visibilitychange", this.bindedRefreshBoard);
+    document.removeEventListener("turbo:frame-render", this.#applyScrollState);
     document.removeEventListener("turbo:before-stream-render", this.bindedSaveScrollState);
   }
 
