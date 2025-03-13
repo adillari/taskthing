@@ -1,5 +1,5 @@
 class Lane < ApplicationRecord
-  include Broadcasts::Board
+  include BroadcastsBoard
 
   has_many :tasks, dependent: :destroy
   belongs_to :board
