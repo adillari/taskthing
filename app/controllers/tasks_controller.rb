@@ -2,9 +2,8 @@ class TasksController < ApplicationController
   before_action :set_task, except: :create
 
   def create
-    @lane.tasks.create!(task_params)
-  rescue
-    head(:unprocessable_entity)
+    lane = Current.user.lanes.find(task_params[:lane_id])
+    lane.tasks.create!(task_params)
   end
 
   def edit
@@ -12,8 +11,6 @@ class TasksController < ApplicationController
 
   def update
     @task.update!(task_params)
-  rescue
-    head(:unprocessable_entity)
   end
 
   def delete_confirmation
