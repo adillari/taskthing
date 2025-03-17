@@ -26,3 +26,19 @@
 @utility task-input-field {
   @apply p-0 w-full bg-transparent outline-hidden placeholder:text-zinc-700 focus:brightness-200 text-white;
 }
+
+@utility lane {
+  @apply bg-zinc-900 flex-1 flex flex-col overflow-x-hidden rounded-lg pb-2 min-w-64 sm:h-full;
+}
+
+@utility lane-header {
+  @apply flex sticky top-0 bg-zinc-900 py-2 px-2 gap-1 shrink-0;
+}
+
+@utility toggle-lane-button {
+  @apply ml-auto sm:invisible cursor-pointer;
+}
+
+@utility new-task-button {
+  @apply bg-violet-700 rounded-lg sm:ml-auto cursor-pointer;
+}

@@ -1,5 +1,8 @@
 import { Controller } from "@hotwired/stimulus";
 
+// This basically holds the application wide javascript behavior for:
+// - modal functionality
+// - header loading spinner
 export default class extends Controller {
   static targets = ["modal", "indicator"];
 

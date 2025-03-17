@@ -25,7 +25,7 @@ module LanesHelper
             form.submit(
               "save",
               class: "material-symbols-outlined cursor-pointer text-violet-700 mt-auto",
-              data: { action: "lane#removeTurboPermanent" },
+              data: { action: "lane#toggleNewTaskForm" },
             ),
           ])
         end,
