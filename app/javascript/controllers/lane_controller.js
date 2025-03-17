@@ -3,7 +3,7 @@ import Sortable from "sortablejs";
 
 export default class extends Controller {
   connect() {
-    this.sortable = Sortable.create(this.element, {
+    this.sortable = Sortable.create(this.element.querySelector("ul"), {
       group: "board",
       ghostClass: "opacity-0",
       chosenClass: "rotate-2",
@@ -27,7 +27,7 @@ export default class extends Controller {
     const laneIdInput = form.querySelector('input[name="task[lane_id]"]');
     const positionInput = form.querySelector('input[name="task[position]"]');
 
-    const newLaneId = event.item.parentElement.dataset.laneId;
+    const newLaneId = event.item.closest("turbo-frame").dataset.laneId;
     const newPosition = event.newIndex - 1; // -1 because sortable starts at 1 not 0
 
     laneIdInput.value = newLaneId;
@@ -37,11 +37,18 @@ export default class extends Controller {
     event.item.classList.add("pointer-events-none");
   }
 
-  removeTurboPermanent() {
-    if (this.newTaskFormTarget.querySelector("form").checkValidity()) {
-      this.element.querySelectorAll("[data-turbo-permanent]").forEach((el) => {
-        el.removeAttribute("data-turbo-permanent");
-      });
+  toggleNewTaskForm({ target }) {
+    let lane = target.closest("turbo-frame")
+    let newTaskForm = lane.querySelector("#new_task_form_" + lane.id)
+    let newTaskButton = lane.querySelector("#new_task_button_" + lane.id)
+
+    if (newTaskForm.hidden) {
+      newTaskForm.hidden = false;
+      newTaskForm.querySelector("input[required]").focus();
+      newTaskButton.innerText = "close";
+    } else {
+      newTaskForm.hidden = true;
+      newTaskButton.innerText = "add";
     }
   }
 }
