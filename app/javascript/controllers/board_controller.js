@@ -40,6 +40,20 @@ export default class extends Controller {
     }
   }
 
+  toggleNewTaskForm({ target }) {
+    let lane = target.closest("turbo-frame")
+    let newTaskForm = lane.querySelector("#new_task_form_" + lane.id)
+
+    if (newTaskForm.hidden) {
+      newTaskForm.hidden = false;
+      newTaskForm.querySelector("input[required]").focus();
+      target.innerText = "close";
+    } else {
+      newTaskForm.hidden = true;
+      target.innerText = "add";
+    }
+  }
+
   // private
 
   #refreshBoard() {

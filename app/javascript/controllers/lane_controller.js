@@ -39,17 +39,6 @@ export default class extends Controller {
     event.item.classList.add("pointer-events-none");
   }
 
-  toggleNewTaskForm({ target }) {
-    if (this.newTaskFormTarget.hidden) {
-      this.newTaskFormTarget.hidden = false;
-      this.newTaskFormTarget.querySelector("input[required]").focus();
-      target.innerText = "close";
-    } else {
-      this.newTaskFormTarget.hidden = true;
-      target.innerText = "add";
-    }
-  }
-
   removeTurboPermanent() {
     if (this.newTaskFormTarget.querySelector("form").checkValidity()) {
       this.element.querySelectorAll("[data-turbo-permanent]").forEach((el) => {
