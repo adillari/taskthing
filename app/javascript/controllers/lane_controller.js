@@ -2,8 +2,6 @@ import { Controller } from "@hotwired/stimulus";
 import Sortable from "sortablejs";
 
 export default class extends Controller {
-  static targets = ["newTaskForm"];
-
   connect() {
     this.sortable = Sortable.create(this.element, {
       group: "board",
