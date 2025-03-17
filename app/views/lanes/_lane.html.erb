@@ -13,7 +13,7 @@
     </button>
   </header>
   <ul class="overflow-y-auto grow space-y-2 px-2" data-controller="lane" data-lane-id="<%= lane.id %>">
-    <%= tag.div(id: dom_id(lane, :new_task_form), class: new_task_classes, hidden: true, data: { lane_target: "newTaskForm", turbo_permanent: true }) do %>
+    <%= tag.div(id: dom_id(lane, :new_task_form), class: new_task_classes, hidden: true, data: { turbo_permanent: true }) do %>
       <%= new_task_form(lane) %>
     <% end %>
     <%= render(lane.tasks.select(&:persisted?)) %>
