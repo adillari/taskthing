@@ -75,7 +75,7 @@ export default class extends Controller {
 
       if (newBoard && oldBoard) {
         oldBoard.innerHTML = newBoard.innerHTML;
-        // applyScrollState, I did't make seperate method because I dont wanna have to use "this" cuz annoying
+        // applyScrollState; didn't make a seperate method because I don't wanna have to use "this" cuz annoying
         document.querySelectorAll(".lane").forEach((lane) => {
           lane.lastElementChild.scrollTop = scrollState[lane.id];
         });
