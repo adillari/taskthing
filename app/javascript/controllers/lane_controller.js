@@ -38,9 +38,9 @@ export default class extends Controller {
   }
 
   toggleNewTaskForm({ target }) {
-    let lane = target.closest("turbo-frame")
-    let newTaskForm = lane.querySelector("#new_task_form_" + lane.id)
-    let newTaskButton = lane.querySelector("#new_task_button_" + lane.id)
+    let lane = target.closest("turbo-frame");
+    let newTaskForm = lane.querySelector("#new_task_form_" + lane.id);
+    let newTaskButton = lane.querySelector("#new_task_button_" + lane.id);
 
     if (newTaskForm.hidden) {
       newTaskForm.hidden = false;

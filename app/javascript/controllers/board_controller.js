@@ -6,15 +6,21 @@ export default class extends Controller {
   static targets = ["lane"];
 
   connect() {
-    this.bindedRefreshBoard = this.#refreshBoard.bind(this);
+    this.bindedFetchBoard = this.#fetchBoard.bind(this);
 
-    addEventListener("visibilitychange", this.bindedRefreshBoard);
-    document.addEventListener('turbo:before-fetch-response', this.#checkVersion)
+    addEventListener("visibilitychange", this.bindedFetchBoard);
+    document.addEventListener(
+      "turbo:before-fetch-response",
+      this.#updateBoardIfVersionChanged,
+    );
   }
 
   disconnect() {
-    removeEventListener("visibilitychange", this.bindedRefreshBoard);
-    document.removeEventListener('turbo:before-fetch-response', this.#checkVersion)
+    removeEventListener("visibilitychange", this.bindedFetchBoard);
+    document.removeEventListener(
+      "turbo:before-fetch-response",
+      this.#updateBoardIfVersionChanged,
+    );
   }
 
   toggleLane({ target }) {
@@ -37,7 +43,7 @@ export default class extends Controller {
 
   // private
 
-  #refreshBoard() {
+  #fetchBoard() {
     if (document.visibilityState === "visible") {
       this.#saveScrollState();
       Turbo.visit(location.pathname, { frame: "board" });
@@ -50,12 +56,15 @@ export default class extends Controller {
     });
   }
 
-  async #checkVersion(event) {
+  async #updateBoardIfVersionChanged(event) {
     if (event && event.target.id !== "board") return;
 
     event.preventDefault();
 
-    const response = new DOMParser().parseFromString(await event.detail.fetchResponse.response.clone().text(), "text/html");
+    const response = new DOMParser().parseFromString(
+      await event.detail.fetchResponse.response.clone().text(),
+      "text/html",
+    );
 
     const newVersion = response.getElementById("version")?.innerText;
     const oldVersion = document.getElementById("version")?.innerText;
@@ -64,8 +73,9 @@ export default class extends Controller {
       const newBoard = response.getElementById("board");
       const oldBoard = document.getElementById("board");
 
-      if (frame && newContent) {
+      if (newBoard && oldBoard) {
         oldBoard.innerHTML = newBoard.innerHTML;
+        // applyScrollState, I did't make seperate method because I dont wanna have to use "this" cuz annoying
         document.querySelectorAll(".lane").forEach((lane) => {
           lane.lastElementChild.scrollTop = scrollState[lane.id];
         });
