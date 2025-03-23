@@ -7,15 +7,14 @@ export default class extends Controller {
 
   connect() {
     this.bindedRefreshBoard = this.#refreshBoard.bind(this);
-    this.bindedSaveScrollState = this.#saveScrollState.bind(this);
 
     addEventListener("visibilitychange", this.bindedRefreshBoard);
-    document.addEventListener("turbo:frame-render", this.#applyScrollState);
+    document.addEventListener('turbo:before-fetch-response', this.#checkVersion)
   }
 
   disconnect() {
     removeEventListener("visibilitychange", this.bindedRefreshBoard);
-    document.removeEventListener("turbo:frame-render", this.#applyScrollState);
+    document.removeEventListener('turbo:before-fetch-response', this.#checkVersion)
   }
 
   toggleLane({ target }) {
@@ -51,10 +50,26 @@ export default class extends Controller {
     });
   }
 
-  #applyScrollState(event) {
+  async #checkVersion(event) {
     if (event && event.target.id !== "board") return;
-    event.target.querySelectorAll(".lane").forEach((lane) => {
-      lane.lastElementChild.scrollTop = scrollState[lane.id];
-    });
+
+    event.preventDefault();
+
+    const response = new DOMParser().parseFromString(await event.detail.fetchResponse.response.clone().text(), "text/html");
+
+    const newVersion = response.getElementById("version")?.innerText;
+    const oldVersion = document.getElementById("version")?.innerText;
+
+    if (newVersion !== oldVersion) {
+      const newBoard = response.getElementById("board");
+      const oldBoard = document.getElementById("board");
+
+      if (frame && newContent) {
+        oldBoard.innerHTML = newBoard.innerHTML;
+        document.querySelectorAll(".lane").forEach((lane) => {
+          lane.lastElementChild.scrollTop = scrollState[lane.id];
+        });
+      }
+    }
   }
 }
