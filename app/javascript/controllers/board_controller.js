@@ -6,20 +6,16 @@ export default class extends Controller {
   static targets = ["lane"];
 
   connect() {
-    this.#applyScrollState();
-
     this.bindedRefreshBoard = this.#refreshBoard.bind(this);
     this.bindedSaveScrollState = this.#saveScrollState.bind(this);
 
     addEventListener("visibilitychange", this.bindedRefreshBoard);
     document.addEventListener("turbo:frame-render", this.#applyScrollState);
-    document.addEventListener("turbo:before-stream-render", this.bindedSaveScrollState);
   }
 
   disconnect() {
     removeEventListener("visibilitychange", this.bindedRefreshBoard);
     document.removeEventListener("turbo:frame-render", this.#applyScrollState);
-    document.removeEventListener("turbo:before-stream-render", this.bindedSaveScrollState);
   }
 
   toggleLane({ target }) {
@@ -57,7 +53,7 @@ export default class extends Controller {
 
   #applyScrollState(event) {
     if (event && event.target.id !== "board") return;
-    this.laneTargets.forEach((lane) => {
+    event.target.querySelectorAll(".lane").forEach((lane) => {
       lane.lastElementChild.scrollTop = scrollState[lane.id];
     });
   }
