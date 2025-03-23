@@ -7,14 +7,15 @@ export default class extends Controller {
 
   connect() {
     this.bindedFetchBoard = this.#fetchBoard.bind(this);
+    this.bindedUpdateBoard = this.#updateBoard.bind(this);
 
     addEventListener("visibilitychange", this.bindedFetchBoard);
-    document.addEventListener("turbo:before-fetch-response", this.#updateBoardIfVersionChanged);
+    document.addEventListener("turbo:before-fetch-response", this.bindedUpdateBoard);
   }
 
   disconnect() {
     removeEventListener("visibilitychange", this.bindedFetchBoard);
-    document.removeEventListener("turbo:before-fetch-response", this.#updateBoardIfVersionChanged);
+    document.removeEventListener("turbo:before-fetch-response", this.bindedUpdateBoard);
   }
 
   toggleLane({ target }) {
@@ -44,13 +45,7 @@ export default class extends Controller {
     }
   }
 
-  #saveScrollState() {
-    this.laneTargets.forEach((lane) => {
-      scrollState[lane.id] = lane.lastElementChild.scrollTop;
-    });
-  }
-
-  async #updateBoardIfVersionChanged(event) {
+  async #updateBoard(event) {
     if (event && event.target.id !== "board") return;
 
     event.preventDefault();
@@ -69,11 +64,20 @@ export default class extends Controller {
 
       if (newBoard && oldBoard) {
         oldBoard.innerHTML = newBoard.innerHTML;
-        // applyScrollState; didn't make a seperate method because I don't wanna have to use "this" cuz annoying
-        document.querySelectorAll(".lane").forEach((lane) => {
-          lane.lastElementChild.scrollTop = scrollState[lane.id];
-        });
+        this.#applySaveState();
       }
     }
+  }
+
+  #saveScrollState() {
+    this.laneTargets.forEach((lane) => {
+      scrollState[lane.id] = lane.lastElementChild.scrollTop;
+    });
+  }
+
+  #applySaveState() {
+    this.laneTargets.forEach((lane) => {
+      lane.lastElementChild.scrollTop = scrollState[lane.id];
+    });
   }
 }
