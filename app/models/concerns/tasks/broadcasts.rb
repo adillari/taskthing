@@ -14,7 +14,7 @@ module Tasks
         Turbo::StreamsChannel.broadcast_render_later_to(
           "boards",
           partial: "tasks/create",
-          locals: { task: self }
+          locals: { task: self },
         )
       end
 
@@ -22,7 +22,7 @@ module Tasks
         Turbo::StreamsChannel.broadcast_render_later_to(
           "boards",
           partial: "tasks/update",
-          locals: { task: self }
+          locals: { task: self },
         )
       end
 
@@ -30,7 +30,7 @@ module Tasks
         Turbo::StreamsChannel.broadcast_render_later_to(
           "boards",
           partial: "tasks/destroy",
-          locals: { task: self }
+          locals: { task: self },
         )
       end
     end
