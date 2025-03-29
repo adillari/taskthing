@@ -3,7 +3,7 @@ import Sortable from "sortablejs";
 
 export default class extends Controller {
   static values = {
-    submit: { type: Boolean, default: false},
+    submit: { type: Boolean, default: false },
     draggable: { type: String, default: "li" },
     delayOnMobile: { type: Boolean, default: true },
     handle: { type: String, default: null },

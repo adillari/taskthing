@@ -1,0 +1,13 @@
+<%# locals: (lane:) %>
+
+<header class="lane-header">
+  <span class="font-medium">
+    <%= lane.name %>
+  </span>
+  <button class="toggle-lane-button material-symbols-outlined" data-action="board#toggleLane">
+    unfold_more
+  </button>
+  <button id="<%= dom_id(lane, :new_task_button) %>" class="new-task-button material-symbols-outlined" data-action="lane#toggleNewTaskForm">
+    add
+  </button>
+</header>
