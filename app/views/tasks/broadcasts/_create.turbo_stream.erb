@@ -1,4 +1,4 @@
-<%= turbo_stream.action("place_new_task_unless_up_to_date", dom_id(task.lane, :new_task_form), data: { version: task.board.version}) do %>
+<%= turbo_stream.action("place_new_task_unless_up_to_date", dom_id(task.lane, :new_task_form)) do %>
   <%= render(task) %>
 <% end %>
 
