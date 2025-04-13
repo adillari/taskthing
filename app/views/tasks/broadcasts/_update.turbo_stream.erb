@@ -1,2 +1,5 @@
+<%= turbo_stream.action("update_task_unless_up_to_date", "lane_#{task.lane_id}") do %>
+  <%= render(task) %>
+<% end %>
+
 <%= turbo_stream.update("version", task.board.version) %>
-<%# stub %>
