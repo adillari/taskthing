@@ -2,8 +2,8 @@ class TasksController < ApplicationController
   before_action :set_task, except: :create
 
   def create
-    lane = Current.user.lanes.find(task_params[:lane_id])
-    lane.tasks.create!(task_params)
+    @lane = Current.user.lanes.find(task_params[:lane_id])
+    @task = @lane.tasks.create!(task_params)
   end
 
   def edit

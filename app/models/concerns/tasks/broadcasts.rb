@@ -12,24 +12,24 @@ module Tasks
 
       def broadcast_create_to_board
         Turbo::StreamsChannel.broadcast_render_later_to(
-          "boards",
-          partial: "tasks/create",
+          board,
+          partial: "tasks/broadcasts/create",
           locals: { task: self },
         )
       end
 
       def broadcast_update_to_board
         Turbo::StreamsChannel.broadcast_render_later_to(
-          "boards",
-          partial: "tasks/update",
+          board,
+          partial: "tasks/broadcasts/update",
           locals: { task: self },
         )
       end
 
       def broadcast_destroy_to_board
         Turbo::StreamsChannel.broadcast_render_later_to(
-          "boards",
-          partial: "tasks/destroy",
+          board,
+          partial: "tasks/broadcasts/destroy",
           locals: { task: self },
         )
       end
