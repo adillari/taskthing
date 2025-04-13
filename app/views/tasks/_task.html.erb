@@ -1,6 +1,6 @@
 <%# locals: (task:) %>
 
-<li class="task flex cursor-grab <%= task_classes %> first-of-type:!mt-0 select-none">
+<%= tag.li(id: dom_id(task), class: "task flex cursor-grab #{task_classes} first-of-type:!mt-0 select-none", data: { version: task.board.version }) do %>
   <%= task_form(task) %>
   <article class="p-2 flex flex-col w-full handle">
     <header class="font-semibold grow">
@@ -12,4 +12,4 @@
     <%= task_edit_button(task) %>
     <%= task_delete_button(task) %>
   </aside>
-</li>
+<% end %>

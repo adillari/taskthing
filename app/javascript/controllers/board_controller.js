@@ -6,20 +6,22 @@ export default class extends Controller {
   static targets = ["lane"];
 
   connect() {
-    this.#applyScrollState();
+    this.bindedFetchBoard = this.#fetchBoard.bind(this);
+    this.bindedUpdateBoard = this.#updateBoard.bind(this);
 
-    this.bindedRefreshBoard = this.#refreshBoard.bind(this);
-    this.bindedSaveScrollState = this.#saveScrollState.bind(this);
-
-    addEventListener("visibilitychange", this.bindedRefreshBoard);
-    document.addEventListener("turbo:frame-render", this.#applyScrollState);
-    document.addEventListener("turbo:before-stream-render", this.bindedSaveScrollState);
+    addEventListener("visibilitychange", this.bindedFetchBoard);
+    document.addEventListener(
+      "turbo:before-fetch-response",
+      this.bindedUpdateBoard,
+    );
   }
 
   disconnect() {
-    removeEventListener("visibilitychange", this.bindedRefreshBoard);
-    document.removeEventListener("turbo:frame-render", this.#applyScrollState);
-    document.removeEventListener("turbo:before-stream-render", this.bindedSaveScrollState);
+    removeEventListener("visibilitychange", this.bindedFetchBoard);
+    document.removeEventListener(
+      "turbo:before-fetch-response",
+      this.bindedUpdateBoard,
+    );
   }
 
   toggleLane({ target }) {
@@ -42,23 +44,46 @@ export default class extends Controller {
 
   // private
 
-  #refreshBoard() {
+  #fetchBoard() {
     if (document.visibilityState === "visible") {
       this.#saveScrollState();
       Turbo.visit(location.pathname, { frame: "board" });
     }
   }
 
+  async #updateBoard(event) {
+    if (event && event.target.id !== "board") return;
+
+    event.preventDefault();
+
+    const response = new DOMParser().parseFromString(
+      await event.detail.fetchResponse.response.clone().text(),
+      "text/html",
+    );
+
+    const newVersion = response.getElementById("version")?.innerText;
+    const oldVersion = document.getElementById("version")?.innerText;
+
+    if (newVersion !== oldVersion) {
+      const newBoard = response.getElementById("board");
+      const oldBoard = document.getElementById("board");
+
+      if (newBoard && oldBoard) {
+        oldBoard.innerHTML = newBoard.innerHTML;
+        this.#applySaveState();
+      }
+    }
+  }
+
   #saveScrollState() {
     this.laneTargets.forEach((lane) => {
-      scrollState[lane.id] = lane.scrollTop;
+      scrollState[lane.id] = lane.lastElementChild.scrollTop;
     });
   }
 
-  #applyScrollState(event) {
-    if (event && event.target.id !== "board") return;
+  #applySaveState() {
     this.laneTargets.forEach((lane) => {
-      lane.scrollTop = scrollState[lane.id];
+      lane.lastElementChild.scrollTop = scrollState[lane.id];
     });
   }
 }

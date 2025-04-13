@@ -72,7 +72,7 @@ module ApplicationHelper
     tag.div(class: "ml-auto flex items-center gap-2") do
       if authenticated?
         safe_join([
-          tag.dig(data: { application_target: :indicator, turbo_temporary: "" }, hidden: true) do
+          tag.div(data: { application_target: :indicator, turbo_temporary: "" }, hidden: true) do
             tag.div(class: "lds-ring flex items-center") do
               safe_join([tag.div, tag.div, tag.div, tag.div])
             end

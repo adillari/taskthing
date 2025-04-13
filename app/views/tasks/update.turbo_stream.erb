@@ -1,0 +1,2 @@
+<%= turbo_stream.replace(dom_id(@task), render(@task)) %>
+<%= turbo_stream.update("version", @task.board.version) %>

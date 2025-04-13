@@ -33,6 +33,10 @@ module TasksHelper
     end
   end
 
+  def new_task_classes
+    "#{task_classes} !mt-0 !mb-2 p-2 shrink-0"
+  end
+
   def task_classes
     "bg-zinc-950 border-2 border-zinc-700 border-l-4 border-l-violet-700 rounded shadow-lg"
   end

@@ -1,5 +1,8 @@
 import { Controller } from "@hotwired/stimulus";
 
+// This basically holds the application wide javascript behavior for:
+// - modal functionality
+// - header loading spinner
 export default class extends Controller {
   static targets = ["modal", "indicator"];
 
@@ -9,14 +12,26 @@ export default class extends Controller {
     this.bindedHideSpinner = this.#hideSpinner.bind(this);
 
     document.addEventListener("turbo:submit-start", this.bindedRemoveModal);
-    document.addEventListener("turbo:before-fetch-request", this.bindedShowSpinner);
-    document.addEventListener("turbo:before-fetch-response", this.bindedHideSpinner);
+    document.addEventListener(
+      "turbo:before-fetch-request",
+      this.bindedShowSpinner,
+    );
+    document.addEventListener(
+      "turbo:before-fetch-response",
+      this.bindedHideSpinner,
+    );
   }
 
   disconnect() {
     document.removeEventListener("turbo:submit-start", this.bindedRemoveModal);
-    document.removeEventListener("turbo:before-fetch-request", this.bindedShowSpinner);
-    document.removeEventListener("turbo:before-fetch-response", this.bindedHideSpinner);
+    document.removeEventListener(
+      "turbo:before-fetch-request",
+      this.bindedShowSpinner,
+    );
+    document.removeEventListener(
+      "turbo:before-fetch-response",
+      this.bindedHideSpinner,
+    );
   }
 
   removeModal() {

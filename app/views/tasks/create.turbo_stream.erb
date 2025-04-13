@@ -1,0 +1,7 @@
+<%= turbo_stream.action("clear_new_task_form_inputs", dom_id(@lane, :new_task_form)) %>
+
+<%= turbo_stream.action("place_new_task_unless_up_to_date", dom_id(@lane, :new_task_form)) do %>
+  <%= render(@task) %>
+<% end %>
+
+<%= turbo_stream.update("version", @lane.board.version) %>
