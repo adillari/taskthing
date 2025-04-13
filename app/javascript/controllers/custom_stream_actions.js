@@ -3,8 +3,8 @@ const StreamActions = {}
 StreamActions.clear_new_task_form_inputs = function() {
   const newTaskForm = this.targetElements[0]
 
-  lane.querySelector("input[name='task[title]']").value = null;
-  lane.querySelector("input[name='task[description]']").value = null;
+  newTaskForm.querySelector("input[name='task[title]']").value = null;
+  newTaskForm.querySelector("textarea[name='task[description]']").value = null;
 }
 
 StreamActions.place_new_task_unless_up_to_date = function() {
