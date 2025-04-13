@@ -27,7 +27,7 @@ module Tasks
       end
 
       def broadcast_destroy_to_board
-        Turbo::StreamsChannel.broadcast_render_later_to(
+        Turbo::StreamsChannel.broadcast_render_to(
           board,
           partial: "tasks/broadcasts/destroy",
           locals: { task: self },
