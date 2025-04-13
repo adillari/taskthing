@@ -10,12 +10,18 @@ export default class extends Controller {
     this.bindedUpdateBoard = this.#updateBoard.bind(this);
 
     addEventListener("visibilitychange", this.bindedFetchBoard);
-    document.addEventListener("turbo:before-fetch-response", this.bindedUpdateBoard);
+    document.addEventListener(
+      "turbo:before-fetch-response",
+      this.bindedUpdateBoard,
+    );
   }
 
   disconnect() {
     removeEventListener("visibilitychange", this.bindedFetchBoard);
-    document.removeEventListener("turbo:before-fetch-response", this.bindedUpdateBoard);
+    document.removeEventListener(
+      "turbo:before-fetch-response",
+      this.bindedUpdateBoard,
+    );
   }
 
   toggleLane({ target }) {

@@ -5,4 +5,4 @@ eagerLoadControllersFrom("controllers", application);
 
 // Custom Turbo Stream Actions
 import { StreamActions } from "controllers/custom_stream_actions";
-Object.assign(Turbo.StreamActions, StreamActions)
+Object.assign(Turbo.StreamActions, StreamActions);
