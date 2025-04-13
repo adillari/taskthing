@@ -9,10 +9,10 @@ StreamActions.clear_new_task_form_inputs = function() {
 
 StreamActions.place_new_task_unless_up_to_date = function() {
   const newTaskForm = this.targetElements[0]
-  const version = this.templateElement.dataset.version
+  const fragment = this.templateElement.content
+  const version = fragment.firstElementChild.dataset.version
 
   if (document.getElementById('version')?.innerText !== version) {
-    const fragment = this.templateElement.content
     newTaskForm.insertAdjacentElement("afterend", fragment.firstElementChild)
   }
 }
