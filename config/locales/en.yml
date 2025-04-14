@@ -47,6 +47,7 @@ en:
     task_description: Description (optional)
     task_title: Title
   read_my_code!: Read my code!
+  shared: "(shared)"
   sign_up: Sign up
   tagline: Slick, Simple, Open-source Kanban.
   type_here_ellipsis: type here...

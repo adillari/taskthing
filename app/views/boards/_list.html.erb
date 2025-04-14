@@ -1,0 +1,17 @@
+<%# locals: (board_users:) %>
+
+<%= form_with(model: Current.user, class: "flex flex-col gap-2", data: { controller: :sortable, sortable_submit_value: true }) do |form| %>
+  <%= form.fields_for(:board_users, board_users) do |board_user_form| %>
+    <%= tag.li(class: "bg-zinc-900 rounded-lg shadow-xl flex items-center select-none cursor-pointer p-4", onclick: "Turbo.visit(#{board_path(board_user_form.object.board.id).to_json})") do %>
+      <%= board_user_form.object.board.title %>
+      <%= board_user_form.hidden_field(:id) %>
+      <%= board_user_form.hidden_field(:position) %>
+      <% if board_user_form.object.board.board_users.many? %>
+        <span class="opacity-50 ml-auto">
+          <%= t("shared") %>
+        </span>
+      <% end %>
+    <% end %>
+  <% end %>
+  <%= link_to(t("+_new_board"), new_board_path, class: "text-violet-700 hover:underline shadow mx-auto sm:mr-auto sm:ml-1", data: { turbo_frame: :modal }) %>
+<% end %>

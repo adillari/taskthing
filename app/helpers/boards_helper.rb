@@ -1,38 +1,4 @@
 module BoardsHelper
-  def boards_list(board_users)
-    form_with(
-      model: Current.user,
-      class: "flex flex-col gap-2",
-      data: { controller: :sortable, sortable_submit_value: true },
-    ) do |form|
-      safe_join([
-        form.fields_for(:board_users, board_users) do |board_user_form|
-          tag.li(
-            class: "bg-zinc-900 rounded-lg shadow-xl flex items-center select-none cursor-pointer p-4",
-            onclick: "Turbo.visit('#{board_path(board_user_form.object.board.id)}')",
-          ) do
-            safe_join([
-              board_user_form.object.board.title,
-              board_user_form.hidden_field(:id),
-              board_user_form.hidden_field(:position),
-              shared(board_user_form.object.board),
-            ])
-          end
-        end,
-        link_to(
-          t("+_new_board"),
-          new_board_path,
-          class: "text-violet-700 hover:underline shadow mx-auto sm:mr-auto sm:ml-1",
-          data: { turbo_frame: :modal },
-        ),
-      ])
-    end
-  end
-
-  def shared(board)
-    tag.span("(shared)", class: "opacity-50 ml-auto") if board.board_users.many?
-  end
-
   def board_invite_button
     link_to(
       new_invite_path(board_id: @board.id),

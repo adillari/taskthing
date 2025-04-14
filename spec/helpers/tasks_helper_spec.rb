@@ -35,7 +35,7 @@ RSpec.describe(TasksHelper, type: :helper) do
   describe "#task_classes" do
     it "returns the expected CSS classes" do
       expect(helper.task_classes)
-        .to(eq("bg-zinc-950 border-2 border-zinc-700 border-l-4 border-l-violet-700 rounded shadow-lg task flex cursor-grab select-none"))
+        .to(eq("bg-zinc-950 border-2 border-zinc-700 border-l-4 border-l-violet-700 rounded shadow-lg task flex cursor-grab select-none")) # rubocop:disable Layout/LineLength
     end
   end
 end
