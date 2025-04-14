@@ -1,12 +1,19 @@
 <%# locals: (task:) %>
 
-<%= tag.li(id: dom_id(task), class: "task flex cursor-grab #{task_classes} first-of-type:!mt-0 select-none", data: { version: task.board.version }) do %>
-  <%= task_form(task) %>
+<%= tag.li(id: dom_id(task), class: task_classes, data: { version: task.board.version }) do %>
+  <%= form_with(model: task) do |form| %>
+    <%= form.hidden_field(:lane_id) %>
+    <%= form.hidden_field(:position) %>
+  <% end %>
   <article class="p-2 flex flex-col w-full handle">
     <header class="font-semibold grow">
       <%= task.title %>
     </header>
-    <%= task_description(task) %>
+    <% if task.description.present? %>
+      <p class="h-full border-t border-zinc-700 mt-1.5 pt-1.5 grow">
+        <%= task.description %>
+      </p>
+    <% end %>
   </article>
   <aside class="flex flex-col gap-1 my-2 mr-1">
     <%= task_edit_button(task) %>

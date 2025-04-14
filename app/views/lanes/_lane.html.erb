@@ -3,9 +3,7 @@
 <turbo-frame id="<%= dom_id(lane) %>" class="lane" data-board-target="lane" data-controller="lane" data-lane-id="<%= lane.id %>">
   <%= render("lanes/lane_header", lane:) %>
   <ul class="overflow-y-auto grow space-y-2 px-2">
-    <%= tag.div(id: dom_id(lane, :new_task_form), class: new_task_classes, hidden: true) do %>
-      <%= new_task_form(lane) %>
-    <% end %>
+    <%= render("lanes/new_task_form", lane:) %>
     <%= render(lane.tasks.select(&:persisted?)) %>
   </ul>
 </turbo-frame>
