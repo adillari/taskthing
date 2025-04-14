@@ -28,7 +28,7 @@
 }
 
 @utility lane {
-  @apply bg-zinc-900 flex-1 flex flex-col overflow-x-hidden rounded-lg pb-2 min-w-64 sm:h-full;
+  @apply bg-zinc-900 flex-1 flex flex-col rounded-lg pb-2 min-w-64 sm:h-full;
 }
 
 @utility lane-header {

@@ -2,7 +2,7 @@
 
 <turbo-frame id="<%= dom_id(lane) %>" class="lane" data-board-target="lane" data-controller="lane" data-lane-id="<%= lane.id %>">
   <%= render("lanes/lane_header", lane:) %>
-  <ul class="overflow-y-auto grow space-y-2 px-2">
+  <ul class="overflow-y-auto overflow-x-hidden grow space-y-2 px-2">
     <%= render("lanes/new_task_form", lane:) %>
     <%= render(lane.tasks.select(&:persisted?)) %>
   </ul>
