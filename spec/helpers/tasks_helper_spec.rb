@@ -25,6 +25,13 @@ RSpec.describe(TasksHelper, type: :helper) do
     end
   end
 
+  describe "#new_task_classes" do
+    it "returns the expected CSS classes" do
+      expect(helper.new_task_classes)
+        .to(eq("bg-zinc-950 border-2 border-zinc-700 border-l-4 border-l-violet-700 rounded shadow-lg p-2"))
+    end
+  end
+
   describe "#task_classes" do
     it "returns the expected CSS classes" do
       expect(helper.task_classes)
