@@ -1,3 +1,4 @@
-<%= turbo_stream.remove(task) %>
+<%# locals: (task:) %>
 
+<%= turbo_stream.remove(task) %>
 <%= turbo_stream.update("version", task.board.version) %>
