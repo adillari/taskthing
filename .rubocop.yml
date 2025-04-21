@@ -4,6 +4,7 @@ Style/FrozenStringLiteralComment:
   Enabled: false
 
 Layout/LineLength:
+  Enabled: true
   Exclude:
     - "Gemfile"
     - "bin/bundle"
