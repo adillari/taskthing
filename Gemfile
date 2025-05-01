@@ -21,7 +21,7 @@ group :development, :test do
   gem "brakeman", require: false # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem "rubocop-shopify", "~> 2.17", require: false
   gem "erb_lint", "~> 0.9.0", require: false
-  gem "rspec-rails", "~> 7.1"
+  gem "rspec-rails", "~> 8.0"
   gem "factory_bot_rails", "~> 6.4"
   gem "i18n-tasks", "~> 1.0"
 end
