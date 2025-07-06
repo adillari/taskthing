@@ -1,24 +1,25 @@
-This project is licensed under the GNU Affero General Public License v3.0
-
-Please understand [what that means](https://choosealicense.com/licenses/agpl-3.0/) if you intend to run your own instance.
-
 # Taskthing
 
 Taskthing is an open source kanban web application aiming for the following qualities:
+
 - readable/clean code
 - self-hostable(easily!)
 - performant
 - light on gems/javascript dependencies beyond standard Rails/Hotwire
-- a majestic monolith that would make DHH proud(https://signalvnoise.com/svn3/the-majestic-monolith/)
+- a majestic monolith that would make DHH proud(<https://signalvnoise.com/svn3/the-majestic-monolith/>)
 
-### Technical information
+## License
 
-#### Ruby version:
-- see .ruby-version
-#### System dependencies
+This project is licensed under the GNU Affero General Public License v3.0
+
+Please understand [what that means](https://choosealicense.com/licenses/agpl-3.0/) if you intend to run your own instance.
+
+### System dependencies
+
+- ruby(see '.ruby-version' for version)
 - sqlite3
 
-#### To run in development:
+#### To run in development
 
 `bundle install`
 
@@ -27,7 +28,7 @@ Taskthing is an open source kanban web application aiming for the following qual
 `bin/dev` to start server process
 `bin/jobs` to start jobs process
 
-#### To run in production:
+#### To run in production
 
 Currently this project is meant to run entirely on one box.
 That may change if the project actually gets more than 10 users.
@@ -53,4 +54,4 @@ Use a reverse proxy of your choosing to expose port 443/80 and route the traffic
 
 Taskthing - Open Source Kanban
 
-Copyright (C) 2024 Adil Lari
+Copyright (C) 2024-2025 Adil Lari
