@@ -14,12 +14,14 @@ This project is licensed under the GNU Affero General Public License v3.0
 
 Please understand [what that means](https://choosealicense.com/licenses/agpl-3.0/) if you intend to run your own instance.
 
+## Technical Information
+
 ### System dependencies
 
-- ruby(see '.ruby-version' for version)
+- ruby(see `.ruby-version` for version)
 - sqlite3
 
-#### To run in development
+### To run in development
 
 `bundle install`
 
@@ -28,7 +30,7 @@ Please understand [what that means](https://choosealicense.com/licenses/agpl-3.0
 `bin/dev` to start server process
 `bin/jobs` to start jobs process
 
-#### To run in production
+### To run in production
 
 Currently this project is meant to run entirely on one box.
 That may change if the project actually gets more than 10 users.
