@@ -1,7 +1,7 @@
 module BoardsHelper
-  def board_invite_button
+  def board_invite_button(board)
     link_to(
-      new_invite_path(board_id: @board.id),
+      new_invite_path(board_id: board.id),
       class: "button-outlined text-green-500 border-green-500 flex items-center justify-center gap-1",
       data: { turbo_frame: :modal },
     ) do
@@ -12,9 +12,9 @@ module BoardsHelper
     end
   end
 
-  def board_edit_button
+  def board_edit_button(board)
     link_to(
-      edit_board_path(@board),
+      edit_board_path(board),
       class: "button-outlined text-yellow-500 border-yellow-500 flex items-center justify-center gap-1",
       data: { turbo_frame: :modal },
     ) do
@@ -25,9 +25,9 @@ module BoardsHelper
     end
   end
 
-  def board_delete_button
+  def board_delete_button(board)
     link_to(
-      delete_confirmation_board_path(@board),
+      delete_confirmation_board_path(board),
       class: "button-outlined text-red-500 border-red-500 flex items-center justify-center gap-1",
       data: { turbo_frame: :modal },
     ) do
