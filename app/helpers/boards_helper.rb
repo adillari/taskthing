@@ -20,7 +20,7 @@ module BoardsHelper
     ) do
       safe_join([
         tag.span(t("edit_title")),
-        tag.span("edit", class: "material-symbols-outlined"),
+        tag.span(t("edit"), class: "material-symbols-outlined"),
       ])
     end
   end
