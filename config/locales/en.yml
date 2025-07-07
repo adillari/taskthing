@@ -21,6 +21,8 @@ en:
   copy_link: Copy Link
   delete_board: Delete Board
   deleting_a_lane_will_delete_it's_tasks_too!: Deleting a lane will delete it's tasks too!
+  demote: Demote
+  edit: Edit
   edit_title: Edit Title
   forgot_password?: Forgot password?
   invite_a_friend: Invite a Friend
@@ -46,6 +48,7 @@ en:
     password: Enter your password
     task_description: Description (optional)
     task_title: Title
+  promote: Promote
   read_my_code!: Read my code!
   shared: "(shared)"
   sign_up: Sign up
