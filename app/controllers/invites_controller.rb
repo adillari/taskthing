@@ -20,7 +20,7 @@ class InvitesController < ApplicationController
   def update # I believe the built-in CSRF should be secure enough to not have to worry about exploits here
     @invite = Invite.find(params[:id])
     case params[:commit]
-    when "accept"
+    when "Accept"
       @board = @invite.board
       @board.board_users.new(user: Current.user, role: "member")
       @board.save!

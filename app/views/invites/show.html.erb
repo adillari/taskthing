@@ -1,8 +1,12 @@
 <div class="h-28"></div>
 <%= form_with(model: @invite, class: "bg-zinc-900 rounded-lg max-w-96 p-4 mx-auto shadow-2xl") do |form| %>
   <header class="mb-10">
-    <%= t("user_invites_you_to_collaborate_on_board_html", user: @user.email_address, board: @board.title) %>
+    <%= t(
+      "user_invites_you_to_collaborate_on_board_html",
+      user: @user.email_address,
+      board: @board.title,
+    ) %>
   </header>
-  <%= form.submit("reject", class: "button-outlined border-violet-700 py-3 px-5") %>
-  <%= form.submit("accept", class: "button-filled float-right bg-violet-700") %>
+  <%= form.submit("Reject", class: "button-outlined border-violet-700 py-3 px-5") %>
+  <%= form.submit("Accept", class: "button-filled float-right bg-violet-700") %>
 <% end %>
