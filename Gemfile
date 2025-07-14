@@ -11,7 +11,7 @@ gem "tailwindcss-rails" # Use Tailwind CSS [https://github.com/rails/tailwindcss
 gem "bcrypt", "~> 3.1.7" # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 gem "bootsnap", require: false # Reduces boot times through caching; required in config/boot.rb
 gem "solid_cache", "~> 1.0" # Use the database-backed adapter for Rails.cache
-gem "solid_queue", "~> 1.1" # Use the database-backed adapter for Active Job
+gem "solid_queue", "~> 1.2" # Use the database-backed adapter for Active Job
 gem "solid_cable", "~> 3.0" # Use the database-backed adapter for Action Cable
 
 group :development, :test do
