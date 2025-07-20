@@ -14,9 +14,15 @@
   <%= form_with(model: @user, class: "contents") do |form| %>
     <div class="my-5">
       <%= form.email_field(:email_address, required: true, autofocus: true, autocomplete: "username", placeholder: t("placeholders.email_address"), value: params[:email_address], class: "input-field") %>
+      <% if @user.errors[:email_address].any? %>
+        <p class="text-red-500 text-sm mt-1"><%= @user.errors[:email_address].join(", ") %></p>
+      <% end %>
     </div>
     <div class="my-5">
       <%= form.password_field(:password, required: true, autocomplete: "current-password", placeholder: t("placeholders.password"), maxlength: 72, class: "input-field") %>
+      <% if @user.errors[:password].any? %>
+        <p class="text-red-500 text-sm mt-1"><%= @user.errors[:password].join(", ") %></p>
+      <% end %>
     </div>
     <div class="col-span-6 sm:flex sm:items-center sm:gap-4">
       <div class="inline">

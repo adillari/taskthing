@@ -9,5 +9,6 @@ class User < ApplicationRecord
   has_many :invites
   accepts_nested_attributes_for :board_users
 
+  validates_uniqueness_of :email_address
   normalizes :email_address, with: -> { _1.strip.downcase }
 end

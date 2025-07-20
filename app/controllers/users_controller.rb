@@ -15,8 +15,8 @@ class UsersController < ApplicationController
       start_new_session_for(user)
       redirect_to(boards_path)
     else
-      @errors = user.errors
-      render(:new)
+      @user = user
+      render(:new, status: :unprocessable_entity)
     end
   end
 
