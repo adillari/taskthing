@@ -7,6 +7,8 @@ class Board < ApplicationRecord
   after_create_commit :create_default_lanes
   accepts_nested_attributes_for :lanes, allow_destroy: true
 
+  validates :title, presence: true
+
   def bump_version!
     update!(version: version + 1)
   end
