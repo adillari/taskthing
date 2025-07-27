@@ -1,9 +1,22 @@
-<div class="h-28"></div>
-<div class="bg-zinc-900 rounded-lg max-w-88 p-4 mx-auto relative shadow-2xl z-10">
-  <h1 class="text-4xl font-bold leading-normal">
-    <%= t("tagline") %>
-  </h1>
-  <%= link_to t("sign_up"), new_user_path, class: "button-filled bg-violet-700 absolute right-4 -bottom-6 animate-bounce" %>
+<div class="h-28 max-sm:hidden"></div>
+<div class="flex max-sm:flex-col sm:justify-around items-center">
+  <div class="flex flex-col gap-2 max-sm:p-4">
+    <p>
+      Taskthing is an easy-to-use task management app for all your personal or small project needs.
+    </p>
+    <p>
+      Think Jira for your day-to-day tasks.
+    </p>
+    <p>
+      Taskthing has a priority on being intuitive, fast, and secure.
+    </p>
+  </div>
+  <div class="bg-zinc-900 rounded-lg max-w-88 p-4 relative shadow-2xl z-10 max-sm:mt-10">
+    <h1 class="text-4xl font-bold leading-normal">
+      <%= t("tagline") %>
+    </h1>
+    <%= link_to t("sign_up"), new_user_path, class: "button-filled bg-violet-700 absolute right-4 -bottom-6 animate-bounce" %>
+  </div>
 </div>
 <span class="absolute bottom-0 text-sm p-3 left-0">
   <%= t("made_with_coffee_by_author_html", author: link_to("maz", "https://maz.dev", class: "underline")) %>
