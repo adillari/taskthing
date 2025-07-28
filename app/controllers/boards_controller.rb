@@ -18,7 +18,7 @@ class BoardsController < ApplicationController
     board.board_users.new(user: Current.user, role: "admin")
 
     if board.save
-      redirect_to(boards_path)
+      redirect_to(board_path(board))
     else
       @errors = board.errors
       render(:new)
