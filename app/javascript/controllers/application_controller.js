@@ -4,7 +4,7 @@ import { Controller } from "@hotwired/stimulus";
 // - modal functionality
 // - header loading spinner
 export default class extends Controller {
-  static targets = ["modal", "indicator"];
+  static targets = ["modal", "indicator", "archivedBoardsButton"];
 
   connect() {
     this.bindedRemoveModal = this.removeModal.bind(this);
@@ -40,6 +40,16 @@ export default class extends Controller {
 
   stopPropagation(event) {
     event.stopPropagation();
+  }
+
+  toggleArchivedBoards({ target }) {
+    const text = target.dataset.switch;
+    target.dataset.switch = target.innerText;
+    target.innerText = text
+
+    document.querySelectorAll(".archived-board").forEach((board) => {
+      board.classList.toggle("hidden");
+    })
   }
 
   // private

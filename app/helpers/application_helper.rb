@@ -77,13 +77,28 @@ module ApplicationHelper
               safe_join([tag.div, tag.div, tag.div, tag.div])
             end
           end,
+          show_hide_boards_button,
           link_to("logout", session_path, class: "material-symbols-outlined", data: { turbo_method: :delete }),
-        ])
+        ].compact)
       elsif controller_name == "sessions" && action_name == "new"
         nil
       else
         link_to(t("login"), new_session_path, class: "button-outlined float-right border-violet-700")
       end
     end
+  end
+
+  def show_hide_boards_button
+    return unless controller_name == "boards" && action_name == "index"
+
+    tag.span(
+      t("show_archived"),
+      class: "hover:underline select-none text-violet-700 cursor-pointer",
+      data: {
+        application_target: "archivedBoardsButton",
+        action: "click->application#toggleArchivedBoards",
+        switch: t("hide_archived"),
+      },
+    )
   end
 end

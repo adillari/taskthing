@@ -18,6 +18,10 @@ en:
             role:
               inclusion: Invalid role
   boards: Boards
+  archive_board: Archive Board
+  show_archived: Show Archived
+  hide_archived: Hide Archived
+  unarchive_board: Unarchive Board
   copy_link: Copy Link
   delete_board: Delete Board
   deleting_a_lane_will_delete_it's_tasks_too!: Deleting a lane will delete it's tasks too!
