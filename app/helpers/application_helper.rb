@@ -79,6 +79,8 @@ module ApplicationHelper
           end,
           link_to("logout", session_path, class: "material-symbols-outlined", data: { turbo_method: :delete }),
         ])
+      elsif controller_name == "sessions" && action_name == "new"
+        nil
       else
         link_to(t("login"), new_session_path, class: "button-outlined float-right border-violet-700")
       end
