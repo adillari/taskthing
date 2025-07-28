@@ -1,4 +1,4 @@
 <%= turbo_stream.replace(
   dom_id(@board, :settings),
-  render("board_settings/show", board: @board, board_users: @board_users, current_board_user: @current_board_user),
+  render("board_settings/show", board: @board, board_users: @board_users, current_board_user: @current_board_user.reload),
 ) %>

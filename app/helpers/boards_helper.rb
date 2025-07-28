@@ -25,6 +25,34 @@ module BoardsHelper
     end
   end
 
+  def board_archive_unarchive_button(board_user)
+    path = board_users_path
+    args = {
+      class: "button-outlined flex items-center justify-center gap-1 w-full",
+      method: "patch",
+      params: {
+        id: board_user.id,
+        board_id: board_user.board_id,
+        archived: !board_user.archived?,
+      },
+    }
+
+    if board_user.archived?
+      translation = t("unarchive_board")
+      icon = "unarchive"
+    else
+      translation = t("archive_board")
+      icon = "archive"
+    end
+
+    text_and_icon = safe_join([
+      tag.span(translation),
+      tag.span(icon, class: "material-symbols-outlined"),
+    ])
+
+    button_to(path, **args) { text_and_icon }
+  end
+
   def board_delete_button(board)
     link_to(
       delete_confirmation_board_path(board),

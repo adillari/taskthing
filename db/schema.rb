@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_24_033026) do
+ActiveRecord::Schema[8.0].define(version: 2025_07_28_015145) do
   create_table "board_users", force: :cascade do |t|
     t.bigint("user_id", null: false)
     t.bigint("board_id", null: false)
@@ -18,6 +18,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_24_033026) do
     t.datetime("updated_at", null: false)
     t.integer("position")
     t.string("role", null: false)
+    t.boolean("archived", default: false, null: false)
     t.index(["board_id"], name: "index_board_users_on_board_id")
     t.index(["user_id"], name: "index_board_users_on_user_id")
   end

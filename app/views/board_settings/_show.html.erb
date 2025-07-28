@@ -28,6 +28,7 @@
         </li>
       <% end %>
     </section>
+    <%= board_archive_unarchive_button(current_board_user) %>
     <% if current_board_user.admin? %>
       <%= board_delete_button(board) %>
     <% end %>
