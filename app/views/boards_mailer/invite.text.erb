@@ -1,6 +1,3 @@
-Ahoy!
-
-You've been invited to collaborate on "<%= @invite.board.title %>" by <%= @invite.user.email_address %>!
-
-Click below to accept/reject.
+Ahoy! You've been invited to collaborate on "<%= @invite.board.title %>" by
+<%= @invite.user.email_address %>! Click below to accept/reject.
 <%= invite_url(@invite.signed_id) %>
