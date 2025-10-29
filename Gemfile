@@ -17,7 +17,7 @@ gem "solid_cable", "~> 3.0" # Use the database-backed adapter for Action Cable
 group :development, :test do
   gem "debug", platforms: [:mri, :windows], require: "debug/prelude" # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "brakeman", require: false # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
-  gem "rubocop-shopify", "~> 2.17", require: false
+  gem "rubocop-shopify", "~> 2.18", require: false
   gem "erb_lint", "~> 0.9.0", require: false
   gem "rspec-rails", "~> 8.0"
   gem "factory_bot_rails", "~> 6.5"
