@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem "rails", "~> 8.0"
+gem "rails", "~> 8.1"
 gem "propshaft" # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "sqlite3", ">= 2.1" # Use sqlite3 as the database for Active Record
 gem "puma", ">= 5.0" # Use the Puma web server [https://github.com/puma/puma]
