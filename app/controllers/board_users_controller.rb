@@ -5,14 +5,14 @@ class BoardUsersController < ApplicationController
     @board_user_to_update = @board_users.find_by(id: params[:id].to_i)
     @current_board_user = @board_users.find_by(user_id: Current.user.id)
 
-    return if board_user_params[:role] && !@current_board_user.admin?
-
     @board_user_to_update.update!(board_user_params)
   end
 
   private
 
   def board_user_params
-    params.permit(:role, :archived)
+    permitted = [:archived]
+    permitted << :role if @current_board_user.admin?
+    params.permit(permitted)
   end
 end
