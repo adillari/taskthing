@@ -17,11 +17,8 @@ en:
           attributes:
             role:
               inclusion: Invalid role
-  boards: Boards
   archive_board: Archive Board
-  show_archived: Show Archived
-  hide_archived: Hide Archived
-  unarchive_board: Unarchive Board
+  boards: Boards
   copy_link: Copy Link
   delete_board: Delete Board
   deleting_a_lane_will_delete_it's_tasks_too!: Deleting a lane will delete it's tasks too!
@@ -29,6 +26,7 @@ en:
   edit: Edit
   edit_title: Edit Title
   forgot_password?: Forgot password?
+  hide_archived: Hide Archived
   invite_a_friend: Invite a Friend
   invite_friend: Invite Friend
   lanes: Lanes
@@ -55,7 +53,9 @@ en:
   promote: Promote
   read_my_code!: Read my code!
   shared: "(shared)"
+  show_archived: Show Archived
   sign_up: Sign up
   tagline: Slick, Simple, Open-source Kanban.
   type_here_ellipsis: type here...
+  unarchive_board: Unarchive Board
   user_invites_you_to_collaborate_on_board_html: "%{user} invites you to collaborate on <b>%{board}</b>."
