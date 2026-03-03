@@ -1,0 +1,8 @@
+#!/bin/bash
+
+git stash
+git pull
+bundle
+bundle exec rails db:migrate
+
+bundle exec rails s -b localhost -p 3000
