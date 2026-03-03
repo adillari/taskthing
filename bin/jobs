@@ -1,5 +1,10 @@
 #!/usr/bin/env ruby
 
+system("git stash")
+system("git pull")
+system("bundle")
+system("bundle exec rails db:migrate")
+
 require_relative "../config/environment"
 require "solid_queue/cli"
 
