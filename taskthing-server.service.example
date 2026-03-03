@@ -6,7 +6,7 @@ After=network.target
 User=username
 WorkingDirectory=/path/to/taskthing
 EnvironmentFile=/path/to/taskthing/.env
-ExecStart=/bin/bash -lc 'eval "$(~/.rbenv/bin/rbenv init - bash)"; bin/server'
+ExecStart=/bin/bash -lc 'eval "$(~/.rbenv/bin/rbenv init - bash)"; bin/serve'
 Restart=always
 RestartSec=3
 
