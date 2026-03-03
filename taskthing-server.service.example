@@ -1,0 +1,14 @@
+[Unit]
+Description=Taskthing Server
+After=network.target
+
+[Service]
+User=username
+WorkingDirectory=/path/to/taskthing
+EnvironmentFile=/path/to/taskthing/.env
+ExecStart=/bin/bash -lc 'eval "$(~/.rbenv/bin/rbenv init - bash)"; bin/server'
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
